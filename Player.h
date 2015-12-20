@@ -5,12 +5,12 @@ class Player
 {
 public:
 	Player();
-	void All();
+	void Update();
 
 private:
 
 	// 移動処理
-	void Move();
+	void Input();
 
 	// 描画処理
 	void Draw();
@@ -33,9 +33,16 @@ private:
 	int xCount, yCount;
 
 	// 添字用変数
-	int ix, iy, result;
+	int imageX, imageY, result;
 
 	// 生きてるかどうかのフラグ
 	bool isLive;
 
+////////////////////////////////////
+
+	// 歩く速度(定数)
+	const int kSpeed = 4;
 };
+
+// キー取得用配列
+extern char key[256];
