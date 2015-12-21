@@ -142,27 +142,27 @@ void Player::Input()
 	// xカウントがプラスなら右向きなので2行目の先頭添字番号を足す
 	if (xCount > 0)
 	{
-		imageX += 3;
+		imageX += 6;
 		result = imageX;
 	}
 	else if (xCount < 0)
 	{
 		// マイナスなら左向きなので、4行目の先頭添字番号を足す
 
-		imageX += 9;
+		imageX += 3;
 		result = imageX;
 	}
 
 	// yカウントがプラスなら下向きなので、3行目の先頭添字番号を足す
 	if (yCount > 0)
 	{
-		imageY += 6;
+		imageY += 0;
 		result = imageY;
 	}
 	else if (yCount < 0)
 	{
 		// 1行目の先頭添字番号は0なので何もしない
-		imageY += 0;
+		imageY += 9;
 		result = imageY;
 	}
 
