@@ -8,7 +8,7 @@ Player::Player()
 {
 
 	// ‰æ‘œ“Ç‚İ‚İ
-	if (-1 == LoadDivGraph("res/player/charcter.png", 12, 3, 4, 29, 40, graphicHandle))
+	if (-1 == LoadDivGraph("res/player/charcter.png", 12, 3, 4, 29, 40, graphicHandle, 0))
 	{
 		printf("ƒGƒ‰[”­¶");
 	}

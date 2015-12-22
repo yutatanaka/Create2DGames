@@ -41,7 +41,7 @@ private:
 ////////////////////////////////////
 
 	// 歩く速度(定数)
-	const int kSpeed = 4;
+	const int kSpeed = 3;
 };
 
 // キー取得用配列
