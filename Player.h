@@ -4,7 +4,9 @@
 class Player
 {
 public:
+	
 	Player();
+
 	void Update();
 
 private:
