@@ -5,19 +5,19 @@
 
 // コンストラクタ
 Player::Player() :
-width (29),// 幅
-height(40),// 高さ
-move(1.0f),// 移動係数
-xCount (), // 横方向のカウント数
-yCount (), // 縦方向のカウント数
-imageX (), // 添字用変数	
+position(10, 900),// 初期位置
+width (29), // 幅
+height(40),	// 高さ
+move(1.0f),	// 移動係数
+xCount (),	// 横方向のカウント数
+yCount (),	// 縦方向のカウント数
+imageX (),	// 添字用変数	
 imageY (),
-result (),
-position(10, 450)// 初期位置
+result ()
 {
 
 	// 画像読み込み
-	if (-1 == LoadDivGraph("res/player/charcter.png", 12, 3, 4, 29, 40, graphicHandle, 0))
+	if (-1 == LoadDivGraph("res/player/charcter.png", 12, 3, 4, 29, 40 , graphicHandle, 0))
 	{
 		printf("エラー発生");
 	}

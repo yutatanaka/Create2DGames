@@ -24,6 +24,11 @@ private:
 	// キャラクターの座標
 	Vec2f position;
 
+	// キャラクターの大きさ
+	Vec2f scale;
+
+	// キャラクターの
+
 	// 画像の幅
 	int width, height;
 
