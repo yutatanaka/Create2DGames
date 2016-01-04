@@ -5,19 +5,15 @@
 
 // コンストラクタ
 Player::Player() :
-width (29),
-height(40),
-// 移動係数
-move(1.0f),
-// 横方向と縦方向のカウント数
-xCount (),
-yCount (),
-// 添字用変数
-imageX (),
+width (29),// 幅
+height(40),// 高さ
+move(1.0f),// 移動係数
+xCount (), // 横方向のカウント数
+yCount (), // 縦方向のカウント数
+imageX (), // 添字用変数	
 imageY (),
 result (),
-// 初期位置
-position(10, 450)
+position(10, 450)// 初期位置
 {
 
 	// 画像読み込み
@@ -25,7 +21,6 @@ position(10, 450)
 	{
 		printf("エラー発生");
 	}
-
 
 }
 
