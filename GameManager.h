@@ -5,8 +5,8 @@
 
 enum Window
 {
-	Width = 1200,
-	Height = 950,
+	Width = 1024,
+	Height = 768,
 	ColorBit = 32
 };
 
