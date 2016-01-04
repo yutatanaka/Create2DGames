@@ -25,8 +25,8 @@ Player::Player()
 	imageX = 0, imageY = 0, result = 0;
 
 	// 初期位置
-	x = 180;
-	y = 400;
+	x = 10;
+	y = 450;
 
 	isLive = true;
 }
@@ -49,20 +49,9 @@ void Player::Input()
 
 	if (key[KEY_INPUT_LEFT] == 1 || key[KEY_INPUT_RIGHT] == 1)
 	{
-		if (key[KEY_INPUT_UP] == 1 || key[KEY_INPUT_DOWN] == 1)
-		{
-			// 移動係数を0.71に設定
-			move = 0.71f;
-		}
-		else
-		{
-			// 斜めじゃなければ1.0に設定
-			move = 1.0f;
-		}
-	}
-	else if (key[KEY_INPUT_UP] == 1 || key[KEY_INPUT_DOWN] == 1)
-	{
-		move = 1.0f;
+		// 移動係数を0.71に設定
+		move = 0.71f;
+
 	}
 
 	//　←キーが押されたら
@@ -77,17 +66,7 @@ void Player::Input()
 		x += kSpeed * move;
 	}
 	
-	// ↑キーが押されたら
-	if (key[KEY_INPUT_UP] == 1)
-	{
-		y -= kSpeed * move;
-	}
 
-	// ↓キーが押されたら
-	if (key[KEY_INPUT_DOWN] == 1)
-	{
-		y += kSpeed * move;
-	}
 
 
 	// ←キーが押されてて、かつxCountが0以上なら0にしてから1引く
@@ -112,27 +91,7 @@ void Player::Input()
 		++xCount;
 	}
 
-	// ↑キーが押されてて、かつyCountが0以上なら0にしてから1引く
-	// それ以外は1引く
-	if (key[KEY_INPUT_UP] == 1)
-	{
-		if (yCount > 0)
-		{
-			yCount = 0;
-		}
-		--yCount;
-	}
 
-	// ↓キーが押されてて、かつyCountが0以下なら0にしてから1足す
-	// それ以外は1足す
-	if (key[KEY_INPUT_DOWN] == 1)
-	{
-		if (yCount < 0)
-		{
-			yCount = 0;
-		}
-		++yCount;
-	}
 
 
 	// カウント数から添字を求める
@@ -151,19 +110,6 @@ void Player::Input()
 
 		imageX += 3;
 		result = imageX;
-	}
-
-	// yカウントがプラスなら下向きなので、3行目の先頭添字番号を足す
-	if (yCount > 0)
-	{
-		imageY += 0;
-		result = imageY;
-	}
-	else if (yCount < 0)
-	{
-		// 1行目の先頭添字番号は0なので何もしない
-		imageY += 9;
-		result = imageY;
 	}
 
 	// 斜め移動の場合は横顔を優先
