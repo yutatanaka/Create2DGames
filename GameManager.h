@@ -6,7 +6,8 @@
 enum Window
 {
 	Width = 1280,
-	Height = 800,
+	Height = 960,
+	ColorBit = 32
 };
 
 class GameManager

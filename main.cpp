@@ -9,6 +9,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
 	ChangeWindowMode(TRUE);
 
+	SetGraphMode(Window::Width, Window::Height, Window::ColorBit);
+
 	gameManager.Initialize();
 
 	// DXƒ‰ƒCƒuƒ‰ƒŠ‰Šú‰»ˆ—
