@@ -1,6 +1,8 @@
 
 #pragma once
 
+#include "Vec2.h"
+
 class Player
 {
 public:
@@ -19,10 +21,10 @@ private:
 
 private:
 
-	// x座標, y座標
-	float x, y;
+	// キャラクターの座標
+	Vec2f position;
 
-	// 画像幅
+	// 画像の幅
 	int width, height;
 
 	// グラフィックハンドル格納用配列
