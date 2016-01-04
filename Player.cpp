@@ -4,7 +4,20 @@
 
 
 // コンストラクタ
-Player::Player()
+Player::Player() :
+width (29),
+height(40),
+// 移動係数
+move(1.0f),
+// 横方向と縦方向のカウント数
+xCount (),
+yCount (),
+// 添字用変数
+imageX (),
+imageY (),
+result (),
+// 初期位置
+position(10, 450)
 {
 
 	// 画像読み込み
@@ -12,23 +25,8 @@ Player::Player()
 	{
 		printf("エラー発生");
 	}
-	width = 29;
-	height = 40;
 
-	// 移動係数
-	move = 1.0f;
 
-	// 横方向と縦方向のカウント数
-	xCount = 0, yCount = 0;
-
-	// 添字用変数
-	imageX = 0, imageY = 0, result = 0;
-
-	// 初期位置
-	x = 10;
-	y = 450;
-
-	isLive = true;
 }
 
 
@@ -57,13 +55,13 @@ void Player::Input()
 	//　←キーが押されたら
 	if (key[KEY_INPUT_LEFT] == 1)
 	{
-		x -= kSpeed * move;
+		position.x -= kSpeed * move;
 	}
 
 	// →キーが押されたら
 	if (key[KEY_INPUT_RIGHT] == 1)
 	{
-		x += kSpeed * move;
+		position.x += kSpeed * move;
 	}
 	
 
@@ -137,6 +135,6 @@ void Player::Draw()
 	if (isLive)
 	{
 		// 描画
-		DrawGraph(x - width / 2, y - height / 2, graphicHandle[result], TRUE);
+		DrawGraph(position.x - width / 2, position.y - height / 2, graphicHandle[result], TRUE);
 	}
 }
