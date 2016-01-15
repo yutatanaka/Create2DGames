@@ -1,6 +1,7 @@
 
 #include "DxLib.h"
 #include "GameManager.h"
+#include "Field.h"
 #include "Player.h"
 
 char key[256];
@@ -21,9 +22,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	}
 
 	Player player;
+	Field field;
 
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && GetHitKeyStateAll(key) == 0)
 	{
+		field.Update();
+
 		player.Update();
 	}
 
