@@ -27,16 +27,11 @@ private:
 	// キャラクターの大きさ
 	Vec2f scale;
 
-	// キャラクターの
-
 	// 画像の幅
 	int width, height;
 
 	// グラフィックハンドル格納用配列
 	int graphicHandle[12];
-
-	// 移動係数
-	float move;
 
 	// 横方向と縦方向のカウント数
 	int xCount, yCount;
@@ -46,6 +41,15 @@ private:
 
 	// 生きてるかどうかのフラグ
 	bool isLive;
+
+	// 移動係数
+	float move;
+
+	// ジャンプ力
+	int jumpPower;
+
+	// 重力
+	int gravity;
 
 ////////////////////////////////////
 

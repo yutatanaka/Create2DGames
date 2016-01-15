@@ -6,14 +6,16 @@
 // コンストラクタ
 Player::Player() :
 position(10, 684),// 初期位置
-width (29),	// 幅
-height(40),	// 高さ
-move(1.0f),	// 移動係数
-xCount (),	// 横方向のカウント数
-yCount (),	// 縦方向のカウント数
-imageX (),	// 添字用変数	
+width (29),		  // 幅
+height(40),		  // 高さ
+xCount (),		  // 横方向のカウント数
+yCount (),		  // 縦方向のカウント数
+imageX (),		  // 添字用変数	
 imageY (),
-result ()
+result (),
+move(1.0f),		  // 移動係数
+jumpPower(20),	  // ジャンプ力
+gravity(-1)		  // 重力
 {
 
 	// 画像読み込み
@@ -120,6 +122,11 @@ void Player::Input()
 	{
 		yCount = 0;
 	}
+
+	// 落下処理
+	position.y -= gravity;
+
+	// 
 }
 
 

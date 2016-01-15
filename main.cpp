@@ -31,5 +31,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		player.Update();
 	}
 
+	ClearDrawScreen();
+
 	DxLib_End();	
 }
