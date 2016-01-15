@@ -5,8 +5,8 @@
 
 // コンストラクタ
 Player::Player() :
-position(10, 718),// 初期位置
-width (29), // 幅
+position(10, 684),// 初期位置
+width (29),	// 幅
 height(40),	// 高さ
 move(1.0f),	// 移動係数
 xCount (),	// 横方向のカウント数
