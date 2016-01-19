@@ -62,8 +62,6 @@ void Player::Input()
 	}
 	
 
-
-
 	// ←キーが押されてて、かつxCountが0以上なら0にしてから1引く
 	// それ以外は1引く
 	if (key[KEY_INPUT_LEFT] == 1)
@@ -85,9 +83,6 @@ void Player::Input()
 		}
 		++xCount;
 	}
-
-
-
 
 	// カウント数から添字を求める
 	imageX = abs(xCount) % 30 / 10;
@@ -126,7 +121,7 @@ void Player::Input()
 	// 落下処理
 	position.y -= gravity;
 
-	// 
+	
 }
 
 
