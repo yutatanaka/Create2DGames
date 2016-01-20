@@ -14,9 +14,10 @@ GameManager::GameManager()
 // デストラクタ
 GameManager::~GameManager()
 {
+	delete player;
+	delete field;
 }
 
-// 初期化
 void GameManager::Initialize()
 {
 }
