@@ -11,20 +11,21 @@ public:
 
 	void Update();
 
+	// 描画処理
+	void Draw();
+
 private:
 
 	// 移動処理
 	void Input();
 
-	// 描画処理
-	void Draw();
-
 public: 
+	Vec2 GetPosition()const{ return position; }
+
+private:
 
 	// キャラクターの座標
 	Vec2 position;
-
-private:
 
 	// キャラクターの大きさ
 	Vec2 scale;
@@ -45,7 +46,7 @@ private:
 	float move;
 
 	// ジャンプ力
-	int jumpPower;
+	float jumpPower;
 
 	// 重力
 	int gravity;
@@ -62,5 +63,3 @@ private:
 	const int kSpeed = 3;
 };
 
-// キー取得用配列
-extern char key[256];

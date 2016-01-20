@@ -4,16 +4,12 @@
 #include "Field.h"
 #include "Player.h"
 
+extern Field field;
+
 // コンストラクタ
 Field::Field() :
 x_axis(0),
-y_axis(0),
-y_plus(0),
-y_minus(0),
-x_plus(0),
-x_minus(0),
-height(64),
-width(64)
+y_axis(0)
 {
 	int fieldData[MAP_HEIGHT][MAP_WIDTH] =
 	{
@@ -64,12 +60,15 @@ void Field::Draw()
 	}
 }
 
-// 当たり判定
-void Field::CollisionDetection(Vec2 pos)
+// プレイヤーの現在座標を調べる
+bool Field::CollisionDetection(Vec2 pos)
 {
-	if (MapData[y_axis][x_axis] == 1)
+	int mapX = pos.x / 64;
+	int mapY = pos.y / 64;
+
+	if (MapData[mapY][mapX] == 1)
 	{
-		Vec2 x = pos / 100;
-		Vec2 y = pos / 100;
+		return true;
 	}
+	return false;
 }

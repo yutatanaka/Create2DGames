@@ -25,7 +25,7 @@ public:
 	void Draw();
 
 	// 当たり判定メソッド
-	void CollisionDetection(Vec2 pos);
+	bool CollisionDetection(Vec2 pos);
 
 public:
 
@@ -37,21 +37,4 @@ private:
 
 	// x軸、ｙ軸
 	int x_axis, y_axis;
-
-	// マップチップのY軸＋方向
-	int y_plus;
-
-	// マップチップのY軸‐方向
-	int y_minus;
-
-	// マップチップのX軸＋方向
-	int x_plus;
-
-	// マップチップのX軸‐方向
-	int x_minus;
-
-	// マっプチップの高さ、幅
-	int height, width;
 };
-
-extern Field field;

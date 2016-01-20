@@ -1,23 +1,27 @@
 
 #include "DxLib.h"
+#include "GameManager.h"
 #include "Field.h"
-#include  "Player.h"
+#include "Player.h"
 
+// キー取得用配列
+extern char key[256];
 
 // コンストラクタ
 Player::Player() :
 position(10, 684),// 初期位置
 width (29),		  // 幅
-height(40),		  // 高さ
+height(40),		  // 高さ 
 xCount (),		  // 横方向のカウント数
 yCount (),		  // 縦方向のカウント数
 imageX (),		  // 添字用変数	
-imageY (),
+imageY (),		  // 添字用変数
 result (),
 move(1.0f),		  // 移動係数
 jumpPower(),	  // ジャンプ力
-gravity(),	  // 重力
-isJump(false)	  // ジャンプしているかのフラグ
+gravity(),		  // 重力
+isJump(false),	  // ジャンプしているかのフラグ(初期設定：してない状態)
+isLive(true)	  // 生きているかのフラグ(初期設定：生きてる状態)
 {
 
 	// 画像読み込み
@@ -33,8 +37,6 @@ isJump(false)	  // ジャンプしているかのフラグ
 void Player::Update()
 {
 
-	Draw();
-
 	Input();
 
 }
@@ -43,7 +45,6 @@ void Player::Update()
 // 入力処理
 void Player::Input()
 {
-
 	if (key[KEY_INPUT_LEFT] == 1 || key[KEY_INPUT_RIGHT] == 1)
 	{
 		// 移動係数を0.71に設定
@@ -122,20 +123,23 @@ void Player::Input()
 	position.y -= gravity;
 
 	// 落下加速度を加える
-	jumpPower -= 1;
+	position.y += 2;
 
 	// もし地面についていたら止まる
-	if (position.y > 704)
+	if (position.y > 684)
 	{
-		position.y = 704;
+		position.y = 684;
 		jumpPower = 0;
 	}
 
 	// SPECEを押していて、地面についたらジャンプ
-	if (key[KEY_INPUT_SPACE] == 1 && position.y == 704)
+	if (key[KEY_INPUT_SPACE] == 1 && position.y == 684)
 	{
-		jumpPower = 20;
+		isJump = true;
+		jumpPower -= 30;
+		position.y += jumpPower;
 	}
+	isJump = false;
 }
 
 

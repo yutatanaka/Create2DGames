@@ -1,7 +1,8 @@
 
 #pragma once
 
-#include "Player.h"
+class Player;
+class Field;
 
 enum Window
 {
@@ -13,6 +14,20 @@ enum Window
 class GameManager
 {
 public:
+	// シングルトン
+	static GameManager& GetInstance()
+	{
+		static GameManager instance;
+		return instance;
+	}
+
+	// 初期化メソッド
+	void Initialize();
+
+	void Update();
+
+	void Draw();
+private:
 
 	// コンストラクタ
 	GameManager();
@@ -20,12 +35,7 @@ public:
 	// デストラクタ
 	~GameManager();
 
-	// 初期化メソッド
-	void Initialize();
-
-	// 30フレームに設定
-	int fps;
-
+	Player *player;
+	Field *field;
 };
 
-extern GameManager gameManager;

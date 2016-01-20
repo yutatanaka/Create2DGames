@@ -1,8 +1,7 @@
 
 #include "DxLib.h"
 #include "GameManager.h"
-#include "Field.h"
-#include "Player.h"
+
 
 char key[256];
 
@@ -12,7 +11,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 	SetGraphMode(Window::Width, Window::Height, Window::ColorBit);
 
-	gameManager.Initialize();
+	GameManager::GetInstance().Initialize();
 
 	// DXライブラリ初期化処理
 	if (DxLib_Init() == -1)
@@ -21,19 +20,19 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		return -1;
 	}
 
-	Player player;
-	Field field;
+
 
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && GetHitKeyStateAll(key) == 0)
 	{
-		field.CollisionDetection(player.position);
-
-		field.Update();
-
-		player.Update();
+		GameManager::GetInstance().Update();
+		GameManager::GetInstance().Draw();
 	}
 
+	// 画面を初期化
 	ClearDrawScreen();
+
+	// 裏画面の内容を表画面に反映
+	ScreenFlip();
 
 	DxLib_End();	
 }
