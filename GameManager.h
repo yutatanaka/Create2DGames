@@ -23,7 +23,8 @@ public:
 	// 初期化メソッド
 	void Initialize();
 
-	//Player *player;
+	// 30フレームに設定
+	int fps;
 
 };
 

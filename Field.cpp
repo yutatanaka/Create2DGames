@@ -1,5 +1,6 @@
 
 #include <DxLib.h>
+#include "Vec2.h"
 #include "Field.h"
 #include "Player.h"
 
@@ -64,18 +65,11 @@ void Field::Draw()
 }
 
 // 当たり判定
-void Field::CollisionDetection(Vec2 x, Vec2 y)
+void Field::CollisionDetection(Vec2 pos)
 {
-
-	// マップチップの中心点
-	int centerPoint = height / 2 + width / 2;
-
-
 	if (MapData[y_axis][x_axis] == 1)
 	{
-		y_minus = centerPoint + (height / 2);
-
-		y_plus = centerPoint - (height / 2);
-
+		Vec2 x = pos / 100;
+		Vec2 y = pos / 100;
 	}
 }

@@ -1,5 +1,6 @@
 
 #include "DxLib.h"
+#include "Field.h"
 #include  "Player.h"
 
 
@@ -14,8 +15,9 @@ imageX (),		  // 添字用変数
 imageY (),
 result (),
 move(1.0f),		  // 移動係数
-jumpPower(20),	  // ジャンプ力
-gravity(-1)		  // 重力
+jumpPower(),	  // ジャンプ力
+gravity(),	  // 重力
+isJump(false)	  // ジャンプしているかのフラグ
 {
 
 	// 画像読み込み
@@ -113,15 +115,27 @@ void Player::Input()
 	{
 		xCount = 0;
 	}
-	if (key[KEY_INPUT_UP] != 1 && key[KEY_INPUT_DOWN] != 1)
-	{
-		yCount = 0;
-	}
 
+////////////////////////////////////////////////////////////
+	
 	// 落下処理
 	position.y -= gravity;
 
-	
+	// 落下加速度を加える
+	jumpPower -= 1;
+
+	// もし地面についていたら止まる
+	if (position.y > 704)
+	{
+		position.y = 704;
+		jumpPower = 0;
+	}
+
+	// SPECEを押していて、地面についたらジャンプ
+	if (key[KEY_INPUT_SPACE] == 1 && position.y == 704)
+	{
+		jumpPower = 20;
+	}
 }
 
 

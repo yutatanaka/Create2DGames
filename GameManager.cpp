@@ -5,19 +5,19 @@
 GameManager gameManager;
 
 // コンストラクタ
-GameManager::GameManager()
+GameManager::GameManager() :
+fps(30)
 {
-	//player = nullptr;
 }
 
 // デストラクタ
 GameManager::~GameManager()
 {
-	//delete player;
+	
 }
 
 // 初期化
 void GameManager::Initialize()
 {
-	//player = new Player();
+
 }

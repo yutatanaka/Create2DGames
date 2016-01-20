@@ -19,10 +19,12 @@ private:
 	// 描画処理
 	void Draw();
 
-private:
+public: 
 
 	// キャラクターの座標
 	Vec2 position;
+
+private:
 
 	// キャラクターの大きさ
 	Vec2 scale;
@@ -39,9 +41,6 @@ private:
 	// 添字用変数
 	int imageX, imageY, result;
 
-	// 生きてるかどうかのフラグ
-	bool isLive;
-
 	// 移動係数
 	float move;
 
@@ -50,6 +49,12 @@ private:
 
 	// 重力
 	int gravity;
+
+	// ジャンプしているかどうかのフラグ
+	bool isJump;
+
+	// 生きてるかどうかのフラグ
+	bool isLive;
 
 ////////////////////////////////////
 

@@ -25,7 +25,7 @@ public:
 	void Draw();
 
 	// “–‚½‚è”»’èƒƒ\ƒbƒh
-	void CollisionDetection(Vec2 x, Vec2 y);
+	void CollisionDetection(Vec2 pos);
 
 public:
 
