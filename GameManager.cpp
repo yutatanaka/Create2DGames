@@ -28,6 +28,7 @@ void GameManager::Update()
 	field->CollisionDetection(player->GetPosition());
 
 	field->Update();
+	
 	player->Update();
 
 }
@@ -36,5 +37,7 @@ void GameManager::Draw()
 {
 
 	field->Draw();
+	
 	player->Draw();
+
 }

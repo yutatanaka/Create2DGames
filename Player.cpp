@@ -45,6 +45,7 @@ void Player::Update()
 // “ü—Íˆ—
 void Player::Input()
 {
+
 	if (key[KEY_INPUT_LEFT] == 1 || key[KEY_INPUT_RIGHT] == 1)
 	{
 		// ˆÚ“®ŒW”‚ğ0.71‚Éİ’è
