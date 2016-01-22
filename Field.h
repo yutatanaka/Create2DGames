@@ -38,3 +38,4 @@ private:
 	// x²A‚™²
 	int x_axis, y_axis;
 };
+

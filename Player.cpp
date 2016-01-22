@@ -7,16 +7,15 @@
 // コンストラクタ
 Player::Player() :
 position(32, 640),// 初期位置
-width (64),		  // 幅
-height(64),		  // 高さ 
+width (29),		  // 幅
+height(40),		  // 高さ 
 xCount (),		  // 横方向のカウント数
 yCount (),		  // 縦方向のカウント数
 imageX (),		  // 添字用変数	
 imageY (),		  // 添字用変数
 result (),
-move(1.0f),		  // 移動係数
+move(2.0f),		  // 移動係数
 jumpPower(),	  // ジャンプ力
-gravity(),		  // 重力
 isJump(false),	  // ジャンプしているかのフラグ(初期設定：してない状態)
 isLive(true)	  // 生きているかのフラグ(初期設定：生きてる状態)
 {
@@ -103,12 +102,6 @@ void Player::Input()
 		result = imageX;
 	}
 
-	// 斜め移動の場合は横顔を優先
-	if (move == 0.71f)
-	{
-		result = imageX;
-	}
-
 	// 押されてなければカウントを0にする
 	if (CheckHitKey(KEY_INPUT_LEFT) != 1 && CheckHitKey(KEY_INPUT_RIGHT) != 1)
 	{
@@ -117,27 +110,7 @@ void Player::Input()
 
 ////////////////////////////////////////////////////////////
 	
-	// 落下処理
-	position.y -= gravity;
 
-	// 落下加速度を加える
-	position.y += 2;
-
-	// もし地面についていたら止まる
-	if (position.y > 684)
-	{
-		position.y = 684;
-		jumpPower = 0;
-	}
-
-	// SPECEを押していて、地面についたらジャンプ
-	if (CheckHitKey(KEY_INPUT_SPACE) == 1 && position.y == 684)
-	{
-		isJump = true;
-		jumpPower -= 30;
-		position.y += jumpPower;
-	}
-	isJump = false;
 }
 
 
@@ -150,4 +123,14 @@ void Player::Draw()
 		// 描画
 		DrawGraph(position.x - width / 2, position.y - height / 2, graphicHandle[result], TRUE);
 	}
+}
+
+// 重力をかける処理
+void Player::Gravity()
+{
+	// ジャンプをしてなければ重力をかけない
+	if (!isJump) { return; }
+
+	position.y += jumpPower;
+	jumpPower -= 1.0f;
 }

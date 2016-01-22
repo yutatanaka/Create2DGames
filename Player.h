@@ -5,21 +5,26 @@
 
 class Player
 {
-public:
-	
-	Player();
-
-	void Update();
-
-	// 描画処理
-	void Draw();
-
 private:
 
 	// 移動処理
 	void Input();
 
 public: 
+
+	// コンストラクタ
+	Player();
+
+	// 更新処理
+	void Update();
+
+	// 描画処理
+	void Draw();
+
+	// 重力処理
+	void Gravity();
+
+	// キャラクターの現在、座標取得
 	Vec2 GetPosition()const{ return position; }
 
 private:
@@ -47,9 +52,6 @@ private:
 
 	// ジャンプ力
 	float jumpPower;
-
-	// 重力
-	int gravity;
 
 	// ジャンプしているかどうかのフラグ
 	bool isJump;

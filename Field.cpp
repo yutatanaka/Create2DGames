@@ -60,7 +60,7 @@ void Field::Draw()
 	}
 }
 
-// プレイヤーの現在座標を調べる
+// プレイヤーあたり判定
 bool Field::CollisionDetection(Vec2 pos)
 {
 	int mapX = pos.x / 64;
