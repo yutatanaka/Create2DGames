@@ -7,11 +7,12 @@ char key[256];
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
+	
+
 	ChangeWindowMode(TRUE);
 
 	SetGraphMode(Window::Width, Window::Height, Window::ColorBit);
 
-	GameManager::GetInstance().Initialize();
 
 	// DXƒ‰ƒCƒuƒ‰ƒŠ‰Šú‰»ˆ—
 	if (DxLib_Init() == -1)
@@ -20,12 +21,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		return -1;
 	}
 
+	GameManager::GetInstance().Initialize();
 
 
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && GetHitKeyStateAll(key) == 0)
 	{
 		GameManager::GetInstance().Update();
 		GameManager::GetInstance().Draw();
+
+	
 	}
 
 	// ‰æ–Ê‚ğ‰Šú‰»

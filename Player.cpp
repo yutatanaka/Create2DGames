@@ -9,7 +9,7 @@ extern char key[256];
 
 // コンストラクタ
 Player::Player() :
-position(10, 684),// 初期位置
+position(10, 704),// 初期位置
 width (29),		  // 幅
 height(40),		  // 高さ 
 xCount (),		  // 横方向のカウント数
@@ -151,6 +151,7 @@ void Player::Draw()
 	if (isLive)
 	{
 		// 描画
-		DrawGraph(position.x - width / 2, position.y - height / 2, graphicHandle[result], TRUE);
+		//DrawGraph(position.x - width / 2, position.y - height / 2, graphicHandle[result], TRUE);
+		DrawBox(0, 640, 64, 704, GetColor(255, 0, 0), TRUE);
 	}
 }
