@@ -3,6 +3,7 @@
 
 class Player;
 class Field;
+class BackGround;
 
 enum Window
 {
@@ -37,5 +38,6 @@ private:
 
 	Player *player;
 	Field *field;
+	BackGround *backGround;
 };
 

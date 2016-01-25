@@ -29,23 +29,6 @@ public:
 
 private:
 
-	// キャラクターの座標
-	Vec2 position;
-
-	// キャラクターの大きさ
-	Vec2 scale;
-
-	// 画像の幅
-	int width, height;
-
-	// グラフィックハンドル格納用配列
-	int graphicHandle[12];
-
-	// 横方向と縦方向のカウント数
-	int xCount, yCount;
-
-	// 添字用変数
-	int imageX, imageY, result;
 
 	// 移動係数
 	float move;
@@ -62,6 +45,27 @@ private:
 ////////////////////////////////////
 
 	// 歩く速度(定数)
-	const int kSpeed = 3;
+	const int kSpeed = 1;
+
+public:
+
+	// キャラクターの座標
+	Vec2 position;
+
+	// キャラクターの大きさ
+	Vec2 scale;
+
+	// 画像の幅
+	int width, height;
+
+	// グラフィックハンドル格納用配列
+	//int graphicHandle[12];
+	int graphicHandle;
+
+	// 横方向と縦方向のカウント数
+	int xCount, yCount;
+
+	// 添字用変数
+	int imageX, imageY, result;
 };
 

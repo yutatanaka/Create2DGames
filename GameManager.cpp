@@ -21,7 +21,7 @@ GameManager::~GameManager()
 void GameManager::Update()
 {
 
-	field->PlayerNowPosition(player->GetPosition());
+	field->isBlock(player->GetPosition());
 
 	field->Update();
 	

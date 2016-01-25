@@ -28,12 +28,12 @@ public:
 	void CollitionDetection();
 
 	// プレイヤーの現在の場所を返すメソッド
-	bool PlayerNowPosition(Vec2 pos);
+	bool isBlock(Vec2 pos);
 
 public:
 
 	// マップのデータ 
-	int MapData[MAP_HEIGHT][MAP_WIDTH];
+	int mapData[MAP_HEIGHT][MAP_WIDTH];
 
 
 private:
@@ -45,7 +45,10 @@ private:
 	int width, height;
 
 	// フィールド用のハンドル
-	int graphicHandle;
+	int blockGraphicHandle;
+
+	// プレイヤー用のハンドル
+	int playerGraphicHandle;
 
 };
 

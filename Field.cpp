@@ -5,6 +5,7 @@
 #include "Player.h"
 
 extern Field field;
+Player player;
 
 // コンストラクタ
 Field::Field() :
@@ -12,10 +13,12 @@ x_axis(0),
 y_axis(0),
 width(64),
 height(64),
-graphicHandle()
+blockGraphicHandle()
 {
-	graphicHandle = LoadGraph("res/background/field.png");
-
+	// ブロック画像読み込み
+	blockGraphicHandle = LoadGraph("res/background/field.png");
+	
+	// フィールドデータ2次元配列
 	int fieldData[MAP_HEIGHT][MAP_WIDTH] =
 	{
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -32,7 +35,7 @@ graphicHandle()
 		{ 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	};
 
-	memcpy(MapData, fieldData, sizeof(fieldData));
+	memcpy(mapData, fieldData, sizeof(fieldData));
 
 }
 
@@ -46,6 +49,8 @@ void Field::Update()
 {
 	Draw();
 
+	CollitionDetection();
+
 }
 
 // 描画
@@ -55,31 +60,39 @@ void Field::Draw()
 	{
 		for (x_axis = 0; x_axis < MAP_WIDTH; x_axis++)
 		{
-			if (MapData[y_axis][x_axis] == 1)
+			if (mapData[y_axis][x_axis] == 1)
 			{
 
-				DrawGraph(x_axis * MAP_SIZE, y_axis * MAP_SIZE, graphicHandle, 0);
+				// 床の画像を読み込み
+				DrawGraph(x_axis * MAP_SIZE, y_axis * MAP_SIZE, blockGraphicHandle, TRUE);
 				/*DrawBox(x_axis * MAP_SIZE, y_axis * MAP_SIZE,
 					x_axis * MAP_SIZE + MAP_SIZE, y_axis * MAP_SIZE + MAP_SIZE,
 					GetColor(0, 255, 0), TRUE);*/
+			}
+			else if (mapData[y_axis][x_axis] == 2)
+			{
+				player.Draw();
 			}
 		}
 	}
 }
 
 // プレイヤーと床との当たり判定メソッド
-void CollitionDetection()
+void Field::CollitionDetection()
 {
-	
+	if (mapData[MAP_HEIGHT][MAP_WIDTH] == 1)
+	{
+		player.position.y = -1;
+	}
 }
 
-// プレイヤーの現在の場所を返すメソッド
-bool Field::PlayerNowPosition(Vec2 pos)
+// ブロックであるかどうか判定
+bool Field::isBlock(Vec2 pos)
 {
 	int mapX = pos.x / 64;
 	int mapY = pos.y / 64;
 
-	if (MapData[mapY][mapX] == 1)
+	if (mapData[mapY][mapX] == 1)
 	{
 		return true;
 	}
