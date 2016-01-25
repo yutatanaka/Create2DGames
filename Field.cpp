@@ -60,8 +60,14 @@ void Field::Draw()
 	}
 }
 
-// プレイヤーあたり判定
-bool Field::CollisionDetection(Vec2 pos)
+// プレイヤーと床との当たり判定メソッド
+void CollitionDetection()
+{
+	
+}
+
+// プレイヤーの現在の場所を返すメソッド
+bool Field::PlayerNowPosition(Vec2 pos)
 {
 	int mapX = pos.x / 64;
 	int mapY = pos.y / 64;

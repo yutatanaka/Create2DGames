@@ -18,14 +18,10 @@ GameManager::~GameManager()
 	delete field;
 }
 
-void GameManager::Initialize()
-{
-}
-
 void GameManager::Update()
 {
 
-	field->CollisionDetection(player->GetPosition());
+	field->PlayerNowPosition(player->GetPosition());
 
 	field->Update();
 	

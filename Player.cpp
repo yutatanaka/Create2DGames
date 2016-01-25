@@ -6,7 +6,7 @@
 
 // コンストラクタ
 Player::Player() :
-position(32, 640),// 初期位置
+position(10, 684),// 初期位置
 width (29),		  // 幅
 height(40),		  // 高さ 
 xCount (),		  // 横方向のカウント数
@@ -34,6 +34,8 @@ void Player::Update()
 {
 
 	Input();
+
+	Gravity();
 
 }
 
@@ -108,9 +110,6 @@ void Player::Input()
 		xCount = 0;
 	}
 
-////////////////////////////////////////////////////////////
-	
-
 }
 
 
@@ -131,6 +130,11 @@ void Player::Gravity()
 	// ジャンプをしてなければ重力をかけない
 	if (!isJump) { return; }
 
-	position.y += jumpPower;
-	jumpPower -= 1.0f;
+
+	if (CheckHitKey(KEY_INPUT_SPACE) == 1)
+	{
+		position.y += jumpPower;
+		jumpPower -= 1.0f;
+	}
+
 }

@@ -24,8 +24,11 @@ public:
 	// 描画メソッド
 	void Draw();
 
-	// 当たり判定メソッド
-	bool CollisionDetection(Vec2 pos);
+	// プレイヤーと床との当たり判定メソッド
+	void CollitionDetection();
+
+	// プレイヤーの現在の場所を返すメソッド
+	bool PlayerNowPosition(Vec2 pos);
 
 public:
 
