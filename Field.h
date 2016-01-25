@@ -40,5 +40,12 @@ private:
 
 	// x軸、ｙ軸
 	int x_axis, y_axis;
+
+	// 高さ、幅
+	int width, height;
+
+	// フィールド用のハンドル
+	int graphicHandle;
+
 };
 

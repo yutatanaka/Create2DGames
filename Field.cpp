@@ -9,8 +9,13 @@ extern Field field;
 // コンストラクタ
 Field::Field() :
 x_axis(0),
-y_axis(0)
+y_axis(0),
+width(64),
+height(64),
+graphicHandle()
 {
+	graphicHandle = LoadGraph("res/background/field.png");
+
 	int fieldData[MAP_HEIGHT][MAP_WIDTH] =
 	{
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -52,9 +57,11 @@ void Field::Draw()
 		{
 			if (MapData[y_axis][x_axis] == 1)
 			{
-				DrawBox(x_axis * MAP_SIZE, y_axis * MAP_SIZE,
+
+				DrawGraph(x_axis * MAP_SIZE, y_axis * MAP_SIZE, graphicHandle, 0);
+				/*DrawBox(x_axis * MAP_SIZE, y_axis * MAP_SIZE,
 					x_axis * MAP_SIZE + MAP_SIZE, y_axis * MAP_SIZE + MAP_SIZE,
-					GetColor(0, 255, 0), TRUE);
+					GetColor(0, 255, 0), TRUE);*/
 			}
 		}
 	}
