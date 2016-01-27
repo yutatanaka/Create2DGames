@@ -25,10 +25,10 @@ public:
 	void Draw();
 
 	// プレイヤーと床との当たり判定メソッド
-	void CollitionDetection();
+	void CheckHit();
 
 	// プレイヤーの現在の場所を返すメソッド
-	bool isBlock(Vec2 pos);
+	bool isBlock(const Vec2 pos);
 
 public:
 

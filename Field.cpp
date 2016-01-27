@@ -49,7 +49,7 @@ void Field::Update()
 {
 	Draw();
 
-	CollitionDetection();
+	CheckHit();
 
 }
 
@@ -78,12 +78,8 @@ void Field::Draw()
 }
 
 // プレイヤーと床との当たり判定メソッド
-void Field::CollitionDetection()
+void Field::CheckHit()
 {
-	if (mapData[MAP_HEIGHT][MAP_WIDTH] == 1)
-	{
-		player.position.y = -1;
-	}
 }
 
 // ブロックであるかどうか判定
