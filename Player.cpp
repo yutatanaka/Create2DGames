@@ -22,24 +22,21 @@ isLive(true)	  // 生きているかのフラグ(初期設定：生きてる状態)
 {
 }
 
-
-// 更新処理
-void Player::Update()
-{
-	Initialize();
-
-	Input();
-
-	Gravity();
-
-}
-
-
 // 初期化処理
 void Player::Initialize()
 {
 	//画像読み込み
 	LoadDivGraph("res/player/charcter.png", 12, 3, 4, width, height, graphicHandle, TRUE);
+}
+
+// 更新処理
+void Player::Update()
+{
+
+	Input();
+
+	Gravity();
+
 }
 
 // 入力処理

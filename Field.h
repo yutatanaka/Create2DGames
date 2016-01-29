@@ -17,9 +17,6 @@ public:
 	// コンストラクタ
 	Field();
 
-	// デストラクタ
-	~Field();
-
 	// 初期化メソッド
 	void Initialize();
 
@@ -39,17 +36,22 @@ public:
 	int mapData[MAP_HEIGHT][MAP_WIDTH];
 
 
-
-	// 高さ、幅
-	int width, height;
-
 private:
+
+	// 座標
+	int x, y;
+
+	//距離をはかる
+	Vec2 distance;
 
 	// フィールド用のハンドル
 	int blockGraphicHandle;
 
-	// 座標
-	int x, y;
+	// 幅(定数)
+	const int kWidth = 64;
+	
+	// 高さ(定数)
+	const int kHeight = 64;
 
 };
 

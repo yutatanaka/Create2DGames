@@ -21,6 +21,16 @@ GameManager::~GameManager()
 	delete field;
 }
 
+// ‰Šú‰»ˆ—
+void GameManager::Initialize()
+{
+
+	field->Initialize();
+
+	player->Initialize();
+
+}
+
 void GameManager::Update()
 {
 

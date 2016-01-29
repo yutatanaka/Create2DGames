@@ -22,6 +22,9 @@ public:
 		return instance;
 	}
 
+	// ‰Šú‰»ˆ—
+	void Initialize();
+
 	// XVˆ—
 	void Update();
 

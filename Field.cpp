@@ -9,40 +9,40 @@
 Field::Field() :
 x(),
 y(),
-width(64),
-height(64),
+distance(),
 blockGraphicHandle()
 {
+}
+
+// 初期化メソッド
+void Field::Initialize()
+{
+
 	// ブロック画像読み込み
 	blockGraphicHandle = LoadGraph("res/background/field.png");
-	
+
 	// フィールドデータ2次元配列
 	int fieldData[MAP_HEIGHT][MAP_WIDTH] =
 	{
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{ 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{ 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{ 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-		{ 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+		{ 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
 	};
 
 	memcpy(mapData, fieldData, sizeof(fieldData));
 
 }
 
-// デストラクタ
-Field::~Field()
-{
-}
-
-// 更新
+// 更新メソッド
 void Field::Update()
 {
 	Draw();
@@ -72,9 +72,6 @@ void Field::Draw()
 				//boxArray.pos.x = x_axis * MAP_SIZE;
 				// 床の画像を読み込み
 				DrawGraph(x * MAP_SIZE, y * MAP_SIZE, blockGraphicHandle, TRUE);
-				/*DrawBox(x_axis * MAP_SIZE, y_axis * MAP_SIZE,
-					x_axis * MAP_SIZE + MAP_SIZE, y_axis * MAP_SIZE + MAP_SIZE,
-					GetColor(0, 255, 0), TRUE);*/
 			}
 		}
 	}
@@ -83,16 +80,14 @@ void Field::Draw()
 // プレイヤーと床との当たり判定メソッド
 void Field::CheckHit(Player& player)
 {
-	if (player.GetPosition().x + player.width > x && // 右端と左端
-		player.GetPosition().x < x + width &&	// 左端
-		player.GetPosition().y + player.height > y && // 下端と上端
-		player.GetPosition().y < y + height)	// 上端
+	if (player.GetPosition().x + player.width > x &&	// 右端と左端
+		player.GetPosition().x < x + kWidth &&			// 左端
+		player.GetPosition().y + player.height > y &&	// 下端と上端
+		player.GetPosition().y < y + kHeight)			// 上端
 	{
 
-		//距離をはかる
-		Vec2 distance;
-		distance.x = player.GetPosition().x + player.width / 2 - (x + width / 2);
-		distance.y = player.GetPosition().y + player.height / 2 - (y + height / 2);
+		distance.x = player.GetPosition().x + player.width / 2 - (x + kWidth / 2);
+		distance.y = player.GetPosition().y + player.height / 2 - (y + kHeight / 2);
 
 		if (distance.x >= 0)distance.x *= -1;
 		if (distance.y >= 0)distance.y *= -1;
@@ -105,7 +100,7 @@ void Field::CheckHit(Player& player)
 			}
 			else
 			{
-				player.position.x += x + width - player.GetPosition().x;
+				player.position.x += x + kWidth - player.GetPosition().x;
 			}
 		}
 		else
@@ -116,7 +111,7 @@ void Field::CheckHit(Player& player)
 			}
 			else
 			{
-				player.position.y += y + height - player.GetPosition().y;
+				player.position.y += y + kHeight - player.GetPosition().y;
 			}
 		}
 	}

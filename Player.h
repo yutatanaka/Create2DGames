@@ -7,9 +7,6 @@ class Player
 {
 private:
 
-	// 初期化処理
-	void Initialize();
-
 	// 移動処理
 	void Input();
 
@@ -22,6 +19,9 @@ public:
 	// コンストラクタ
 	Player();
 
+	// 初期化処理
+	void Initialize();
+
 	// 更新処理
 	void Update();
 
@@ -33,7 +33,6 @@ public:
 	Vec2 GetPosition()const{ return position; }
 
 private:
-
 
 	// 移動係数
 	float move;
@@ -65,9 +64,6 @@ public:
 
 	// グラフィックハンドル格納用配列
 	int graphicHandle[12];
-
-	// テスト用ハンドル
-	//int graphicHandle;
 
 	// 横方向と縦方向のカウント数
 	int xCount, yCount;
