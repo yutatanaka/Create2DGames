@@ -1,15 +1,14 @@
 
 #include <DxLib.h>
+#include "GameManager.h"
 #include "Vec2.h"
 #include "Field.h"
 #include "Player.h"
 
-extern Field field;
-
 // コンストラクタ
 Field::Field() :
-x_axis(0),
-y_axis(0),
+x(),
+y(),
 width(64),
 height(64),
 blockGraphicHandle()
@@ -48,22 +47,31 @@ void Field::Update()
 {
 	Draw();
 
-	CheckHit();
+	//当たり判定のあるボックスの数
+	//const int hitBlockNumber = 256;
 
+	//Field floorBox[hitBlockNumber];
+
+	//for (int i = 0; i < hitBlockNumber; ++i)
+	//{
+	//	CheckHit(*gameManager.player);
+	//}
 }
+
 
 // 描画
 void Field::Draw()
 {
-	for (y_axis = 0; y_axis < MAP_HEIGHT; y_axis++)
+ 
+	for (y = 0; y< MAP_HEIGHT; ++y)
 	{
-		for (x_axis = 0; x_axis < MAP_WIDTH; x_axis++)
+		for (x = 0; x < MAP_WIDTH; ++x)
 		{
-			if (mapData[y_axis][x_axis] == 1)
+			if (mapData[y][x] == 1)
 			{
-
+				//boxArray.pos.x = x_axis * MAP_SIZE;
 				// 床の画像を読み込み
-				DrawGraph(x_axis * MAP_SIZE, y_axis * MAP_SIZE, blockGraphicHandle, TRUE);
+				DrawGraph(x * MAP_SIZE, y * MAP_SIZE, blockGraphicHandle, TRUE);
 				/*DrawBox(x_axis * MAP_SIZE, y_axis * MAP_SIZE,
 					x_axis * MAP_SIZE + MAP_SIZE, y_axis * MAP_SIZE + MAP_SIZE,
 					GetColor(0, 255, 0), TRUE);*/
@@ -73,19 +81,44 @@ void Field::Draw()
 }
 
 // プレイヤーと床との当たり判定メソッド
-void Field::CheckHit()
+void Field::CheckHit(Player& player)
 {
-}
-
-// ブロックであるかどうか判定
-bool Field::isBlock(Vec2 pos)
-{
-	int mapX = pos.x / 64;
-	int mapY = pos.y / 64;
-
-	if (mapData[mapY][mapX] == 1)
+	if (player.GetPosition().x + player.width > x && // 右端と左端
+		player.GetPosition().x < x + width &&	// 左端
+		player.GetPosition().y + player.height > y && // 下端と上端
+		player.GetPosition().y < y + height)	// 上端
 	{
-		return true;
+
+		//距離をはかる
+		Vec2 distance;
+		distance.x = player.GetPosition().x + player.width / 2 - (x + width / 2);
+		distance.y = player.GetPosition().y + player.height / 2 - (y + height / 2);
+
+		if (distance.x >= 0)distance.x *= -1;
+		if (distance.y >= 0)distance.y *= -1;
+
+		if (distance.x < distance.y)
+		{
+			if (player.GetPosition().x < x)
+			{
+				player.position.x += x - (player.GetPosition().x + player.width);
+			}
+			else
+			{
+				player.position.x += x + width - player.GetPosition().x;
+			}
+		}
+		else
+		{
+			if (player.GetPosition().y < y)
+			{
+				player.position.y += y - (player.GetPosition().y + player.height);
+			}
+			else
+			{
+				player.position.y += y + height - player.GetPosition().y;
+			}
+		}
 	}
-	return false;
+
 }

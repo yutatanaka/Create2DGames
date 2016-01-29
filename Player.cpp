@@ -20,20 +20,13 @@ jumpPower(),	  // ジャンプ力
 isJump(false),	  // ジャンプしているかのフラグ(初期設定：してない状態)
 isLive(true)	  // 生きているかのフラグ(初期設定：生きてる状態)
 {
-
-
-	//画像読み込み
-	if (-1 == LoadDivGraph("res/player/charcter.png", 12, 3, 4, width, height , graphicHandle, TRUE))
-	{
-		printf("エラー発生");
-	}
-
 }
 
 
 // 更新処理
 void Player::Update()
 {
+	Initialize();
 
 	Input();
 
@@ -41,6 +34,13 @@ void Player::Update()
 
 }
 
+
+// 初期化処理
+void Player::Initialize()
+{
+	//画像読み込み
+	LoadDivGraph("res/player/charcter.png", 12, 3, 4, width, height, graphicHandle, TRUE);
+}
 
 // 入力処理
 void Player::Input()
@@ -77,6 +77,7 @@ void Player::Input()
 	if (CheckHitKey(KEY_INPUT_DOWN) == 1)
 	{
 		position.y += kSpeed * move;
+
 	}
 	
 

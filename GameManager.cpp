@@ -1,14 +1,17 @@
 
 #include "GameManager.h"
+#include "BackGround.h"
 #include "Field.h"
 #include "Player.h"
 
+GameManager gameManager;
 
 // コンストラクタ
 GameManager::GameManager()
 {
 	player = new Player();
 	field = new Field();
+	backGround = new BackGround();
 }
 
 // デストラクタ
@@ -20,8 +23,6 @@ GameManager::~GameManager()
 
 void GameManager::Update()
 {
-
-	field->isBlock(player->GetPosition());
 
 	field->Update();
 	

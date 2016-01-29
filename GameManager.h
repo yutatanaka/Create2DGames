@@ -28,7 +28,7 @@ public:
 	// 描画処理
 	void Draw();
 
-private:
+public:
 
 	// コンストラクタ
 	GameManager();
@@ -41,3 +41,4 @@ private:
 	BackGround *backGround;
 };
 
+extern 	GameManager gameManager;

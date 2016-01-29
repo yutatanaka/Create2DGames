@@ -15,4 +15,7 @@ public:
 
 private:
 
+	// Ši”[—pƒnƒ“ƒhƒ‹
+	int graphicHandle;
+
 };

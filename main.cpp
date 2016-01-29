@@ -28,8 +28,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	{
 		GameManager::GetInstance().Update();
 		GameManager::GetInstance().Draw();
-
-	
 	}
 
 	// ‰æ–Ê‚ğ‰Šú‰»

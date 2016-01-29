@@ -7,11 +7,15 @@ class Player
 {
 private:
 
+	// 初期化処理
+	void Initialize();
+
 	// 移動処理
 	void Input();
 
 	// 重力処理
 	void Gravity();
+
 
 public: 
 
@@ -23,6 +27,7 @@ public:
 
 	// 描画処理
 	void Draw();
+
 
 	// キャラクターの現在、座標取得
 	Vec2 GetPosition()const{ return position; }
@@ -70,4 +75,3 @@ public:
 	// 添字用変数
 	int imageX, imageY, result;
 };
-
