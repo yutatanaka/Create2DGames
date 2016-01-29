@@ -1,7 +1,9 @@
 
 #pragma once
 
+#include "GameManager.h"
 #include "Vec2.h"
+#include "Field.h"
 
 class Player
 {
@@ -28,6 +30,8 @@ public:
 	// 描画処理
 	void Draw();
 
+	// 当たり判定処理
+	void IsHit(Field& field);
 
 	// キャラクターの現在、座標取得
 	Vec2 GetPosition()const{ return position; }
@@ -60,7 +64,7 @@ public:
 	Vec2 scale;
 
 	// 画像の幅
-	int width, height;
+	int charaWidth, charaHeight;
 
 	// グラフィックハンドル格納用配列
 	int graphicHandle[12];

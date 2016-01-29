@@ -80,40 +80,12 @@ void Field::Draw()
 // プレイヤーと床との当たり判定メソッド
 void Field::CheckHit(Player& player)
 {
-	if (player.GetPosition().x + player.width > x &&	// 右端と左端
-		player.GetPosition().x < x + kWidth &&			// 左端
-		player.GetPosition().y + player.height > y &&	// 下端と上端
-		player.GetPosition().y < y + kHeight)			// 上端
+	if (player.GetPosition().x + player.charaWidth > x &&	// 右端と左端
+		player.GetPosition().x < x + boxWidth &&			// 左端
+		player.GetPosition().y + player.charaHeight > y &&	// 下端と上端
+		player.GetPosition().y < y + boxHeight)			// 上端
 	{
-
-		distance.x = player.GetPosition().x + player.width / 2 - (x + kWidth / 2);
-		distance.y = player.GetPosition().y + player.height / 2 - (y + kHeight / 2);
-
-		if (distance.x >= 0)distance.x *= -1;
-		if (distance.y >= 0)distance.y *= -1;
-
-		if (distance.x < distance.y)
-		{
-			if (player.GetPosition().x < x)
-			{
-				player.position.x += x - (player.GetPosition().x + player.width);
-			}
-			else
-			{
-				player.position.x += x + kWidth - player.GetPosition().x;
-			}
-		}
-		else
-		{
-			if (player.GetPosition().y < y)
-			{
-				player.position.y += y - (player.GetPosition().y + player.height);
-			}
-			else
-			{
-				player.position.y += y + kHeight - player.GetPosition().y;
-			}
-		}
+		player.IsHit(*gameManager.field);
 	}
 
 }

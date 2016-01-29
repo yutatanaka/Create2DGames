@@ -35,23 +35,19 @@ public:
 	// マップのデータ 
 	int mapData[MAP_HEIGHT][MAP_WIDTH];
 
-
-private:
-
 	// 座標
 	int x, y;
+
+	// 幅
+	int boxWidth, boxHeight;
 
 	//距離をはかる
 	Vec2 distance;
 
+private:
+
 	// フィールド用のハンドル
 	int blockGraphicHandle;
-
-	// 幅(定数)
-	const int kWidth = 64;
-	
-	// 高さ(定数)
-	const int kHeight = 64;
 
 };
 

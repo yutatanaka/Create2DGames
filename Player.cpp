@@ -7,8 +7,8 @@
 // コンストラクタ
 Player::Player() :
 position(10, 684),// 初期位置
-width (29),		  // 幅
-height(40),		  // 高さ 
+charaWidth (29),		  // 幅
+charaHeight(40),		  // 高さ 
 graphicHandle(),  //
 xCount (),		  // 横方向のカウント数
 yCount (),		  // 縦方向のカウント数
@@ -26,7 +26,7 @@ isLive(true)	  // 生きているかのフラグ(初期設定：生きてる状態)
 void Player::Initialize()
 {
 	//画像読み込み
-	LoadDivGraph("res/player/charcter.png", 12, 3, 4, width, height, graphicHandle, TRUE);
+	LoadDivGraph("res/player/charcter.png", 12, 3, 4, charaWidth, charaHeight, graphicHandle, TRUE);
 }
 
 // 更新処理
@@ -37,6 +37,50 @@ void Player::Update()
 
 	Gravity();
 
+}
+
+// 描画処理
+void Player::Draw()
+{
+	// 生きてれば描画
+	if (isLive)
+	{
+		// 描画
+		DrawGraph(position.x - charaWidth / 2, position.y - charaHeight / 2, graphicHandle[result], TRUE);
+	}
+}
+
+// 当たり判定メソッド
+void Player::IsHit(Field& field)
+{
+	field.distance.x = GetPosition().x + charaWidth / 2 - (field.x + field.boxWidth / 2);
+	field.distance.y = GetPosition().y + charaHeight / 2 - (field.y + field.boxHeight / 2);
+
+	if (field.distance.x >= 0) field.distance.x *= -1;
+	if (field.distance.y >= 0) field.distance.y *= -1;
+
+	if (field.distance.x < field.distance.y)
+	{
+		if (GetPosition().x < field.x)
+		{
+			position.x += field.x - (GetPosition().x + charaWidth);
+		}
+		else
+		{
+			position.x += field.x + field.boxWidth - GetPosition().x;
+		}
+	}
+	else
+	{
+		if (GetPosition().y < field.y)
+		{
+			position.y += field.y - (GetPosition().y + field.boxHeight);
+		}
+		else
+		{
+			position.y += field.y + field.boxHeight - GetPosition().y;
+		}
+	}
 }
 
 // 入力処理
@@ -124,18 +168,6 @@ void Player::Input()
 		xCount = 0;
 	}
 
-}
-
-
-// 描画処理
-void Player::Draw()
-{
-	// 生きてれば描画
-	if (isLive)
-	{
-		// 描画
-		DrawGraph(position.x - width / 2, position.y - height / 2, graphicHandle[result], TRUE);
-	}
 }
 
 // 重力をかける処理
