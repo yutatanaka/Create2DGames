@@ -20,6 +20,9 @@ public:
 	// デストラクタ
 	~Field();
 
+	// 初期化メソッド
+	void Initialize();
+
 	// 更新メソッド
 	void Update();
 	
@@ -35,8 +38,7 @@ public:
 	// マップのデータ 
 	int mapData[MAP_HEIGHT][MAP_WIDTH];
 
-	// 座標
-	int x, y;
+
 
 	// 高さ、幅
 	int width, height;
@@ -45,6 +47,9 @@ private:
 
 	// フィールド用のハンドル
 	int blockGraphicHandle;
+
+	// 座標
+	int x, y;
 
 };
 
