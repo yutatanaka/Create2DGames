@@ -5,7 +5,6 @@
 #include "Player.h"
 
 extern Field field;
-Player player;
 
 // コンストラクタ
 Field::Field() :
@@ -68,10 +67,6 @@ void Field::Draw()
 				/*DrawBox(x_axis * MAP_SIZE, y_axis * MAP_SIZE,
 					x_axis * MAP_SIZE + MAP_SIZE, y_axis * MAP_SIZE + MAP_SIZE,
 					GetColor(0, 255, 0), TRUE);*/
-			}
-			else if (mapData[y_axis][x_axis] == 2)
-			{
-				player.Draw();
 			}
 		}
 	}

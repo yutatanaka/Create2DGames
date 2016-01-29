@@ -45,7 +45,7 @@ private:
 ////////////////////////////////////
 
 	// 歩く速度(定数)
-	const int kSpeed = 1;
+	const int kSpeed = 3;
 
 public:
 
@@ -59,8 +59,10 @@ public:
 	int width, height;
 
 	// グラフィックハンドル格納用配列
-	//int graphicHandle[12];
-	int graphicHandle;
+	int graphicHandle[12];
+
+	// テスト用ハンドル
+	//int graphicHandle;
 
 	// 横方向と縦方向のカウント数
 	int xCount, yCount;

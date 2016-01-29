@@ -6,27 +6,27 @@
 
 // コンストラクタ
 Player::Player() :
-position(),// 初期位置
+position(10, 684),// 初期位置
 width (29),		  // 幅
 height(40),		  // 高さ 
+graphicHandle(),  //
 xCount (),		  // 横方向のカウント数
 yCount (),		  // 縦方向のカウント数
 imageX (),		  // 添字用変数	
 imageY (),		  // 添字用変数
 result (),
-move(64),		  // 移動係数
+move(1.0f),	      // 移動係数
 jumpPower(),	  // ジャンプ力
 isJump(false),	  // ジャンプしているかのフラグ(初期設定：してない状態)
 isLive(true)	  // 生きているかのフラグ(初期設定：生きてる状態)
 {
 
-	graphicHandle = LoadGraph("res/player/test.png");
 
-	// 画像読み込み
-	//if (-1 == LoadDivGraph("res/player/charcter.png", 12, 3, 4, 29, 40 , graphicHandle, 0))
-	//{
-	//	printf("エラー発生");
-	//}
+	//画像読み込み
+	if (-1 == LoadDivGraph("res/player/charcter.png", 12, 3, 4, width, height , graphicHandle, TRUE))
+	{
+		printf("エラー発生");
+	}
 
 }
 
@@ -46,42 +46,37 @@ void Player::Update()
 void Player::Input()
 {
 
-	//if (CheckHitKey(KEY_INPUT_LEFT) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1)
-	//{
-	//	// 移動係数を0.71に設定
-	//	move = 0.71;
+	if (CheckHitKey(KEY_INPUT_LEFT) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1)
+	{
+		// 移動係数を0.71に設定
+		move = 0.71;
 
-	//}
+	}
 
 	//　←キーが押されたら
 	if (CheckHitKey(KEY_INPUT_LEFT) == 1)
 	{
-		//position.x -= kSpeed * move;
-		position.x -= 32;
+		position.x -= kSpeed * move;
 	}
 
 	// →キーが押されたら
 	if (CheckHitKey(KEY_INPUT_RIGHT) == 1)
 	{
-		//position.x += kSpeed * move;
-		position.x += 32;
+		position.x += kSpeed * move;
 
 	}
 
 	// ↑キーが押されたら
 	if (CheckHitKey(KEY_INPUT_UP) == 1)
 	{
-		//position.y -= kSpeed * move;
-		position.y -= 32;
+		position.y -= kSpeed * move;
 
 	}
 
 	// ↓キーが押されたら
 	if (CheckHitKey(KEY_INPUT_DOWN) == 1)
 	{
-		//position.y += kSpeed * move;
-		position.y += 32;
-
+		position.y += kSpeed * move;
 	}
 	
 
@@ -141,7 +136,7 @@ void Player::Draw()
 	if (isLive)
 	{
 		// 描画
-		DrawGraph(position.x , position.y , graphicHandle, TRUE);
+		DrawGraph(position.x - width / 2, position.y - height / 2, graphicHandle[result], TRUE);
 	}
 }
 
