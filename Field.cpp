@@ -48,14 +48,14 @@ void Field::Update()
 	Draw();
 
 	//当たり判定のあるボックスの数
-	//const int hitBlockNumber = 256;
+	const int hitBlockNumber = 256;
 
-	//Field floorBox[hitBlockNumber];
+	Field floorBox[hitBlockNumber];
 
-	//for (int i = 0; i < hitBlockNumber; ++i)
-	//{
-	//	CheckHit(*gameManager.player);
-	//}
+	for (int i = 0; i < hitBlockNumber; ++i)
+	{
+		CheckHit(*gameManager.player);
+	}
 }
 
 

@@ -23,11 +23,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 	GameManager::GetInstance();
 
+	GameManager::GetInstance().Initialize();
 
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && GetHitKeyStateAll(key) == 0)
 	{
+
 		GameManager::GetInstance().Update();
+		
 		GameManager::GetInstance().Draw();
+
 	}
 
 	// ‰æ–Ê‚ğ‰Šú‰»
