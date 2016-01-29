@@ -5,6 +5,11 @@
 #include "Field.h"
 #include "Player.h"
 
+//当たり判定のあるボックスの数
+const int hitBlockNumber = 256;
+
+Field floorBox[hitBlockNumber];
+
 // コンストラクタ
 Field::Field() :
 x(),
@@ -47,11 +52,6 @@ void Field::Update()
 {
 	Draw();
 
-	//当たり判定のあるボックスの数
-	const int hitBlockNumber = 256;
-
-	Field floorBox[hitBlockNumber];
-
 	for (int i = 0; i < hitBlockNumber; ++i)
 	{
 		CheckHit(*gameManager.player);
@@ -62,7 +62,6 @@ void Field::Update()
 // 描画
 void Field::Draw()
 {
- 
 	for (y = 0; y< MAP_HEIGHT; ++y)
 	{
 		for (x = 0; x < MAP_WIDTH; ++x)
@@ -83,7 +82,7 @@ void Field::CheckHit(Player& player)
 	if (player.GetPosition().x + player.charaWidth > x &&	// 右端と左端
 		player.GetPosition().x < x + boxWidth &&			// 左端
 		player.GetPosition().y + player.charaHeight > y &&	// 下端と上端
-		player.GetPosition().y < y + boxHeight)			// 上端
+		player.GetPosition().y < y + boxHeight)				// 上端
 	{
 		player.IsHit(*gameManager.field);
 	}
