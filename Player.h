@@ -9,31 +9,33 @@ class Player
 {
 private:
 
-	// 移動処理
+	// 入力処理メソッド
 	void Input();
 
-	// 重力処理
+	// 重力処理メソッド
 	void Gravity();
 
+	// 移動制御メソッド
+	void MovementControl();
 
 public: 
 
 	// コンストラクタ
 	Player();
 
-	// 初期化処理
+	// 初期化処理メソッド
 	void Initialize();
 
-	// 更新処理
+	// 更新処理メソッド
 	void Update();
 
-	// 描画処理
+	// 描画処理メソッド
 	void Draw();
 
-	// 当たり判定処理
+	// 当たり判定処理メソッド
 	void IsHit(Field& field);
 
-	// キャラクターの現在、座標取得
+	// キャラクターの現在、座標取得メソッド
 	Vec2 GetPosition()const{ return position; }
 
 private:
@@ -54,6 +56,9 @@ private:
 
 	// 歩く速度(定数)
 	const int kSpeed = 3;
+
+	// 1ピクセル分余白を持たせる(定数)
+	const int kMargin = 1;
 
 public:
 

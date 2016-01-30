@@ -37,6 +37,8 @@ void Player::Update()
 
 	Gravity();
 
+	MovementControl();
+
 }
 
 // 描画処理
@@ -179,4 +181,27 @@ void Player::Gravity()
 		position.y += jumpPower;
 		jumpPower -= 1.0f;
 
+}
+
+// 移動制御メソッド
+void Player::MovementControl()
+{
+	// キャラの移動制御
+	if (position.x > Width)
+	{
+		position.x = Width - kMargin;
+	}
+	else if (position.x < kMargin)
+	{
+		position.x = kMargin;
+	}
+
+	if (position.y > Height)
+	{
+		position.y = Height - kMargin;
+	}
+	else if (position.y < kMargin)
+	{
+		position.y = kMargin;
+	}
 }
