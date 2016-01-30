@@ -24,7 +24,7 @@ void Field::Initialize()
 {
 
 	// ブロック画像読み込み
-	blockGraphicHandle = LoadGraph("res/background/field.png");
+	blockGraphicHandle = LoadGraph("res/floor/field.png");
 
 	// フィールドデータ2次元配列
 	int fieldData[MAP_HEIGHT][MAP_WIDTH] =
@@ -80,7 +80,7 @@ void Field::Draw()
 void Field::CheckHit(Player& player)
 {
 	if (player.GetPosition().x + player.charaWidth > x &&	// 右端と左端
-		player.GetPosition().x < x + boxWidth &&			// 左端
+		player.GetPosition().x < x + boxWidth &&			// 左端と右端
 		player.GetPosition().y + player.charaHeight > y &&	// 下端と上端
 		player.GetPosition().y < y + boxHeight)				// 上端
 	{

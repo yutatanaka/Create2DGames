@@ -7,15 +7,21 @@ public:
 	// コンストラクタ
 	BackGround();
 
-	// 更新
+	// 初期化メソッド
+	void Initialize();
+
+	// 更新メソッド
 	void Update();
 
-	// 描画
+	// 描画メソッド
 	void Draw();
 
 private:
 
+	// 高さ、幅
+	int height, width;
+
 	// 格納用ハンドル
-	int graphicHandle;
+	int backGraphicHandle;
 
 };
