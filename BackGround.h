@@ -19,9 +19,11 @@ public:
 private:
 
 	// 高さ、幅
-	int height, width;
+	int x, y;
 
 	// 格納用ハンドル
 	int backGraphicHandle;
 
+	// 10ピクセル分の余白(定数)
+	const int kMargin = 10;
 };
