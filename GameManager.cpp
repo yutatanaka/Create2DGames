@@ -24,6 +24,7 @@ GameManager::~GameManager()
 // ‰Šú‰»ˆ—
 void GameManager::Initialize()
 {
+	backGround->Initialize();
 
 	field->Initialize();
 
@@ -33,6 +34,7 @@ void GameManager::Initialize()
 
 void GameManager::Update()
 {
+	backGround->Update();
 
 	field->Update();
 	
@@ -42,6 +44,7 @@ void GameManager::Update()
 
 void GameManager::Draw()
 {
+	backGround->Draw();
 
 	field->Draw();
 	
