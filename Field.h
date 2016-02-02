@@ -27,7 +27,7 @@ public:
 	void Draw();
 
 	// プレイヤーと床との当たり判定メソッド
-	void CheckHit(Player& player);
+	void CheckHit(Player& player, int x, int y);
 
 
 public:

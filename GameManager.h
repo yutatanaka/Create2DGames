@@ -14,6 +14,11 @@ enum Window
 
 class GameManager
 {
+private :
+
+	// コンストラクタ
+	GameManager();
+
 public:
 	// シングルトン
 	static GameManager& GetInstance()
@@ -33,8 +38,6 @@ public:
 
 public:
 
-	// コンストラクタ
-	GameManager();
 
 	// デストラクタ
 	~GameManager();
@@ -44,4 +47,3 @@ public:
 	BackGround *backGround;
 };
 
-extern 	GameManager gameManager;

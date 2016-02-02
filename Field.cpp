@@ -15,6 +15,8 @@ Field::Field() :
 x(),
 y(),
 distance(),
+boxWidth(64),
+boxHeight(64),
 blockGraphicHandle()
 {
 }
@@ -29,6 +31,7 @@ void Field::Initialize()
 	// フィールドデータ2次元配列
 	int fieldData[MAP_HEIGHT][MAP_WIDTH] =
 	{
+		/*
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -41,6 +44,19 @@ void Field::Initialize()
 		{ 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
 		{ 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+		*/
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 	};
 
 	memcpy(mapData, fieldData, sizeof(fieldData));
@@ -52,12 +68,24 @@ void Field::Update()
 {
 	Draw();
 
+	/*
 	for (int i = 0; i < hitBlockNumber; ++i)
 	{
-		CheckHit(*gameManager.player);
+	CheckHit(*gameManager.player);
 	}
-}
+	*/
+	for (y = 0; y < MAP_HEIGHT; ++y)
+	{
+		for (x = 0; x < MAP_WIDTH; ++x)
+		{
+			if (mapData[y][x] == 1)
+			{
+				CheckHit(*(GameManager::GetInstance().player), x * MAP_SIZE, y * MAP_SIZE);
+			}
+		}
+	}
 
+}
 
 // 描画
 void Field::Draw()
@@ -77,14 +105,14 @@ void Field::Draw()
 }
 
 // プレイヤーと床との当たり判定メソッド
-void Field::CheckHit(Player& player)
+void Field::CheckHit(Player& player, int x, int y)
 {
-	if (player.GetPosition().x + player.charaWidth > x &&	// 右端と左端
-		player.GetPosition().x < x + boxWidth &&			// 左端と右端
-		player.GetPosition().y + player.charaHeight > y &&	// 下端と上端
-		player.GetPosition().y < y + boxHeight)				// 上端
+	if (player.position.x + player.charaWidth > x && // 右端と左端
+		player.position.x < x + boxWidth &&	// 左端
+		player.position.y + player.charaHeight > y && // 下端と上端
+		player.position.y < y + boxHeight)	// 上端
 	{
-		player.IsHit(*gameManager.field);
+		player.IsHit(*(GameManager::GetInstance().field));
 	}
 
 }

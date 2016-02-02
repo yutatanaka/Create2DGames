@@ -6,7 +6,7 @@
 
 // コンストラクタ
 Player::Player() :
-position(10, 684),// 初期位置
+position(10, 600),// 初期位置
 charaWidth (29),		  // 幅
 charaHeight(40),		  // 高さ 
 graphicHandle(),  //
@@ -55,32 +55,32 @@ void Player::Draw()
 // 当たり判定メソッド
 void Player::IsHit(Field& field)
 {
-	field.distance.x = GetPosition().x + charaWidth / 2 - (field.x + field.boxWidth / 2);
-	field.distance.y = GetPosition().y + charaHeight / 2 - (field.y + field.boxHeight / 2);
+	field.distance.x = GetPosition().x + charaWidth / 2 - (field.x * MAP_SIZE + field.boxWidth / 2);
+	field.distance.y = GetPosition().y + charaHeight / 2 - (field.y * MAP_SIZE + field.boxHeight / 2);
 
 	if (field.distance.x >= 0) field.distance.x *= -1;
 	if (field.distance.y >= 0) field.distance.y *= -1;
 
 	if (field.distance.x < field.distance.y)
 	{
-		if (GetPosition().x < field.x)
+		if (GetPosition().x < field.x * MAP_SIZE)
 		{
-			position.x += field.x - (GetPosition().x + charaWidth);
+			position.x += field.x * MAP_SIZE - position.x + charaWidth;
 		}
 		else
 		{
-			position.x += field.x + field.boxWidth - GetPosition().x;
+			position.x += field.x * MAP_SIZE + field.boxWidth - GetPosition().x;
 		}
 	}
 	else
 	{
 		if (GetPosition().y < field.y)
 		{
-			position.y += field.y - (GetPosition().y + field.boxHeight);
+			position.y += field.y * MAP_SIZE - position.y + field.boxHeight;
 		}
 		else
 		{
-			position.y += field.y + field.boxHeight - GetPosition().y;
+			position.y += field.y * MAP_SIZE + field.boxHeight - GetPosition().y;
 		}
 	}
 }

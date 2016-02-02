@@ -4,7 +4,6 @@
 #include "Field.h"
 #include "Player.h"
 
-GameManager gameManager;
 
 // コンストラクタ
 GameManager::GameManager()
