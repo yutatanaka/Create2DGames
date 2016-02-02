@@ -48,7 +48,7 @@ void Player::Draw()
 	if (isLive)
 	{
 		// •`‰æ
-		DrawGraph(position.x - charaWidth / 2, position.y - charaHeight / 2, graphicHandle[result], TRUE);
+		DrawGraph(position.x, position.y, graphicHandle[result], TRUE);
 	}
 }
 
@@ -63,24 +63,24 @@ void Player::IsHit(Field& field)
 
 	if (field.distance.x < field.distance.y)
 	{
-		if (GetPosition().x < field.x * MAP_SIZE)
+		if (position.x < field.x * MAP_SIZE)
 		{
-			position.x += field.x * MAP_SIZE - position.x + charaWidth;
+			position.x += field.x * MAP_SIZE - (position.x + charaWidth);
 		}
 		else
 		{
-			position.x += field.x * MAP_SIZE + field.boxWidth - GetPosition().x;
+			position.x += field.x * MAP_SIZE + field.boxWidth - position.x;
 		}
 	}
 	else
 	{
-		if (GetPosition().y < field.y)
+		if (position.y < field.y * MAP_SIZE)
 		{
-			position.y += field.y * MAP_SIZE - position.y + field.boxHeight;
+			position.y += field.y * MAP_SIZE - (position.y + charaHeight);
 		}
 		else
 		{
-			position.y += field.y * MAP_SIZE + field.boxHeight - GetPosition().y;
+			position.y += field.y * MAP_SIZE + field.boxHeight - position.y;
 		}
 	}
 }
