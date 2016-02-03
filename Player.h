@@ -15,6 +15,9 @@ private:
 	// 重力処理メソッド
 	void Gravity();
 
+	// ジャンプ処理メソッド
+	void Jump();
+
 	// 移動制御メソッド
 	void MovementControl();
 
@@ -32,7 +35,7 @@ public:
 	// 描画処理メソッド
 	void Draw();
 
-	// 当たり判定処理メソッド
+	// 当たっているときの処理メソッド
 	void IsHit(Field& field);
 
 	// キャラクターの現在、座標取得メソッド
@@ -45,6 +48,12 @@ private:
 
 	// ジャンプ力
 	float jumpPower;
+
+	// 一時的にy座標の位置を保存
+	float yTemp;
+
+	// 少し前のｙ座標
+	float yPrev;
 
 	// ジャンプしているかどうかのフラグ
 	bool isJump;

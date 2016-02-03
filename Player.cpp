@@ -6,9 +6,9 @@
 
 // コンストラクタ
 Player::Player() :
-position(10, 600),// 初期位置
-charaWidth (29),		  // 幅
-charaHeight(40),		  // 高さ 
+position(0, 700), // 初期位置
+charaWidth (29),  // 幅
+charaHeight(40),  // 高さ 
 graphicHandle(),  //
 xCount (),		  // 横方向のカウント数
 yCount (),		  // 縦方向のカウント数
@@ -17,6 +17,8 @@ imageY (),		  // 添字用変数
 result (),
 move(1.0f),	      // 移動係数
 jumpPower(),	  // ジャンプ力
+yTemp(),		  // 一時的にy座標の位置を保存
+yPrev(),		  // 少し前のｙ座標
 isJump(false),	  // ジャンプしているかのフラグ(初期設定：してない状態)
 isLive(true)	  // 生きているかのフラグ(初期設定：生きてる状態)
 {
@@ -37,6 +39,8 @@ void Player::Update()
 
 	Gravity();
 
+	Jump();
+
 	MovementControl();
 
 }
@@ -52,7 +56,7 @@ void Player::Draw()
 	}
 }
 
-// 当たり判定メソッド
+// 当たっている時の処理メソッド
 void Player::IsHit(Field& field)
 {
 	field.distance.x = GetPosition().x + charaWidth / 2 - (field.x * MAP_SIZE + field.boxWidth / 2);
@@ -70,6 +74,7 @@ void Player::IsHit(Field& field)
 		else
 		{
 			position.x += field.x * MAP_SIZE + field.boxWidth - position.x;
+
 		}
 	}
 	else
@@ -81,6 +86,7 @@ void Player::IsHit(Field& field)
 		else
 		{
 			position.y += field.y * MAP_SIZE + field.boxHeight - position.y;
+
 		}
 	}
 }
@@ -169,7 +175,6 @@ void Player::Input()
 	{
 		xCount = 0;
 	}
-
 }
 
 // 重力をかける処理
@@ -181,6 +186,26 @@ void Player::Gravity()
 		position.y += jumpPower;
 		jumpPower -= 1.0f;
 
+}
+
+// ジャンプ処理メソッド
+void Player::Jump()
+{
+	if (isJump)
+	{
+		yTemp = position.y;
+		position.y += (position.y - yPrev) + 1;
+		yPrev = yTemp;
+	}
+
+	if (CheckHitKey(KEY_INPUT_SPACE) == 1 && isJump == false)
+	{
+		isJump = true;
+		yPrev = position.y;
+		position.y = position.y - 10;
+	}
+
+	
 }
 
 // 移動制御メソッド
@@ -205,3 +230,4 @@ void Player::MovementControl()
 		position.y = kMargin;
 	}
 }
+
