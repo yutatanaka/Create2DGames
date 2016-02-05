@@ -72,7 +72,7 @@ void Field::Update()
 		{
 			if (mapData[y][x] == 1)
 			{
-				CheckHit(*(GameManager::GetInstance().player), x * MAP_SIZE, y * MAP_SIZE);
+				CheckHit(*(GameManager::GetInstance()->player), x * MAP_SIZE, y * MAP_SIZE);
 			}
 		}
 	}
@@ -104,7 +104,7 @@ void Field::CheckHit(Player& player, int x, int y)
 		player.position.y + player.charaHeight > y &&// 下端と上端
 		player.position.y < y + boxHeight)			 // 上端と下端
 	{
-		player.IsHit(*(GameManager::GetInstance().field));
+		player.IsHit(*(GameManager::GetInstance()->field));
 	}
 
 }

@@ -23,14 +23,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 	GameManager::GetInstance();
 
-	GameManager::GetInstance().Initialize();
+	GameManager::GetInstance()->Initialize();
 
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && GetHitKeyStateAll(key) == 0)
 	{
 
-		GameManager::GetInstance().Update();
+		GameManager::GetInstance()->Update();
 		
-		GameManager::GetInstance().Draw();
+		GameManager::GetInstance()->Draw();
 
 	}
 
@@ -39,6 +39,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 	// — ‰æ–Ê‚Ì“à—e‚ð•\‰æ–Ê‚É”½‰f
 	ScreenFlip();
+
+	GameManager::DeleteInstance();
 
 	DxLib_End();	
 

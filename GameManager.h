@@ -20,10 +20,24 @@ private :
 	GameManager();
 
 public:
+
+	static GameManager* instance ;
+
 	// シングルトン
-	static GameManager& GetInstance()
+	static GameManager* GetInstance()
 	{
-		static GameManager instance;
+		
+		if (nullptr == instance)
+		{
+			instance = new GameManager();
+		}
+		return instance;
+	}
+
+	static GameManager* DeleteInstance()
+	{
+		delete instance;
+
 		return instance;
 	}
 
@@ -37,7 +51,6 @@ public:
 	void Draw();
 
 public:
-
 
 	// デストラクタ
 	~GameManager();

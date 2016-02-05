@@ -4,6 +4,7 @@
 #include "Field.h"
 #include "Player.h"
 
+GameManager* GameManager::instance = nullptr;
 
 // コンストラクタ
 GameManager::GameManager()
@@ -18,6 +19,7 @@ GameManager::~GameManager()
 {
 	delete player;
 	delete field;
+	delete backGround;
 }
 
 // 初期化処理
