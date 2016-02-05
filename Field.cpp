@@ -5,10 +5,6 @@
 #include "Field.h"
 #include "Player.h"
 
-//当たり判定のあるボックスの数
-const int hitBlockNumber = 256;
-
-Field floorBox[hitBlockNumber];
 
 // コンストラクタ
 Field::Field() :
@@ -70,12 +66,6 @@ void Field::Update()
 {
 	Draw();
 
-	/*
-	for (int i = 0; i < hitBlockNumber; ++i)
-	{
-	CheckHit(*gameManager.player);
-	}
-	*/
 	for (y = 0; y < MAP_HEIGHT; ++y)
 	{
 		for (x = 0; x < MAP_WIDTH; ++x)
@@ -106,7 +96,7 @@ void Field::Draw()
 	}
 }
 
-// プレイヤーと床との当たり判定メソッド
+// プレイヤーと床との当たり判定を確認するメソッド
 void Field::CheckHit(Player& player, int x, int y)
 {
 	if (player.position.x + player.charaWidth > x && // 右端と左端
