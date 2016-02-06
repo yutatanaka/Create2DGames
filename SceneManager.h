@@ -61,8 +61,15 @@ public:
 
 public:
 
-	// インスタンスの生成
+	// 各クラスのインスタンスを生成
 	static SceneManager* instance;
 
+	SceneTitle *sceneTitle;
+
+	SceneGame *sceneGame;
+
+	SceneClear *sceneClear;
+
+	SceneGameOver *sceneGameOver;
 
 };
