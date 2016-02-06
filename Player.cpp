@@ -16,7 +16,7 @@ imageX (),		  // 添字用変数
 imageY (),		  // 添字用変数
 result (),
 move(1.0f),	      // 移動係数
-jumpPower(),	  // ジャンプ力
+gravity(-2.0f),	  // 重力
 yTemp(),		  // 一時的にy座標の位置を保存
 yPrev(),		  // 少し前のｙ座標
 isJump(false),	  // ジャンプしているかのフラグ(初期設定：してない状態)
@@ -87,7 +87,7 @@ void Player::IsHit(Field& field)
 		{
 			isJump = false;
 			position.y += field.y * MAP_SIZE + field.boxHeight - position.y;
-
+			Gravity();
 		}
 	}
 }
@@ -196,8 +196,7 @@ void Player::Gravity()
 	// ジャンプをしてなければ重力をかけない
 	if (!isJump) { return; }
 
-	//position.y += jumpPower;
-	//jumpPower -= 1.0f;
+	position.y += gravity;
 
 }
 

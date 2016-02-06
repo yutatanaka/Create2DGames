@@ -46,8 +46,8 @@ private:
 	// 移動係数
 	float move;
 
-	// ジャンプ力
-	float jumpPower;
+	// 重力
+	float gravity;
 
 	// 一時的にy座標の位置を保存
 	float yTemp;
