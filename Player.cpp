@@ -1,6 +1,7 @@
 
 #include "DxLib.h"
 #include "GameManager.h"
+#include "Key.h"
 #include "Field.h"
 #include "Player.h"
 
@@ -73,7 +74,7 @@ void Player::IsHit(Field& field)
 			position.x += field.x * MAP_SIZE + field.boxWidth - position.x;
 		}
 	}
-	else
+	else if (field.distance.x > field.distance.y)
 	{
 		if (position.y < field.y * MAP_SIZE)
 		{
@@ -86,6 +87,11 @@ void Player::IsHit(Field& field)
 			y_speed = 0;
 		}
 	}
+	else
+	{
+		key.keys[KEY_INPUT_SPACE] == 0;
+	}
+	
 }
 
 // “ü—Íˆ—
@@ -174,10 +180,10 @@ void Player::Input()
 	}
 
 		// SpaceƒL[‚ª‰Ÿ‚³‚ê‚Ä‚½‚ç
-		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
+		if (key.keys[KEY_INPUT_SPACE] == 1)
 		{
 			isJump = true;
-			y_speed = -7;
+			y_speed = -10;
 		}
 
 

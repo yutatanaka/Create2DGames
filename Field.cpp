@@ -106,5 +106,4 @@ void Field::CheckHit(Player& player, int x, int y)
 	{
 		player.IsHit(*(GameManager::GetInstance()->field));
 	}
-
 }

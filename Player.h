@@ -3,7 +3,6 @@
 
 #include "GameManager.h"
 #include "Vec2.h"
-#include "Key.h"
 #include "Field.h"
 
 class Player
@@ -50,9 +49,6 @@ private:
 	// 重力
 	float gravity;
 
-	// ジャンプしているかどうかのフラグ
-	bool isJump;
-
 	// 生きてるかどうかのフラグ
 	bool isLive;
 
@@ -71,6 +67,9 @@ public:
 
 	// キャラクターの大きさ
 	Vec2 scale;
+
+	// ジャンプしているかどうかのフラグ
+	bool isJump;
 
 	// 画像の幅
 	int charaWidth, charaHeight;
