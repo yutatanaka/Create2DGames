@@ -5,7 +5,6 @@
 
 class Player;
 class Field;
-class BackGround;
 
 enum Window
 {
@@ -63,6 +62,5 @@ public:
 
 	Field *field;
 
-	BackGround *backGround;
 };
 

@@ -1,6 +1,5 @@
 
 #include "GameManager.h"
-#include "BackGround.h"
 #include "Field.h"
 #include "Player.h"
 
@@ -11,7 +10,6 @@ GameManager::GameManager()
 {
 	player = new Player();
 	field = new Field();
-	backGround = new BackGround();
 }
 
 // デストラクタ
@@ -19,13 +17,11 @@ GameManager::~GameManager()
 {
 	delete player;
 	delete field;
-	delete backGround;
 }
 
 // 初期化処理
 void GameManager::Initialize()
 {
-	backGround->Initialize();
 
 	field->Initialize();
 
@@ -35,7 +31,6 @@ void GameManager::Initialize()
 
 void GameManager::Update()
 {
-	backGround->Update();
 
 	field->Update();
 	
@@ -45,7 +40,6 @@ void GameManager::Update()
 
 void GameManager::Draw()
 {
-	backGround->Draw();
 
 	field->Draw();
 	
