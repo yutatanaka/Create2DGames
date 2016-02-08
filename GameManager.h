@@ -1,6 +1,8 @@
 
 #pragma once
 
+#include "SceneManager.h"
+
 class Player;
 class Field;
 class BackGround;
@@ -55,8 +57,12 @@ public:
 	// デストラクタ
 	~GameManager();
 
+	// 各インスタンスを生成
+
 	Player *player;
+
 	Field *field;
+
 	BackGround *backGround;
 };
 

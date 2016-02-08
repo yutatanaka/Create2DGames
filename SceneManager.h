@@ -17,6 +17,11 @@ typedef enum
 
 }eScene ;
 
+class SceneTitle;
+class SceneGame;
+class SceneClear;
+class SceneGameOver;
+
 class SceneManager
 {
 private:

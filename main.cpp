@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "Key.h"
 #include "GameManager.h"
+#include "SceneManager.h"
 
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
@@ -20,16 +21,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		return -1;
 	}
 
+	SceneManager::GetInstance();
+
 	GameManager::GetInstance();
+
+	SceneManager::GetInstance()->Initialize();
 
 	GameManager::GetInstance()->Initialize();
 
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && key.UpdateKey() == 0)
 	{
-
-		GameManager::GetInstance()->Update();
-		
-		GameManager::GetInstance()->Draw();
 
 	}
 
@@ -40,6 +41,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	ScreenFlip();
 
 	GameManager::DeleteInstance();
+
+	SceneManager::DeleteInstance();
 
 	DxLib_End();	
 
