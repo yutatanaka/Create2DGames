@@ -17,8 +17,10 @@ public:
 public:
 
 	// キーが押されているフレーム数を格納する
-	int key[256];
+	int keys[256];
 
 	// 現在のキーの入力状態を格納する
 	char tmpKey[256];
 };
+
+extern Key key;

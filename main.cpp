@@ -1,9 +1,8 @@
 
 #include "DxLib.h"
+#include "Key.h"
 #include "GameManager.h"
 
-
-char key[256];
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -25,7 +24,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 	GameManager::GetInstance()->Initialize();
 
-	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && GetHitKeyStateAll(key) == 0)
+	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && key.UpdateKey() == 0)
 	{
 
 		GameManager::GetInstance()->Update();

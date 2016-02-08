@@ -2,10 +2,12 @@
 #include "DxLib.h"
 #include "Key.h"
 
+Key key;
+
 // コンストラクタ
 Key::Key()
 {
-	key[256] = { 0 };
+	keys[256] = { 0 };
 	tmpKey[256] = { 0 };
 }
 
@@ -24,11 +26,11 @@ int Key::UpdateKey()
 	{
 		if (tmpKey[i] != 0)	// i番のキーコードに対応するキーが押されていたら
 		{
-			key[i]++;		// 加算
+			keys[i]++;		// 加算
 		}
 		else				// 押されていなければ
 		{
-			key[i] = 0;		// 0にする
+			keys[i] = 0;		// 0にする
 		}
 	}
 	return 0;
