@@ -7,7 +7,7 @@
 
 // コンストラクタ
 Player::Player() :
-position(10, 500), // 初期位置
+position(10, 768), // 初期位置
 charaWidth (29),  // 幅
 charaHeight(40),  // 高さ 
 graphicHandle(),  // グラフィックハンドル格納用
