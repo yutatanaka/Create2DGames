@@ -50,5 +50,3 @@ private:
 	int blockGraphicHandle;
 
 };
-
-//std::vector<std::vector<int>> boxArray;
