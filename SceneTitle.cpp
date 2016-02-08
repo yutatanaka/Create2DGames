@@ -14,11 +14,14 @@ SceneTitle::~SceneTitle()
 // 初期化メソッド
 void SceneTitle::Initialize()
 {
-
 }
 
 // 更新メソッド
-void Update();
+void SceneTitle::Update()
+{
+}
 
 // 描画メソッド
-void Draw();
+void SceneTitle::Draw()
+{
+}

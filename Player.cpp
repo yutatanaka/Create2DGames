@@ -198,8 +198,6 @@ void Player::Gravity()
 
 }
 
-
-
 // ˆÚ“®§Œäƒƒ\ƒbƒh
 void Player::MovementControl()
 {
