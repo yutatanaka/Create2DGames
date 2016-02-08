@@ -6,8 +6,8 @@
 #include "Player.h"
 
 #define MAP_SIZE 64		// マップチップ1つのドットサイズ
-#define MAP_WIDTH 16	// マップの幅
-#define MAP_HEIGHT 12	// マップの縦長さ
+#define MAP_WIDTH 25	// マップの幅
+#define MAP_HEIGHT 15	// マップの縦長さ
 
 
 class Field
