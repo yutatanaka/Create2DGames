@@ -46,6 +46,8 @@ private:
 	// ˆÚ“®ŒW”
 	float move;
 
+	float y_speed;
+
 	// d—Í
 	float gravity;
 

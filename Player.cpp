@@ -6,19 +6,20 @@
 
 // コンストラクタ
 Player::Player() :
-position(0, 700), // 初期位置
+position(10, 500), // 初期位置
 charaWidth (29),  // 幅
 charaHeight(40),  // 高さ 
-graphicHandle(),  //
-xCount (),		  // 横方向のカウント数
-yCount (),		  // 縦方向のカウント数
-imageX (),		  // 添字用変数	
-imageY (),		  // 添字用変数
-result (),
+//graphicHandle(), //
+xCount (0),		  // 横方向のカウント数
+yCount (0),		  // 縦方向のカウント数
+imageX (0),		  // 添字用変数	
+imageY (0),		  // 添字用変数
+result (0),
 move(1.0f),	      // 移動係数
-gravity(-2.0f),	  // 重力
-yTemp(),		  // 一時的にy座標の位置を保存
-yPrev(),		  // 少し前のｙ座標
+y_speed(0),		  // y方向のスピード
+gravity(0.5f),	  // 重力
+yTemp(0),		  // 一時的にy座標の位置を保存
+yPrev(0),		  // 少し前のｙ座標
 isJump(false),	  // ジャンプしているかのフラグ(初期設定：してない状態)
 isLive(true)	  // 生きているかのフラグ(初期設定：生きてる状態)
 {
@@ -36,6 +37,8 @@ void Player::Update()
 {
 
 	Input();
+
+
 
 	Gravity();
 
@@ -82,12 +85,13 @@ void Player::IsHit(Field& field)
 		{
 			isJump = false;
 			position.y += field.y * MAP_SIZE - (position.y + charaHeight);
+			y_speed = 0;
 		}
 		else
 		{
 			isJump = false;
 			position.y += field.y * MAP_SIZE + field.boxHeight - position.y;
-			Gravity();
+			y_speed = 0;
 		}
 	}
 }
@@ -177,14 +181,15 @@ void Player::Input()
 		xCount = 0;
 	}
 
-
 	Jump();
+
 
 	if (CheckHitKey(KEY_INPUT_SPACE) == 1 && isJump == false)
 	{
 		isJump = true;
-		yPrev = position.y;
-		position.y = position.y - 10;
+		//yPrev = position.y;
+		//position.y = position.y - 10;
+		y_speed = -10;
 	}
 
 
@@ -194,21 +199,22 @@ void Player::Input()
 void Player::Gravity()
 {
 	// ジャンプをしてなければ重力をかけない
-	if (!isJump) { return; }
+	//if (!isJump) { return; }
 
-	position.y += gravity;
+	y_speed += gravity;
+	position.y += y_speed;
 
 }
 
 // ジャンプ処理メソッド
 void Player::Jump()
 {
-	if (isJump == true)
-	{
-		yTemp = position.y;
-		position.y += (position.y - yPrev) + 1;
-		yPrev = yTemp;
-	}
+	//if (isJump == true)
+	//{
+	//	yTemp = position.y;
+	//	position.y += (position.y - yPrev) + 1;
+	//	yPrev = yTemp;
+	//}
 }
 
 // 移動制御メソッド

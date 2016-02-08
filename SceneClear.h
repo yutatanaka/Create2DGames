@@ -4,6 +4,7 @@
 class SceneClear
 {
 public:
+
 	// コンストラクタ
 	SceneClear();
 
