@@ -9,7 +9,7 @@ class Field;
 enum Window
 {
 	Width = 1600,
-	Height = 900,
+	Height = 960,
 	ColorBit = 32
 };
 
