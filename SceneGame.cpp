@@ -1,9 +1,12 @@
 
+#include "DxLib.h"
 #include "SceneGame.h"
 #include "GameManager.h"
 
 // コンストラクタ
-SceneGame::SceneGame()
+SceneGame::SceneGame() :
+position(0, 0),
+gameBackGroundHandle(0)
 {
 }
 
@@ -15,6 +18,7 @@ SceneGame::~SceneGame()
 // 初期化メソッド
 void SceneGame::Initialize()
 {
+	gameBackGroundHandle = LoadGraph("res/background/gameBackGround.png");
 }
 
 // 更新メソッド
@@ -47,6 +51,8 @@ void SceneGame::Update()
 // 描画メソッド
 void SceneGame::Draw()
 {
+	DrawGraph(position.x, position.y, gameBackGroundHandle, FALSE);
+
 	GameManager::GetInstance()->Draw();
 
 	DrawString(0, 0, "ゲーム画面です。", GetColor(255, 255, 255));

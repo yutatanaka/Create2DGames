@@ -1,4 +1,5 @@
 
+#include "DxLib.h"
 #include "SceneGameOver.h"
 
 // コンストラクタ
@@ -35,4 +36,6 @@ void SceneGameOver::Draw()
 {
 	DrawString(0, 0, "ゲームオーバー画面です。", GetColor(255, 255, 255));
 	DrawString(0, 20, "Escキーを押すとタイトル画面に進みます。", GetColor(255, 255, 255));
+
+	DrawString(Width / 2, Height / 2, "GAMEOVER", GetColor(255, 0, 0));
 }

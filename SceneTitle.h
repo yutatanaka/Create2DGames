@@ -2,6 +2,7 @@
 #pragma once 
 
 #include "GameManager.h"
+#include "Vec2.h"
 
 class SceneTitle
 {
@@ -21,4 +22,12 @@ public:
 
 	// 描画メソッド
 	void Draw();
+
+public:
+
+	// 座標
+	Vec2 position;
+
+	// クリア画面の背景ハンドル
+	int titleBackGroundHandle;
 };

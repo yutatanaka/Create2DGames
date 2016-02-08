@@ -32,6 +32,10 @@ SceneManager::~SceneManager()
 // 初期化メソッド
 void SceneManager::Initialize()
 {
+	sceneTitle->Initialize();
+	sceneGame->Initialize();
+	sceneClear->Initialize();
+	sceneGameOver->Initialize();
 }
 
 // 更新メソッド
