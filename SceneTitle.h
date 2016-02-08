@@ -1,6 +1,8 @@
 
 #pragma once 
 
+#include "GameManager.h"
+
 class SceneTitle
 {
 public:

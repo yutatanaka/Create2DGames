@@ -20,7 +20,7 @@ void SceneGame::Initialize()
 // 更新メソッド
 void SceneGame::Update()
 {
-
+	GameManager->GetInstance()
 }
 
 // 描画メソッド
