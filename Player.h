@@ -3,6 +3,7 @@
 
 #include "GameManager.h"
 #include "Vec2.h"
+#include "Key.h"
 #include "Field.h"
 
 class Player
@@ -40,22 +41,14 @@ public:
 
 private:
 
-	// カウントを計算
-	float counter;
-
 	// 移動係数
 	float move;
 
+	// y方向のスピード
 	float y_speed;
 
 	// 重力
 	float gravity;
-
-	// 一時的にy座標の位置を保存
-	float yTemp;
-
-	// 少し前のｙ座標
-	float yPrev;
 
 	// ジャンプしているかどうかのフラグ
 	bool isJump;

@@ -73,6 +73,7 @@
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="Key.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneClear.cpp" />
@@ -85,6 +86,7 @@
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Key.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SceneClear.h" />
     <ClInclude Include="SceneGame.h" />

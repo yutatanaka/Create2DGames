@@ -15,12 +15,9 @@ yCount (0),		  // 縦方向のカウント数
 imageX (0),		  // 添字用変数	
 imageY (0),		  // 添字用変数
 result (0),
-counter(0),		  // カウント数
 move(1.0f),	      // 移動係数
 y_speed(0),		  // y方向のスピード
 gravity(0.5f),	  // 重力
-yTemp(0),		  // 一時的にy座標の位置を保存
-yPrev(0),		  // 少し前のｙ座標
 isJump(false),	  // ジャンプしているかのフラグ(初期設定：してない状態)
 isLive(true)	  // 生きているかのフラグ(初期設定：生きてる状態)
 {
@@ -176,20 +173,13 @@ void Player::Input()
 		xCount = 0;
 	}
 
-	if (counter == 3)
-	{
 		// Spaceキーが押されてたら
-		if (CheckHitKey(KEY_INPUT_SPACE) == 1 && counter == 3)
+		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
 		{
 			isJump = true;
 			y_speed = -7;
 		}
-		counter = 0;
-	}
-	else
-	{
-		counter++;
-	}
+
 
 	isJump = false;
 }
