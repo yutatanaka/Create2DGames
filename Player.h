@@ -15,9 +15,6 @@ private:
 	// 重力処理メソッド
 	void Gravity();
 
-	// ジャンプ処理メソッド
-	void Jump();
-
 	// 移動制御メソッド
 	void MovementControl();
 

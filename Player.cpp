@@ -38,8 +38,6 @@ void Player::Update()
 
 	Input();
 
-
-
 	Gravity();
 
 	MovementControl();
@@ -70,12 +68,10 @@ void Player::IsHit(Field& field)
 	{
 		if (position.x < field.x * MAP_SIZE)
 		{
-			isJump = false;
 			position.x += field.x * MAP_SIZE - (position.x + charaWidth);
 		}
 		else
 		{
-			isJump = false;
 			position.x += field.x * MAP_SIZE + field.boxWidth - position.x;
 		}
 	}
@@ -83,13 +79,11 @@ void Player::IsHit(Field& field)
 	{
 		if (position.y < field.y * MAP_SIZE)
 		{
-			isJump = false;
 			position.y += field.y * MAP_SIZE - (position.y + charaHeight);
 			y_speed = 0;
 		}
 		else
 		{
-			isJump = false;
 			position.y += field.y * MAP_SIZE + field.boxHeight - position.y;
 			y_speed = 0;
 		}
@@ -181,41 +175,26 @@ void Player::Input()
 		xCount = 0;
 	}
 
-	Jump();
-
-
+	// Spaceキーが押されてたら
 	if (CheckHitKey(KEY_INPUT_SPACE) == 1 && isJump == false)
 	{
 		isJump = true;
-		//yPrev = position.y;
-		//position.y = position.y - 10;
-		y_speed = -10;
+		y_speed = -7;
 	}
 
-
+	isJump = false;
 }
 
 // 重力をかける処理
 void Player::Gravity()
 {
-	// ジャンプをしてなければ重力をかけない
-	//if (!isJump) { return; }
 
 	y_speed += gravity;
 	position.y += y_speed;
 
 }
 
-// ジャンプ処理メソッド
-void Player::Jump()
-{
-	//if (isJump == true)
-	//{
-	//	yTemp = position.y;
-	//	position.y += (position.y - yPrev) + 1;
-	//	yPrev = yTemp;
-	//}
-}
+
 
 // 移動制御メソッド
 void Player::MovementControl()
