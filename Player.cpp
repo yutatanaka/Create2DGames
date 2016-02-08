@@ -184,10 +184,9 @@ void Player::Input()
 		{
 			isJump = true;
 			y_speed = -10;
+
+			isJump = false;
 		}
-
-
-	isJump = false;
 }
 
 // d—Í‚ğ‚©‚¯‚éˆ—
