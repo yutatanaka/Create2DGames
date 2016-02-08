@@ -40,6 +40,9 @@ public:
 
 private:
 
+	// カウントを計算
+	float counter;
+
 	// 移動係数
 	float move;
 

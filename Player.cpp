@@ -9,12 +9,13 @@ Player::Player() :
 position(10, 500), // 初期位置
 charaWidth (29),  // 幅
 charaHeight(40),  // 高さ 
-//graphicHandle(), //
+graphicHandle(),  // グラフィックハンドル格納用
 xCount (0),		  // 横方向のカウント数
 yCount (0),		  // 縦方向のカウント数
 imageX (0),		  // 添字用変数	
 imageY (0),		  // 添字用変数
 result (0),
+counter(0),		  // カウント数
 move(1.0f),	      // 移動係数
 y_speed(0),		  // y方向のスピード
 gravity(0.5f),	  // 重力
@@ -176,7 +177,7 @@ void Player::Input()
 	}
 
 	// Spaceキーが押されてたら
-	if (CheckHitKey(KEY_INPUT_SPACE) == 1 && isJump == false)
+	if (CheckHitKey(KEY_INPUT_SPACE) == 1 && counter == 3)
 	{
 		isJump = true;
 		y_speed = -7;
