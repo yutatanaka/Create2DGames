@@ -176,11 +176,19 @@ void Player::Input()
 		xCount = 0;
 	}
 
-	// Spaceキーが押されてたら
-	if (CheckHitKey(KEY_INPUT_SPACE) == 1 && counter == 3)
+	if (counter == 3)
 	{
-		isJump = true;
-		y_speed = -7;
+		// Spaceキーが押されてたら
+		if (CheckHitKey(KEY_INPUT_SPACE) == 1 && counter == 3)
+		{
+			isJump = true;
+			y_speed = -7;
+		}
+		counter = 0;
+	}
+	else
+	{
+		counter++;
 	}
 
 	isJump = false;
