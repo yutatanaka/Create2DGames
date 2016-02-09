@@ -91,7 +91,8 @@
     <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneTitle.h" />
-    <ClInclude Include="Vec2.h" />
+    <ClInclude Include="Vec2f.h" />
+    <ClInclude Include="Vec2i.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

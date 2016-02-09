@@ -7,7 +7,7 @@
 
 // コンストラクタ
 Player::Player() :
-position(10, 768), // 初期位置
+position(10, 800), // 初期位置
 charaWidth (29),  // 幅
 charaHeight(40),  // 高さ 
 graphicHandle(),  // グラフィックハンドル格納用
@@ -57,8 +57,8 @@ void Player::Draw()
 // 当たっている時の処理メソッド
 void Player::IsHit(Field& field)
 {
-	field.distance.x = GetPosition().x + charaWidth / 2 - (field.x * MAP_SIZE + field.boxWidth / 2);
-	field.distance.y = GetPosition().y + charaHeight / 2 - (field.y * MAP_SIZE + field.boxHeight / 2);
+	field.distance.x = position.x + charaWidth / 2 - (field.x * MAP_SIZE + field.boxWidth / 2);
+	field.distance.y = position.y + charaHeight / 2 - (field.y * MAP_SIZE + field.boxHeight / 2);
 
 	if (field.distance.x >= 0) field.distance.x *= -1;
 	if (field.distance.y >= 0) field.distance.y *= -1;
@@ -86,10 +86,6 @@ void Player::IsHit(Field& field)
 			position.y += field.y * MAP_SIZE + field.boxHeight - position.y;
 			y_speed = 0;
 		}
-	}
-	else
-	{
-		key.keys[KEY_INPUT_SPACE] == 0;
 	}
 	
 }
@@ -180,12 +176,18 @@ void Player::Input()
 	}
 
 		// Spaceキーが押されてたら
-		if (key.keys[KEY_INPUT_SPACE] == 1)
+		if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 0)
 		{
+			// ジャンプする
 			isJump = true;
 			y_speed = -10;
 
-			isJump = false;
+			// プレイヤーの下を調べる
+			if (CheckUnder() != 0)
+			{
+				// ジャンプしない
+				isJump == false;
+			}
 		}
 }
 
@@ -221,3 +223,33 @@ void Player::MovementControl()
 	}
 }
 
+// プレイヤーの現在の座標取得メソッド
+Vec2i Player::GetMapPosition()const
+{
+	int mapX, mapY = 0;
+	mapX = position.x / (Width / MAP_WIDTH);
+	mapY = position.y / (Height / MAP_HEIGHT);
+
+	Vec2i v;
+	v.x = mapX;
+	v.y = mapY;
+	return v;
+
+	//return GameManager::GetInstance()->field->mapData[mapX][mapY];
+}
+
+// プレイヤーの下を調べる(マップデータ)
+int Player::CheckUnder()
+{
+
+	Vec2i v = GetMapPosition();
+
+	if (MAP_HEIGHT <= (v.y + 1)){
+		return 0;
+	}
+	else
+	{
+		return GameManager::GetInstance()->field->mapData[v.x][v.y + 1];
+	}
+
+}

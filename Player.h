@@ -2,7 +2,8 @@
 #pragma once
 
 #include "GameManager.h"
-#include "Vec2.h"
+#include "Vec2f.h"
+#include "Vec2i.h"
 #include "Field.h"
 
 class Player
@@ -35,8 +36,11 @@ public:
 	// 当たっているときの処理メソッド
 	void IsHit(Field& field);
 
-	// キャラクターの現在、座標取得メソッド
-	Vec2 GetPosition()const{ return position; }
+	// プレイヤーの現在、座標取得メソッド
+	Vec2i GetMapPosition()const;
+
+	// プレイヤーの下のマップデータを調べる
+	int CheckUnder();
 
 private:
 
@@ -63,10 +67,10 @@ private:
 public:
 
 	// キャラクターの座標
-	Vec2 position;
+	Vec2i position;
 
 	// キャラクターの大きさ
-	Vec2 scale;
+	Vec2f scale;
 
 	// ジャンプしているかどうかのフラグ
 	bool isJump;

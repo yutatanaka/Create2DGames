@@ -2,7 +2,7 @@
 #pragma once
 
 #include "GameManager.h"
-#include "Vec2.h"
+#include "Vec2f.h"
 
 class SceneClear
 {
@@ -26,7 +26,7 @@ public:
 public:
 
 	// 座標
-	Vec2 position;
+	Vec2f position;
 
 	// クリア画面背景の格納用ハンドル
 	int clearBackGroundHandle;

@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "Vec2.h"
+#include "Vec2f.h"
 
 class SceneGame
 {
@@ -25,7 +25,7 @@ public:
 public:
 
 	// À•W
-	Vec2 position;
+	Vec2f position;
 
 	// ”wŒi‚Ì‰æ‘œƒnƒ“ƒhƒ‹
 	int gameBackGroundHandle;

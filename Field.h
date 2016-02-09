@@ -2,7 +2,7 @@
 #pragma once
 
 #include <vector>
-#include "Vec2.h"
+#include "Vec2f.h"
 #include "Player.h"
 
 #define MAP_SIZE 64		// マップチップ1つのドットサイズ
@@ -42,7 +42,7 @@ public:
 	int boxWidth, boxHeight;
 
 	//距離をはかる
-	Vec2 distance;
+	Vec2f distance;
 
 private:
 
