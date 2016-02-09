@@ -22,7 +22,7 @@ void Field::Initialize()
 {
 
 	// ブロック画像読み込み
-	blockGraphicHandle = LoadGraph("res/floor/field.png");
+	blockGraphicHandle = LoadGraph("res/floor/mapChipGround.png");
 
 	// フィールドデータ2次元配列
 	int fieldData[MAP_HEIGHT][MAP_WIDTH] =
