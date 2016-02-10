@@ -93,10 +93,10 @@ public:
 	int charaWidth, charaHeight;
 
 	// moveグラフィックハンドル格納用配列
-	int moveGraphicHandle[6];
+	int moveGraphicHandle[MoveNumberElements];
 	
 	// waitグラフィックハンドル格納用配列
-	int waitGraphicHandle[4];
+	int waitGraphicHandle[WaitNumberElements];
 
 	// move用横方向のカウント数
 	int move_xCount;

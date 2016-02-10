@@ -54,7 +54,7 @@ void Player::Draw()
 	if (isLive)
 	{
 		// 描画
-		DrawGraph(position.x, position.y, graphicHandle[result], TRUE);
+		DrawGraph(position.x, position.y, moveGraphicHandle[moveResult], TRUE);
 	}
 }
 
@@ -139,46 +139,46 @@ void Player::Input()
 	// それ以外は1引く
 	if (CheckHitKey(KEY_INPUT_LEFT) == 1)
 	{
-		if (xCount > 0)
+		if (move_xCount > 0)
 		{
-			xCount = 0;
+			move_xCount = 0;
 		}
-		--xCount;
+		--move_xCount;
 	}
 
 	// →キーが押されてて、かつxCountが0以下なら0にしてから1足す
 	// それ以外は1足す
 	if (CheckHitKey(KEY_INPUT_RIGHT) == 1)
 	{
-		if (xCount < 0)
+		if (move_xCount < 0)
 		{
-			xCount = 0;
+			move_xCount = 0;
 		}
-		++xCount;
+		++move_xCount;
 	}
 
 	// カウント数から添字を求める
-	imageX = abs(xCount) % 30 / 10;
-	imageY = abs(yCount) % 30 / 10;
+	moveImageX = abs(move_xCount) % 30 / 10;
+	waitImageX = abs(wait_xCount) % 20 / 10;
 
 	// xカウントがプラスなら右向きなので2行目の先頭添字番号を足す
-	if (xCount > 0)
+	if (move_xCount > 0)
 	{
-		imageX += 6;
-		result = imageX;
+		moveImageX += 0;
+		moveResult = moveImageX;
 	}
-	else if (xCount < 0)
+	else if (move_xCount < 0)
 	{
 		// マイナスなら左向きなので、4行目の先頭添字番号を足す
 
-		imageX += 3;
-		result = imageX;
+		moveImageX += 3;
+		moveResult = moveImageX;
 	}
 
 	// 押されてなければカウントを0にする
 	if (CheckHitKey(KEY_INPUT_LEFT) != 1 && CheckHitKey(KEY_INPUT_RIGHT) != 1)
 	{
-		xCount = 0;
+		move_xCount = 0;
 	}
 
 	// Spaceキーが押されてたら
