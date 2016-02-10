@@ -7,7 +7,7 @@
 
 // コンストラクタ
 Player::Player() :
-position(10, 800),		 // 初期位置
+position(10, 796),		 // 初期位置
 charaWidth (100),		 // 幅
 charaHeight(100),		 // 高さ 
 moveGraphicHandle(),	 // moveグラフィックハンドル格納用配列
@@ -58,14 +58,14 @@ void Player::Draw()
 	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1)
 	{
 		// 描画する
-		DrawGraph(position.x - charaWidth / 2, position.y - charaHeight / 2, moveGraphicHandle[moveResult], TRUE);
+		DrawGraph(position.x, position.y, moveGraphicHandle[moveResult], TRUE);
 	}
 
 	// 生きていて、←キーかつ→キーが押されていなければ
 	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) != 1 && CheckHitKey(KEY_INPUT_RIGHT) != 1)
 	{
 		// 描画する
-		DrawGraph(position.x - charaWidth / 2, position.y - charaHeight / 2, waitGraphicHandle[waitResult], TRUE);
+		DrawGraph(position.x, position.y, waitGraphicHandle[waitResult], TRUE);
 	}
 }
 
