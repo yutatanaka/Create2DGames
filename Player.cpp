@@ -18,11 +18,12 @@ moveImageX (0),			 // move添字用変数
 waitImageX (0),			 // wait添字用変数
 moveResult (0),			 
 waitResult (0),
-move(1.0f),	      // 移動係数
-y_speed(0),		  // y方向のスピード
-gravity(0.5f),	  // 重力
-isJump(false),	  // ジャンプしているかのフラグ(初期設定：してない状態)
-isLive(true)	  // 生きているかのフラグ(初期設定：生きてる状態)
+move(1.0f),				 // 移動係数
+y_speed(0),				 // y方向のスピード
+gravity(0.5f),			 // 重力
+isJump(false),			 // ジャンプしているかどうかのフラグ(初期設定：してない状態)
+isLive(true),			 // 生きているかどうかのフラグ(初期設定：生きてる状態)
+isRight(true)			 // 右を向いているかどうかのフラグ(初期設定：右を向いてる状態)
 {
 	moveGraphicHandle[MoveNumberElements] = { 0 };
 	waitGraphicHandle[WaitNumberElements] = { 0 };
@@ -64,6 +65,7 @@ void Player::Draw()
 	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) != 1 && CheckHitKey(KEY_INPUT_RIGHT) != 1)
 	{
 		// 描画する
+		DrawGraph(position.x - charaWidth / 2, position.y - charaHeight / 2, waitGraphicHandle[waitResult], TRUE);
 	}
 }
 
@@ -109,13 +111,6 @@ void Player::IsHit(Field& field)
 void Player::Input()
 {
 
-	if (CheckHitKey(KEY_INPUT_LEFT) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1)
-	{
-		// 移動係数を0.71に設定
-		move = 0.71;
-
-	}
-
 	//　←キーが押されたら
 	if (CheckHitKey(KEY_INPUT_LEFT) == 1)
 	{
@@ -128,42 +123,31 @@ void Player::Input()
 		position.x += kSpeed * move;
 
 	}
-
-	// ↑キーが押されたら
-	if (CheckHitKey(KEY_INPUT_UP) == 1)
-	{
-		position.y -= kSpeed * move;
-
-	}
-
-	// ↓キーが押されたら
-	if (CheckHitKey(KEY_INPUT_DOWN) == 1)
-	{
-		position.y += kSpeed * move;
-
-	}
 	
-
-	// ←キーが押されてて、かつxCountが0以上なら0にしてから1引く
+	// →キーが押されてて、かつxCountが0以上なら0にしてから1引く
 	// それ以外は1引く
-	if (CheckHitKey(KEY_INPUT_LEFT) == 1)
+	if (CheckHitKey(KEY_INPUT_RIGHT) == 1)
 	{
 		if (move_xCount > 0)
 		{
 			move_xCount = 0;
 		}
 		--move_xCount;
+
+		isRight = false;
 	}
 
-	// →キーが押されてて、かつxCountが0以下なら0にしてから1足す
+	// ←キーが押されてて、かつxCountが0以下なら0にしてから1足す
 	// それ以外は1足す
-	if (CheckHitKey(KEY_INPUT_RIGHT) == 1)
+	if (CheckHitKey(KEY_INPUT_LEFT) == 1)
 	{
 		if (move_xCount < 0)
 		{
 			move_xCount = 0;
 		}
 		++move_xCount;
+
+		isRight = true;
 	}
 
 	// カウント数から添字を求める
@@ -188,7 +172,45 @@ void Player::Input()
 	if (CheckHitKey(KEY_INPUT_LEFT) != 1 && CheckHitKey(KEY_INPUT_RIGHT) != 1)
 	{
 		move_xCount = 0;
+		
+		// 右を向いていれば
+		if (isRight == true)
+		{
+			if (wait_xCount < 0)
+			{
+				wait_xCount = 0;
+			}
+			++wait_xCount;
+		}
+
+		// 左を向いていれば
+		if (isRight == false)
+		{
+			if (wait_xCount > 0)
+			{
+				wait_xCount = 0;
+			}
+			--wait_xCount;
+		}
 	}
+	else
+	{
+		wait_xCount = 0;
+	}
+
+	// xカウントがプラスなら右向きなので1行目の先頭添字番号を足す
+	if (wait_xCount > 0)
+	{
+		waitImageX += 0;
+		waitResult = waitImageX;
+	}
+	else if (wait_xCount < 0)
+	{
+		// マイナスなら左向きなので、2行めの先頭添字番号を引く
+		waitImageX += 2;
+		waitResult = waitImageX;
+	}
+
 
 	// Spaceキーが押されてたら
 	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() != 0)
