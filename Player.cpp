@@ -31,8 +31,11 @@ isLive(true)	  // 生きているかのフラグ(初期設定：生きてる状態)
 // 初期化処理
 void Player::Initialize()
 {
-	//画像読み込み
-	LoadDivGraph("res/player/charcter.png", 12, 3, 4, charaWidth, charaHeight, moveGraphicHandle, TRUE);
+	// Move画像読み込み
+	LoadDivGraph("res/player/playerMove.png", MoveNumberElements, 3, 2, charaWidth, charaHeight, moveGraphicHandle, TRUE);
+
+	// Wait画像読み込み
+	LoadDivGraph("res/player/playerWait.png", WaitNumberElements, 2, 2, charaWidth, charaHeight, waitGraphicHandle, TRUE);
 }
 
 // 更新処理
@@ -50,11 +53,17 @@ void Player::Update()
 // 描画処理
 void Player::Draw()
 {
-	// 生きてれば描画
-	if (isLive)
+	// 生きていて、←キーもしくは→キーが押されていれば
+	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1)
 	{
-		// 描画
-		DrawGraph(position.x, position.y, moveGraphicHandle[moveResult], TRUE);
+		// 描画する
+		DrawGraph(position.x - charaWidth / 2, position.y - charaHeight / 2, moveGraphicHandle[moveResult], TRUE);
+	}
+
+	// 生きていて、←キーかつ→キーが押されていなければ
+	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) != 1 && CheckHitKey(KEY_INPUT_RIGHT) != 1)
+	{
+		// 描画する
 	}
 }
 
