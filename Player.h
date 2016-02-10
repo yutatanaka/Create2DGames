@@ -58,6 +58,12 @@ private:
 
 ////////////////////////////////////
 
+	// move配列要素数(定数)
+	const int kMoveNumberElements = MoveNumberElements;
+
+	// wait配列要素数(定数)
+	const int kWaitNumberElements = WaitNumberElements;
+
 	// 歩く速度(定数)
 	const int kSpeed = 3;
 
@@ -81,15 +87,26 @@ public:
 	// ジャンプしているかどうかのフラグ
 	bool isJump;
 
+/////////////////////////////////////////
+
 	// 画像の幅
 	int charaWidth, charaHeight;
 
-	// グラフィックハンドル格納用配列
-	int graphicHandle[12];
+	// moveグラフィックハンドル格納用配列
+	int moveGraphicHandle[6];
+	
+	// waitグラフィックハンドル格納用配列
+	int waitGraphicHandle[4];
 
-	// 横方向と縦方向のカウント数
-	int xCount, yCount;
+	// move用横方向のカウント数
+	int move_xCount;
+	
+	// wait用横方向のカウント数
+	int wait_xCount;
 
-	// 添字用変数
-	int imageX, imageY, result;
+	// move添字用変数
+	int moveImageX, moveResult;
+
+	// wait添字用変数
+	int waitImageX, waitResult;
 };

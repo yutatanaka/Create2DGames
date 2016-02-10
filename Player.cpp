@@ -7,28 +7,32 @@
 
 // コンストラクタ
 Player::Player() :
-position(10, 800), // 初期位置
-charaWidth (29),  // 幅
-charaHeight(40),  // 高さ 
-graphicHandle(),  // グラフィックハンドル格納用
-xCount (0),		  // 横方向のカウント数
-yCount (0),		  // 縦方向のカウント数
-imageX (0),		  // 添字用変数	
-imageY (0),		  // 添字用変数
-result (0),
+position(10, 800),		 // 初期位置
+charaWidth (100),		 // 幅
+charaHeight(100),		 // 高さ 
+moveGraphicHandle(),	 // moveグラフィックハンドル格納用配列
+waitGraphicHandle(),	 // waitグラフィックハンドル格納用配列
+move_xCount (0),		 // move用,横方向のカウント数
+wait_xCount (0),		 // wait用,横方向のカウント数
+moveImageX (0),			 // move添字用変数	
+waitImageX (0),			 // wait添字用変数
+moveResult (0),			 
+waitResult (0),
 move(1.0f),	      // 移動係数
 y_speed(0),		  // y方向のスピード
 gravity(0.5f),	  // 重力
 isJump(false),	  // ジャンプしているかのフラグ(初期設定：してない状態)
 isLive(true)	  // 生きているかのフラグ(初期設定：生きてる状態)
 {
+	moveGraphicHandle[MoveNumberElements] = { 0 };
+	waitGraphicHandle[WaitNumberElements] = { 0 };
 }
 
 // 初期化処理
 void Player::Initialize()
 {
 	//画像読み込み
-	LoadDivGraph("res/player/charcter.png", 12, 3, 4, charaWidth, charaHeight, graphicHandle, TRUE);
+	LoadDivGraph("res/player/charcter.png", 12, 3, 4, charaWidth, charaHeight, moveGraphicHandle, TRUE);
 }
 
 // 更新処理

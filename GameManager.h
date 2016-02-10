@@ -3,6 +3,9 @@
 
 #include "SceneManager.h"
 
+#define MoveNumberElements 6
+#define WaitNumberElements 4
+
 class Player;
 class Field;
 
