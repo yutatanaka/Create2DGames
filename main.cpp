@@ -31,9 +31,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && key.UpdateKey() == 0)
 	{
-		SceneManager::GetInstance()->Update();
-
 		SceneManager::GetInstance()->Draw();
+
+		SceneManager::GetInstance()->Update();
+		
 	}
 
 	// ‰æ–Ê‚ğ‰Šú‰»

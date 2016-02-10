@@ -47,6 +47,6 @@ public:
 private:
 
 	// フィールド用のハンドル
-	int blockGraphicHandle;
+	int groundGraphicHandle;
 
 };

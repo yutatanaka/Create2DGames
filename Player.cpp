@@ -68,10 +68,12 @@ void Player::IsHit(Field& field)
 		if (position.x < field.x * MAP_SIZE)
 		{
 			position.x += field.x * MAP_SIZE - (position.x + charaWidth);
+			y_speed = 0;
 		}
 		else
 		{
 			position.x += field.x * MAP_SIZE + field.boxWidth - position.x;
+			y_speed = 0;
 		}
 	}
 	else if (field.distance.x > field.distance.y)
@@ -175,20 +177,20 @@ void Player::Input()
 		xCount = 0;
 	}
 
-		// Spaceキーが押されてたら
-		if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 0)
-		{
-			// ジャンプする
-			isJump = true;
-			y_speed = -10;
+	// Spaceキーが押されてたら
+	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() != 0)
+	{
+		// ジャンプする
+		isJump = true;
+		y_speed = -10;
 
-			// プレイヤーの下を調べる
-			if (CheckUnder() != 0)
-			{
-				// ジャンプしない
-				isJump == false;
-			}
+		// プレイヤーの下を調べる
+		if (CheckUnder() == 0)
+		{
+			// ジャンプしない
+			isJump = false;
 		}
+	}
 }
 
 // 重力をかける処理
@@ -215,7 +217,15 @@ void Player::MovementControl()
 
 	if (position.y > Height)
 	{
-		position.y = Height - kMargin;
+		//position.y = Height - kMargin;
+		isLive = false;
+
+		if (isLive == false)
+		{
+			position.x = 10;
+			position.y = 800;
+			isLive = true;
+		}
 	}
 	else if (position.y < kMargin)
 	{
@@ -226,11 +236,12 @@ void Player::MovementControl()
 // プレイヤーの現在の座標取得メソッド
 Vec2i Player::GetMapPosition()const
 {
+	Vec2i v;
+
 	int mapX, mapY = 0;
 	mapX = position.x / (Width / MAP_WIDTH);
 	mapY = position.y / (Height / MAP_HEIGHT);
 
-	Vec2i v;
 	v.x = mapX;
 	v.y = mapY;
 	return v;
@@ -249,7 +260,7 @@ int Player::CheckUnder()
 	}
 	else
 	{
-		return GameManager::GetInstance()->field->mapData[v.x][v.y + 1];
+		return GameManager::GetInstance()->field->mapData[v.y + 1][v.x];
 	}
 
 }

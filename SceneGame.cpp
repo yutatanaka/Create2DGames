@@ -26,6 +26,8 @@ void SceneGame::Update()
 {
 	GameManager::GetInstance()->Update();
 
+	Draw();
+
 	// EscƒL[‚ª‰Ÿ‚³‚ê‚Ä‚¢‚½‚ç
 	if (CheckHitKey(KEY_INPUT_ESCAPE) != 0)
 	{

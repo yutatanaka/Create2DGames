@@ -36,6 +36,8 @@ void GameManager::Update()
 	
 	player->Update();
 
+	Draw();
+
 }
 
 void GameManager::Draw()
