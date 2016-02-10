@@ -64,6 +64,12 @@ private:
 	// 1ピクセル分余白を持たせる(定数)
 	const int kMargin = 1;
 
+	// 初期ｘ座標(定数)
+	const float kDefault_x = 10;
+
+	// 初期ｙ座標(定数)
+	const float kDefault_y = 800;
+
 public:
 
 	// キャラクターの座標

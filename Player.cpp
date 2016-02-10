@@ -222,8 +222,8 @@ void Player::MovementControl()
 
 		if (isLive == false)
 		{
-			position.x = 10;
-			position.y = 800;
+			position.x = kDefault_x;
+			position.y = kDefault_y;
 			isLive = true;
 		}
 	}
