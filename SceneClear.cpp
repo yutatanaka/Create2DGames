@@ -17,7 +17,7 @@ SceneClear::~SceneClear()
 // 初期化メソッド
 void SceneClear::Initialize()
 {
-	clearBackGroundHandle = LoadGraph("res/background/clearBackGround.png");
+	clearBackGroundHandle = LoadGraph("res/backgroundimage/backGroundClear.png");
 }
 
 // 更新メソッド

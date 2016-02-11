@@ -17,7 +17,7 @@ SceneTitle::~SceneTitle()
 // ‰Šú‰»ƒƒ\ƒbƒh
 void SceneTitle::Initialize()
 {
-	titleBackGroundHandle = LoadGraph("res/background/titleBackGround.png");
+	titleBackGroundHandle = LoadGraph("res/backgroundimage/backGroundTitle.png");
 	                                
 }
 

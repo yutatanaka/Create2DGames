@@ -18,7 +18,7 @@ SceneGame::~SceneGame()
 // 初期化メソッド
 void SceneGame::Initialize()
 {
-	gameBackGroundHandle = LoadGraph("res/background/gameBackGround.png");
+	gameBackGroundHandle = LoadGraph("res/backgroundimage/backGroundSky.png");
 }
 
 // 更新メソッド
