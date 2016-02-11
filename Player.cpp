@@ -8,8 +8,8 @@
 // コンストラクタ
 Player::Player() :
 position(10, 732),		 // 初期位置
-charaWidth (100),		 // 幅
-charaHeight(100),		 // 高さ 
+charaWidth (64),		 // 幅
+charaHeight(64),		 // 高さ 
 moveGraphicHandle(),	 // moveグラフィックハンドル格納用配列
 waitGraphicHandle(),	 // waitグラフィックハンドル格納用配列
 jumpGraphicHandle(0),	 // jumpグラフィックハンドル格納用変数
@@ -59,24 +59,19 @@ void Player::Update()
 void Player::Draw()
 {
 	// 生きていて、←キーもしくは→キーが押されていれば
-	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1)
+	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1 || key.keys[KEY_INPUT_SPACE] == 1)
 	{
 		// 描画する
 		DrawGraph(position.x, position.y, moveGraphicHandle[moveResult], TRUE);
 	}
 
 	// 生きていて、←キーかつ→キーが押されていなければ
-	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) != 1 && CheckHitKey(KEY_INPUT_RIGHT) != 1)
+	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) != 1 && CheckHitKey(KEY_INPUT_RIGHT) != 1 && key.keys[KEY_INPUT_SPACE] != 1)
 	{
 		// 描画する
 		DrawGraph(position.x, position.y, waitGraphicHandle[waitResult], TRUE);
 	}
 
-	// 生きていて、ジャンプキーが押されていれば
-	if (isLive == true && key.keys[KEY_INPUT_SPACE] == 1)
-	{
-		DrawGraph(position.x, position.y, jumpGraphicHandle, TRUE);
-	}
 }
 
 // 当たっている時の処理メソッド
@@ -93,12 +88,10 @@ void Player::IsHit(Field& field)
 		if (position.x < field.x * MAP_SIZE)
 		{
 			position.x += field.x * MAP_SIZE - (position.x + charaWidth);
-			y_speed = 0;
 		}
 		else
 		{
 			position.x += field.x * MAP_SIZE + field.boxWidth - position.x;
-			y_speed = 0;
 		}
 	}
 	else if (field.distance.x > field.distance.y)
@@ -141,6 +134,7 @@ void Player::Input()
 	{
 		// ジャンプする
 		isJump = true;
+		DrawGraph(position.x, position.y, jumpGraphicHandle, TRUE);
 		y_speed = -10;
 
 		// プレイヤーの下のマップデータを調べる
@@ -149,6 +143,11 @@ void Player::Input()
 			// ジャンプしない
 			isJump = false;
 		}
+	}
+	// そうでなければ
+	else
+	{
+		isJump = false;
 	}
 }
 
