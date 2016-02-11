@@ -12,6 +12,7 @@ charaWidth (100),		 // 幅
 charaHeight(100),		 // 高さ 
 moveGraphicHandle(),	 // moveグラフィックハンドル格納用配列
 waitGraphicHandle(),	 // waitグラフィックハンドル格納用配列
+jumpGraphicHandle(0),	 // jumpグラフィックハンドル格納用変数
 move_xCount (0),		 // move用,横方向のカウント数
 wait_xCount (0),		 // wait用,横方向のカウント数
 moveImageX (0),			 // move添字用変数	
@@ -37,6 +38,9 @@ void Player::Initialize()
 
 	// Wait画像読み込み
 	LoadDivGraph("res/player/playerWait.png", WaitNumberElements, 2, 2, charaWidth, charaHeight, waitGraphicHandle, TRUE);
+
+	// jump画像読み込み
+	LoadGraph("res/player/playerJump.png", TRUE);
 }
 
 // 更新処理
@@ -66,6 +70,12 @@ void Player::Draw()
 	{
 		// 描画する
 		DrawGraph(position.x, position.y, waitGraphicHandle[waitResult], TRUE);
+	}
+
+	// 生きていて、ジャンプキーが押されていれば
+	if (isLive == true && key.keys[KEY_INPUT_SPACE] == 1)
+	{
+		DrawGraph(position.x, position.y, jumpGraphicHandle, TRUE);
 	}
 }
 
@@ -124,6 +134,67 @@ void Player::Input()
 
 	}
 	
+	Animation();
+
+	// Spaceキーが押されたら
+	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() != 0)
+	{
+		// ジャンプする
+		isJump = true;
+		y_speed = -10;
+
+		// プレイヤーの下のマップデータを調べる
+		if (CheckUnder() == 0)
+		{
+			// ジャンプしない
+			isJump = false;
+		}
+	}
+}
+
+// 重力をかける処理
+void Player::Gravity()
+{
+
+	y_speed += gravity;
+	position.y += y_speed;
+
+}
+
+// 移動制御メソッド
+void Player::MovementControl()
+{
+	// キャラの移動制御
+	if (position.x > Width)
+	{
+		position.x = Width - kMargin;
+	}
+	else if (position.x < kMargin)
+	{
+		position.x = kMargin;
+	}
+
+	if (position.y > Height)
+	{
+		//position.y = Height - kMargin;
+		isLive = false;
+
+		if (isLive == false)
+		{
+			position.x = kDefault_x;
+			position.y = kDefault_y;
+			isLive = true;
+		}
+	}
+	else if (position.y < kMargin)
+	{
+		position.y = kMargin;
+	}
+}
+
+// アニメーションメソッド
+void Player::Animation()
+{
 	// →キーが押されてて、かつxCountが0以上なら0にしてから1引く
 	// それ以外は1引く
 	if (CheckHitKey(KEY_INPUT_RIGHT) == 1)
@@ -172,7 +243,7 @@ void Player::Input()
 	if (CheckHitKey(KEY_INPUT_LEFT) != 1 && CheckHitKey(KEY_INPUT_RIGHT) != 1)
 	{
 		move_xCount = 0;
-		
+
 		// 右を向いていれば
 		if (isRight == true)
 		{
@@ -209,62 +280,6 @@ void Player::Input()
 		// マイナスなら左向きなので、2行めの先頭添字番号を引く
 		waitImageX += 2;
 		waitResult = waitImageX;
-	}
-
-
-	// Spaceキーが押されてたら
-	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() != 0)
-	{
-		// ジャンプする
-		isJump = true;
-		y_speed = -10;
-
-		// プレイヤーの下を調べる
-		if (CheckUnder() == 0)
-		{
-			// ジャンプしない
-			isJump = false;
-		}
-	}
-}
-
-// 重力をかける処理
-void Player::Gravity()
-{
-
-	y_speed += gravity;
-	position.y += y_speed;
-
-}
-
-// 移動制御メソッド
-void Player::MovementControl()
-{
-	// キャラの移動制御
-	if (position.x > Width)
-	{
-		position.x = Width - kMargin;
-	}
-	else if (position.x < kMargin)
-	{
-		position.x = kMargin;
-	}
-
-	if (position.y > Height)
-	{
-		//position.y = Height - kMargin;
-		isLive = false;
-
-		if (isLive == false)
-		{
-			position.x = kDefault_x;
-			position.y = kDefault_y;
-			isLive = true;
-		}
-	}
-	else if (position.y < kMargin)
-	{
-		position.y = kMargin;
 	}
 }
 
