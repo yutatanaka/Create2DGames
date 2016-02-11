@@ -7,7 +7,7 @@
 
 // コンストラクタ
 Player::Player() :
-position(10, 770),		 // 初期位置
+position(64, 770),		 // 初期位置
 charaWidth (60),		 // 幅
 charaHeight(60),		 // 高さ 
 moveGraphicHandle(),	 // moveグラフィックハンドル格納用配列

@@ -9,6 +9,7 @@
 #define MAP_WIDTH 25	// マップの幅
 #define MAP_HEIGHT 15	// マップの縦長さ
 
+#define fieldNumberElements 10
 
 class Field
 {
@@ -47,6 +48,7 @@ public:
 private:
 
 	// フィールド用のハンドル
-	int groundGraphicHandle;
+	int fieldGraphicHandle[fieldNumberElements];
+
 
 };

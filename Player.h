@@ -64,12 +64,6 @@ private:
 
 //////////////////////////////////////////////////////////
 
-	// move配列要素数(定数)
-	const int kMoveNumberElements = MoveNumberElements;
-
-	// wait配列要素数(定数)
-	const int kWaitNumberElements = WaitNumberElements;
-
 	// 歩く速度(定数)
 	const int kSpeed = 5;
 
