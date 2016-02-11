@@ -71,7 +71,7 @@ private:
 	const int kWaitNumberElements = WaitNumberElements;
 
 	// 歩く速度(定数)
-	const int kSpeed = 7;
+	const int kSpeed = 5;
 
 	// 1ピクセル分余白を持たせる(定数)
 	const int kMargin = 1;

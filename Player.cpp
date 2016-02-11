@@ -7,14 +7,14 @@
 
 // コンストラクタ
 Player::Player() :
-position(10, 732),		 // 初期位置
-charaWidth (64),		 // 幅
-charaHeight(64),		 // 高さ 
+position(10, 770),		 // 初期位置
+charaWidth (60),		 // 幅
+charaHeight(60),		 // 高さ 
 moveGraphicHandle(),	 // moveグラフィックハンドル格納用配列
 waitGraphicHandle(),	 // waitグラフィックハンドル格納用配列
 jumpGraphicHandle(0),	 // jumpグラフィックハンドル格納用変数
 move_xCount (0),		 // move用,横方向のカウント数
-wait_xCount (0),		 // wait用,横方向のカウント数
+wait_xCount (2),		 // wait用,横方向のカウント数
 moveImageX (0),			 // move添字用変数	
 waitImageX (0),			 // wait添字用変数
 moveResult (0),			 
