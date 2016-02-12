@@ -59,14 +59,14 @@ void Player::Update()
 void Player::Draw()
 {
 	// 生きていて、←キーもしくは→キーが押されていれば
-	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1 || key.keys[KEY_INPUT_SPACE] == 1)
+	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1)
 	{
 		// 描画する
-		DrawGraph(position.x, position.y, moveGraphicHandle[moveResult], TRUE);
+		DrawGraph(position.x , position.y, moveGraphicHandle[moveResult], TRUE);
 	}
 
 	// 生きていて、←キーかつ→キーが押されていなければ
-	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) != 1 && CheckHitKey(KEY_INPUT_RIGHT) != 1 && key.keys[KEY_INPUT_SPACE] != 1)
+	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) != 1 && CheckHitKey(KEY_INPUT_RIGHT) != 1)
 	{
 		// 描画する
 		DrawGraph(position.x, position.y, waitGraphicHandle[waitResult], TRUE);
@@ -130,15 +130,14 @@ void Player::Input()
 	Animation();
 
 	// Spaceキーが押されたら
-	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() != 0)
+	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 1)
 	{
 		// ジャンプする
-		isJump = true;
-		DrawGraph(position.x, position.y, jumpGraphicHandle, TRUE);
+ 		isJump = true;
 		y_speed = -10;
 
 		// プレイヤーの下のマップデータを調べる
-		if (CheckUnder() == 0)
+		if (CheckUnder() != 1)
 		{
 			// ジャンプしない
 			isJump = false;
@@ -298,7 +297,8 @@ int Player::CheckUnder()
 
 	Vec2i v = GetMapPosition();
 
-	if (MAP_HEIGHT <= (v.y + 1)){
+	if (MAP_HEIGHT <= (v.y + 1))
+	{
 		return 0;
 	}
 	else
@@ -306,4 +306,34 @@ int Player::CheckUnder()
 		return GameManager::GetInstance()->field->mapData[v.y + 1][v.x];
 	}
 
+}
+
+// プレイヤーの左を調べる(マップデータ)
+int Player::CheckLeft()
+{
+	Vec2i v = GetMapPosition();
+
+	if (MAP_WIDTH >= (v.x - 1))
+	{
+		return 0;
+	}
+	else
+	{
+		return GameManager::GetInstance()->field->mapData[v.y][v.x - 1];
+	}
+}
+
+// プレイヤーの右を調べる(マップデータ)
+int Player::CheckRight()
+{
+	Vec2i v = GetMapPosition();
+
+	if (MAP_WIDTH <= (v.x + 1))
+	{
+		return 0;
+	}
+	else
+	{
+		return GameManager::GetInstance()->field->mapData[v.y][v.x + 1];
+	}
 }

@@ -45,6 +45,12 @@ public:
 	// プレイヤーの下のマップデータを調べる
 	int CheckUnder();
 
+	// プレイヤーの左のマップデータを調べる
+	int CheckRight();
+
+	// プレイヤーの右のマップデータを調べる
+	int CheckLeft();
+
 private:
 
 	// 移動係数
