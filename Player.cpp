@@ -58,11 +58,12 @@ void Player::Update()
 // 描画処理
 void Player::Draw()
 {
+	DrawBox(192, 782+64, 192+64, 782+52+64, GetColor(255, 0, 0),TRUE);
 	// 生きていて、←キーもしくは→キーが押されていれば
 	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1)
 	{
 		// 描画する
-		DrawGraph(position.x , position.y, moveGraphicHandle[moveResult], TRUE);
+		DrawGraph(position.x, position.y, moveGraphicHandle[moveResult], TRUE);
 	}
 
 	// 生きていて、←キーかつ→キーが押されていなければ
@@ -71,7 +72,7 @@ void Player::Draw()
 		// 描画する
 		DrawGraph(position.x, position.y, waitGraphicHandle[waitResult], TRUE);
 	}
-
+	DrawCircle(position.x, position.y,3,0x000000ff);
 }
 
 // 当たっている時の処理メソッド
@@ -130,7 +131,10 @@ void Player::Input()
 	Animation();
 
 	// Spaceキーが押されたら
-	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 1 && CheckLeft() != 1 && CheckRight() != 1)
+	char hoge[256];
+	sprintf_s(hoge,255,"%d\n",CheckUnder());
+	OutputDebugString(hoge);
+	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 1)
 	{
 		// ジャンプする
  		isJump = true;
@@ -142,11 +146,6 @@ void Player::Input()
 			// ジャンプしない
 			isJump = false;
 		}
-	}
-	// そうでなければ
-	else
-	{
-		isJump = false;
 	}
 }
 
@@ -303,9 +302,19 @@ int Player::CheckUnder()
 	}
 	else
 	{
-		return GameManager::GetInstance()->field->mapData[v.y + 1][v.x];
+		if (GameManager::GetInstance()->field->mapData[v.y + 1][v.x] == 1)
+		{
+			return 1;
+		}
+		else if (GameManager::GetInstance()->field->mapData[v.y + 1][v.x + 1] == 1)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
 	}
-
 }
 
 // プレイヤーの左を調べる(マップデータ)

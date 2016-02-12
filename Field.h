@@ -17,6 +17,8 @@ public:
 	
 	// コンストラクタ
 	Field();
+	~Field(){
+	}
 
 	// 初期化メソッド
 	void Initialize();
