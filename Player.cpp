@@ -130,7 +130,7 @@ void Player::Input()
 	Animation();
 
 	// Spaceキーが押されたら
-	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 1)
+	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 1 && CheckLeft() != 1 && CheckRight() != 1)
 	{
 		// ジャンプする
  		isJump = true;
