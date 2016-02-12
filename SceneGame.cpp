@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "SceneGame.h"
 #include "GameManager.h"
+#include "Player.h"
 
 // コンストラクタ
 SceneGame::SceneGame() :
@@ -54,4 +55,10 @@ void SceneGame::Draw()
 	DrawString(0, 0, "ゲーム画面です。", GetColor(255, 255, 255));
 	DrawString(0, 20, "Escキーを押すとメニュー画面に進みます。", GetColor(255, 255, 255));
 	DrawString(0, 40, "Cキーを押すとクリア画面に進みます。。", GetColor(255, 255, 255));
+
+	if (GameManager::GetInstance()->player->isLive == false)
+	{
+		DrawString(Width / 2, Height / 2, "G a m e O v e r", GetColor(255, 0, 0));
+		DrawString(Width / 2, Height / 2 + 20, "Push Escape", GetColor(0, 0, 0));
+	}
 }

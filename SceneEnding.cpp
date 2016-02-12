@@ -37,5 +37,5 @@ void SceneEnding::Draw()
 	DrawString(0, 0, "エンディング画面です。", GetColor(255, 255, 255));
 	DrawString(0, 20, "Escキーを押すとタイトル画面に進みます。", GetColor(255, 255, 255));
 
-	DrawString(Width / 2, Height / 2, "エンディングだよ。", GetColor(255, 0, 0));
+	DrawString(Width / 2, Height / 2, "エンディングだよ。", GetColor(255, 255, 0));
 }

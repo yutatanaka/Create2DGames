@@ -56,9 +56,6 @@ private:
 	// 重力
 	float gravity;
 
-	// 生きてるかどうかのフラグ
-	bool isLive;
-
 	// 右を向いているかどうかのフラグ
 	bool isRight;
 
@@ -70,12 +67,6 @@ private:
 	// 1ピクセル分余白を持たせる(定数)
 	const int kMargin = 1;
 
-	// 初期ｘ座標(定数)
-	const float kDefault_x = 10;
-
-	// 初期ｙ座標(定数)
-	const float kDefault_y = 800;
-
 public:
 
 	// キャラクターの座標
@@ -86,6 +77,15 @@ public:
 
 	// ジャンプしているかどうかのフラグ
 	bool isJump;
+
+	// 生きてるかどうかのフラグ
+	bool isLive;
+
+	// 初期ｘ座標(定数)
+	const float kDefault_x = 65;
+
+	// 初期ｙ座標(定数)
+	const float kDefault_y = 770;
 
 /////////////////////////////////////////
 

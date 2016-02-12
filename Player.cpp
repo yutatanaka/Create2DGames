@@ -178,12 +178,6 @@ void Player::MovementControl()
 		//position.y = Height - kMargin;
 		isLive = false;
 
-		if (isLive == false)
-		{
-			position.x = kDefault_x;
-			position.y = kDefault_y;
-			isLive = true;
-		}
 	}
 	else if (position.y < kMargin)
 	{
