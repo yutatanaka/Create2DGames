@@ -24,10 +24,10 @@ void SceneClear::Initialize()
 void SceneClear::Update()
 {
 	// Gキーが押されていたら
-	if (CheckHitKey(KEY_INPUT_ESCAPE) != 0)
+	if (CheckHitKey(KEY_INPUT_E) != 0)
 	{
 		// シーンをゲーム画面に変更
-		SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Title);
+		SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Ending);
 	}
 }
 
@@ -37,5 +37,5 @@ void SceneClear::Draw()
 	DrawGraph(position.x, position.y, clearBackGroundHandle, FALSE);
 
 	DrawString(0, 0, "クリア画面です。", GetColor(255, 255, 255));
-	DrawString(0, 20, "Escキーを押すとタイトル画面に進みます。", GetColor(255, 255, 255));
+	DrawString(0, 20, "Eキーを押すとエンディング画面に進みます。", GetColor(255, 255, 255));
 }

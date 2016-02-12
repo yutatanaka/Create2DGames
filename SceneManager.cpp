@@ -14,7 +14,7 @@ SceneManager::SceneManager()
 
 	sceneClear = new SceneClear();
 
-	sceneGameOver = new SceneGameOver();
+	sceneEnding = new SceneEnding();
 }
 
 // デストラクタ
@@ -26,7 +26,7 @@ SceneManager::~SceneManager()
 
 	delete sceneClear;
 
-	delete sceneGameOver;
+	delete sceneEnding;
 }
 
 // 初期化メソッド
@@ -35,7 +35,7 @@ void SceneManager::Initialize()
 	sceneTitle->Initialize();
 	sceneGame->Initialize();
 	sceneClear->Initialize();
-	sceneGameOver->Initialize();
+	sceneEnding->Initialize();
 }
 
 // 更新メソッド
@@ -52,8 +52,8 @@ void SceneManager::Update()
 	case eScene_Clear:			// 現在の画面がクリアなら
 		sceneClear->Update();	// クリア画面の更新処理をする
 		break;
-	case eScene_GameOver:		// 現在の画面がゲームオーバーなら
-		sceneGameOver->Update();// ゲームオーバー画面の更新処理をする
+	case eScene_Ending:		// 現在の画面がゲームオーバーなら
+		sceneEnding->Update();// ゲームオーバー画面の更新処理をする
 		break;
 
 	}
@@ -73,8 +73,8 @@ void SceneManager::Draw()
 	case eScene_Clear:			// 現在の画面がクリアなら
 		sceneClear->Draw();		// クリア画面の描画処理をする
 		break;
-	case eScene_GameOver:		// 現在の画面がゲームオーバーなら
-		sceneGameOver->Draw();	// ゲームオーバー画面の描画処理をする
+	case eScene_Ending:		// 現在の画面がゲームオーバーなら
+		sceneEnding->Draw();	// ゲームオーバー画面の描画処理をする
 		break;
 	}
 

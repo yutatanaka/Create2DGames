@@ -5,7 +5,7 @@
 #include "SceneTitle.h"
 #include "SceneGame.h"
 #include "SceneClear.h"
-#include "SceneGameOver.h"
+#include "SceneEnding.h"
 
 // シーンの内容
 typedef enum
@@ -13,14 +13,14 @@ typedef enum
 	eScene_Title,		// タイトル画面
 	eScene_Game,		// ゲーム画面
 	eScene_Clear,		// クリア画面
-	eScene_GameOver,	// ゲームオーバー画面
+	eScene_Ending,		// エンディング画面
 
 }eScene ;
 
 class SceneTitle;
 class SceneGame;
 class SceneClear;
-class SceneGameOver;
+class SceneEnding;
 
 class SceneManager
 {
@@ -75,6 +75,6 @@ public:
 
 	SceneClear *sceneClear;
 
-	SceneGameOver *sceneGameOver;
+	SceneEnding *sceneEnding;
 
 };

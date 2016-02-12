@@ -3,15 +3,15 @@
 
 #include "GameManager.h"
 
-class SceneGameOver
+class SceneEnding
 {
 public:
 
 	// コンストラクタ
-	SceneGameOver();
+	SceneEnding();
 
 	// デストラクタ
-	~SceneGameOver();
+	~SceneEnding();
 
 	// 初期化メソッド
 	void Initialize();

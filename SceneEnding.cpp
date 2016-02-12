@@ -1,27 +1,27 @@
 
 #include "DxLib.h"
-#include "SceneGameOver.h"
+#include "SceneEnding.h"
 
 // コンストラクタ
-SceneGameOver::SceneGameOver()
+SceneEnding::SceneEnding()
 {
 
 }
 
 // デストラクタ
-SceneGameOver::~SceneGameOver()
+SceneEnding::~SceneEnding()
 {
 
 }
 
 // 初期化メソッド
-void SceneGameOver::Initialize()
+void SceneEnding::Initialize()
 {
 
 }
 
 // 更新メソッド
-void SceneGameOver::Update()
+void SceneEnding::Update()
 {
 	// Gキーが押されていたら
 	if (CheckHitKey(KEY_INPUT_ESCAPE) != 0)
@@ -32,10 +32,10 @@ void SceneGameOver::Update()
 }
 
 // 描画メソッド
-void SceneGameOver::Draw()
+void SceneEnding::Draw()
 {
-	DrawString(0, 0, "ゲームオーバー画面です。", GetColor(255, 255, 255));
+	DrawString(0, 0, "エンディング画面です。", GetColor(255, 255, 255));
 	DrawString(0, 20, "Escキーを押すとタイトル画面に進みます。", GetColor(255, 255, 255));
 
-	DrawString(Width / 2, Height / 2, "GAMEOVER", GetColor(255, 0, 0));
+	DrawString(Width / 2, Height / 2, "エンディングだよ。", GetColor(255, 0, 0));
 }

@@ -42,12 +42,6 @@ void SceneGame::Update()
 		SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Clear);
 	}
 
-	// Eを押されていたら
-	if (CheckHitKey(KEY_INPUT_E) != 0)
-	{
-		// シーンをゲームオーバーに変更
-		SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_GameOver);
-	}
 }
 
 // 描画メソッド
@@ -58,7 +52,6 @@ void SceneGame::Draw()
 	GameManager::GetInstance()->Draw();
 
 	DrawString(0, 0, "ゲーム画面です。", GetColor(255, 255, 255));
-	DrawString(0, 20, "Escキーを押すとメニュー画面に戻ります。", GetColor(255, 255, 255));
-	DrawString(0, 40, "Cキーを押すとクリア画面に戻ります。", GetColor(255, 255, 255));
-	DrawString(0, 60, "Eキーを押すとゲームオーバー画面に戻ります。", GetColor(255, 255, 255));
+	DrawString(0, 20, "Escキーを押すとメニュー画面に進みます。", GetColor(255, 255, 255));
+	DrawString(0, 40, "Cキーを押すとクリア画面に進みます。。", GetColor(255, 255, 255));
 }

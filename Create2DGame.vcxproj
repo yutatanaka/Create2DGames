@@ -77,7 +77,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneClear.cpp" />
     <ClCompile Include="SceneGame.cpp" />
-    <ClCompile Include="SceneGameOver.cpp" />
+    <ClCompile Include="SceneEnding.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SceneTitle.cpp" />
   </ItemGroup>
@@ -88,7 +88,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="SceneClear.h" />
     <ClInclude Include="SceneGame.h" />
-    <ClInclude Include="SceneGameOver.h" />
+    <ClInclude Include="SceneEnding.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="Vec2f.h" />
