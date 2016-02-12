@@ -58,7 +58,7 @@ void Player::Update()
 // 描画処理
 void Player::Draw()
 {
-	DrawBox(192, 782+64, 192+64, 782+52+64, GetColor(255, 0, 0),TRUE);
+	DrawBox(position.x, position.y, position.x +charaWidth, position.y + charaHeight, GetColor(255, 0, 0),TRUE);
 	// 生きていて、←キーもしくは→キーが押されていれば
 	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1)
 	{
@@ -132,7 +132,7 @@ void Player::Input()
 
 	// Spaceキーが押されたら
 	char hoge[256];
-	sprintf_s(hoge,255,"%d\n",CheckUnder());
+	sprintf_s(hoge,255,"%d\n",CheckLeft());
 	OutputDebugString(hoge);
 	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 1)
 	{
@@ -322,7 +322,7 @@ int Player::CheckLeft()
 {
 	Vec2i v = GetMapPosition();
 
-	if (MAP_WIDTH >= (v.x - 1))
+	if (MAP_WIDTH <= (v.x - 1))
 	{
 		return 0;
 	}
