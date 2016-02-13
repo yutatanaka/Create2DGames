@@ -39,9 +39,6 @@ public:
 	// 固定の床と当たっているときの処理メソッド
 	void FieldIsHit(Field& field);
 
-	// 動いてる床と当たっている時の処理メソッド
-	void MoveFloor_IsHit(MoveFloor& moveFloor);
-
 	// プレイヤーの現在、座標取得メソッド
 	Vec2i GetMapPosition()const;
 
@@ -59,8 +56,7 @@ private:
 	// 移動係数
 	float move;
 
-	// y方向のスピード
-	float y_speed;
+
 
 	// 重力
 	float gravity;
@@ -83,6 +79,9 @@ public:
 
 	// キャラクターの大きさ
 	Vec2f scale;
+
+	// y方向のスピード
+	float y_speed;
 
 	// ジャンプしているかどうかのフラグ
 	bool isJump;

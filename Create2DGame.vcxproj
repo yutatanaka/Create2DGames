@@ -74,6 +74,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MoveFloor.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneClear.cpp" />
     <ClCompile Include="SceneGame.cpp" />

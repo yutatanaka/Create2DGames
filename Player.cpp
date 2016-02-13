@@ -3,6 +3,7 @@
 #include "GameManager.h"
 #include "Key.h"
 #include "Field.h"
+#include "MoveFloor.h "
 #include "Player.h"
 
 // コンストラクタ
@@ -75,7 +76,7 @@ void Player::Draw()
 	DrawCircle(position.x, position.y,3,0x000000ff);
 }
 
-// 当たっている時の処理メソッド
+// 固定の床との当たっている時の処理メソッド
 void Player::FieldIsHit(Field& field)
 {
 	field.distance.x = position.x + charaWidth / 2 - (field.x * MAP_SIZE + field.boxWidth / 2);
@@ -110,6 +111,7 @@ void Player::FieldIsHit(Field& field)
 	}
 	
 }
+
 
 // 入力処理
 void Player::Input()

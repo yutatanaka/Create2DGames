@@ -4,6 +4,7 @@
 
 #include "GameManager.h"
 #include "Vec2f.h"
+#include "Vec2i.h"
 #include "Player.h"
 
 class MoveFloor
@@ -16,6 +17,9 @@ public:
 	// デストラクタ
 	~MoveFloor();
 
+	// 初期化処理
+	void Initialize();
+
 	// 更新処理
 	void Update();
 
@@ -26,33 +30,26 @@ public:
 	void Move();
 
 	// 当たり判定
-	// true..当たっている false...当たっていない
-	void MoveFloorCheckHit(Player& player, int x, int y);
+	void MoveFloorCheckHit();
 
 
 public:
 
-	// 床のポジション
-	Vec2f pos;			
+	// 座標
+	int x, y;
 
 	// 移動係数
 	Vec2f move;				
 
-	// スピード
-	float speed;			
-
-	// 幅、高さ
-	int width, height;		
+	// 距離
+	Vec2i distance;
 	
-	// 最小座標
-	Vec2f _min;
+	// 幅、高さ
+	int width, height;			
 
-	// 最大座標
-	Vec2f _max;				
+private:
 
-	// 色
-	int color;
+	// 動く床のグラフィックハンドル格納用変数
+	int moveFloorGraphicHandle;
 
 };
-
-extern MoveFloor moveFloor;
