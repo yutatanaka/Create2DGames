@@ -72,7 +72,7 @@ void Field::Update()
 		{
 			if (mapData[y][x] == 1)
 			{
-				CheckHit(*(GameManager::GetInstance()->player), x * MAP_SIZE, y * MAP_SIZE);
+				FieldCheckHit(*(GameManager::GetInstance()->player), x * MAP_SIZE, y * MAP_SIZE);
 			}
 		}
 	}
@@ -131,13 +131,13 @@ void Field::Draw()
 }
 
 // プレイヤーと床との当たり判定を確認するメソッド
-void Field::CheckHit(Player& player, int x, int y)
+void Field::FieldCheckHit(Player& player, int x, int y)
 {
 	if (player.position.x + player.charaWidth > x && // 右端と左端
 		player.position.x < x + boxWidth &&			 // 左端と右端
 		player.position.y + player.charaHeight > y &&// 下端と上端
 		player.position.y < y + boxHeight)			 // 上端と下端
 	{
-		player.IsHit(*(GameManager::GetInstance()->field));
+		player.FieldIsHit(*(GameManager::GetInstance()->field));
 	}
 }

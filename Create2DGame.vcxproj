@@ -85,6 +85,7 @@
     <ClInclude Include="Field.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Key.h" />
+    <ClInclude Include="MoveFloor.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SceneClear.h" />
     <ClInclude Include="SceneGame.h" />

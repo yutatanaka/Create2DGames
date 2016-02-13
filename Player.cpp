@@ -76,7 +76,7 @@ void Player::Draw()
 }
 
 // “–‚½‚Á‚Ä‚¢‚é‚Ìˆ—ƒƒ\ƒbƒh
-void Player::IsHit(Field& field)
+void Player::FieldIsHit(Field& field)
 {
 	field.distance.x = position.x + charaWidth / 2 - (field.x * MAP_SIZE + field.boxWidth / 2);
 	field.distance.y = position.y + charaHeight / 2 - (field.y * MAP_SIZE + field.boxHeight / 2);

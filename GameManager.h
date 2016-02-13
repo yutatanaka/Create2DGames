@@ -8,6 +8,7 @@
 
 class Player;
 class Field;
+class MoveFloor;
 
 enum Window
 {
@@ -65,5 +66,6 @@ public:
 
 	Field *field;
 
+	MoveFloor *moveFloor;
 };
 
