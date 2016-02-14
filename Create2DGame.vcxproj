@@ -71,6 +71,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Field.cpp" />
+    <ClCompile Include="Fps.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="main.cpp" />
