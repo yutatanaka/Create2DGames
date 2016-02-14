@@ -26,9 +26,13 @@ void SceneGame::Initialize()
 // 更新メソッド
 void SceneGame::Update()
 {
+	fps.Update();
+
 	GameManager::GetInstance()->Update();
 
 	Draw();
+
+	fps.Wait();
 
 	// Escキーが押されていたら
 	if (CheckHitKey(KEY_INPUT_ESCAPE) != 0)
@@ -49,6 +53,8 @@ void SceneGame::Update()
 // 描画メソッド
 void SceneGame::Draw()
 {
+	fps.Draw();
+
 	DrawGraph(position.x, position.y, gameBackGroundHandle, FALSE);
 
 	GameManager::GetInstance()->Draw();

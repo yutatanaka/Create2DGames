@@ -38,7 +38,7 @@ bool Fps::Update()
 // 描画メソッド
 void Fps::Draw()
 {
-	DrawFormatString(1600 / 2, 960 / 2, GetColor(255, 255, 255), "%.1f", fps);
+	DrawFormatString(1600 / 2, 0, GetColor(0, 0, 0), "%.1f", fps);
 }
 
 // かかった時間等を計測するメソッド
