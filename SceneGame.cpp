@@ -26,11 +26,12 @@ void SceneGame::Initialize()
 // 更新メソッド
 void SceneGame::Update()
 {
+	GameManager::GetInstance()->Update();
 	fps.Update();
 
-	GameManager::GetInstance()->Update();
-
 	Draw();
+
+	fps.Draw();
 
 	fps.Wait();
 
@@ -53,8 +54,6 @@ void SceneGame::Update()
 // 描画メソッド
 void SceneGame::Draw()
 {
-	fps.Draw();
-
 	DrawGraph(position.x, position.y, gameBackGroundHandle, FALSE);
 
 	GameManager::GetInstance()->Draw();
