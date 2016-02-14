@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Field.h" />
+    <ClInclude Include="Fps.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="MoveFloor.h" />
