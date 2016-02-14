@@ -3,15 +3,13 @@
 
 class Sound
 {
-private:
+public:
 
 	// コンストラクタ
 	Sound();
 
 	// デストラクタ
 	~Sound();
-
-public:
 
 	// 初期化処理メソッド
 	void Initialize();
