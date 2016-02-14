@@ -21,6 +21,7 @@ SceneGame::~SceneGame()
 void SceneGame::Initialize()
 {
 	gameBackGroundHandle = LoadGraph("res/backgroundimage/backGroundSky.png");
+	
 }
 
 // 更新メソッド
@@ -59,13 +60,15 @@ void SceneGame::Draw()
 	DrawGraph(position.x, position.y, gameBackGroundHandle, FALSE);
 
 	GameManager::GetInstance()->Draw();
-
-	DrawString(0, 0, "←→キー　移動", GetColor(255, 255, 255));
-	DrawString(0, 20, "SPACEキー　ジャンプ", GetColor(255, 255, 255));
+	
+	SetFontSize(50);
+	DrawString(0, 0, "←→キー　移動", GetColor(0, 0, 0));
+	DrawString(0, 70, "SPACEキー　ジャンプ", GetColor(0, 0, 0));
 
 	if (GameManager::GetInstance()->player->isLive == false)
 	{
-		DrawString(Width / 2, Height / 2, "G a m e O v e r", GetColor(255, 0, 0));
-		DrawString(Width / 2, Height / 2 + 20, "Push Escape", GetColor(0, 0, 0));
+		SetFontSize(50);
+		DrawString(1000, Height / 2, "G a m e O v e r...", GetColor(0, 0, 0));
+		DrawString(1000, 530, "Push Escape", GetColor(0, 0, 0));
 	}
 }

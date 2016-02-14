@@ -3,21 +3,20 @@
 #include "SceneEnding.h"
 
 // コンストラクタ
-SceneEnding::SceneEnding()
+SceneEnding::SceneEnding() :
+gameOverPomeHandle(0)
 {
-
 }
 
 // デストラクタ
 SceneEnding::~SceneEnding()
 {
-
 }
 
 // 初期化メソッド
 void SceneEnding::Initialize()
 {
-
+	gameOverPomeHandle = LoadGraph("res/backgroundimage/gameOverPome.png");
 }
 
 // 更新メソッド
@@ -34,8 +33,16 @@ void SceneEnding::Update()
 // 描画メソッド
 void SceneEnding::Draw()
 {
-	DrawString(0, 0, "エンディング画面です。", GetColor(255, 255, 255));
-	DrawString(0, 20, "Escキーを押すとタイトル画面に進みます。", GetColor(255, 255, 255));
+	DrawGraph(k_X-500, k_Y-300 , gameOverPomeHandle, TRUE);
 
-	DrawString(Width / 2, Height / 2, "エンディングだよ。", GetColor(255, 255, 0));
+	DrawString(k_X, k_Y-100 , "ハウスへGO～　開発チーム", kColor_White);
+
+	DrawString(k_X, k_Y + 50, "プランナー兼プログラマー", kColor_White);
+	DrawString(k_X, k_Y + 100, "田中　優太", kColor_White);
+
+	DrawString(k_X, k_Y + 200, "デザイナー", kColor_White);
+	DrawString(k_X, k_Y + 250, "阿部　慶照", kColor_White);
+	DrawString(k_X, k_Y + 300, "デザイナー", kColor_White);
+	DrawString(k_X, k_Y + 350, "高橋　夏生", kColor_White);
+	
 }
