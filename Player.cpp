@@ -59,7 +59,7 @@ void Player::Update()
 // 描画処理
 void Player::Draw()
 {
-	DrawBox(position.x, position.y, position.x +charaWidth, position.y + charaHeight, GetColor(255, 0, 0),TRUE);
+	//DrawBox(position.x, position.y, position.x +charaWidth, position.y + charaHeight, GetColor(255, 0, 0),TRUE);
 	// 生きていて、←キーもしくは→キーが押されていれば
 	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1)
 	{
@@ -73,7 +73,7 @@ void Player::Draw()
 		// 描画する
 		DrawGraph(position.x, position.y, waitGraphicHandle[waitResult], TRUE);
 	}
-	DrawCircle(position.x, position.y,3,0x000000ff);
+	//DrawCircle(position.x, position.y,3,0x000000ff);
 }
 
 // 固定の床との当たっている時の処理メソッド
