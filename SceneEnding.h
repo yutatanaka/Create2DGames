@@ -30,10 +30,10 @@ public:
 	// •`‰æ‚ÌÀ•W
 	
 	// xÀ•W
-	const int k_X = Width / 2 - 100;
+	const int k_X = 700;
 	
 	// yÀ•W
-	const int k_Y = Height / 2;
+	const int k_Y = 480;
 
 	const int kColor_White = GetColor(255, 255, 255);
 
