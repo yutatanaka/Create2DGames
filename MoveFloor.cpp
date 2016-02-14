@@ -22,7 +22,7 @@ MoveFloor::~MoveFloor()
 // 初期化処理メソッド
 void MoveFloor::Initialize()
 {
-	moveFloorGraphicHandle = LoadGraph("res/floor/moveFloor.png");
+	moveFloorGraphicHandle = LoadGraph("res/floor/mapChip1Ground.png");
 }
 
 // 更新処理メソッド
