@@ -26,8 +26,10 @@ void SceneGame::Initialize()
 // 更新メソッド
 void SceneGame::Update()
 {
-	GameManager::GetInstance()->Update();
+
 	fps.Update();
+
+	GameManager::GetInstance()->Update();
 
 	Draw();
 
@@ -58,9 +60,8 @@ void SceneGame::Draw()
 
 	GameManager::GetInstance()->Draw();
 
-	DrawString(0, 0, "ゲーム画面です。", GetColor(255, 255, 255));
-	DrawString(0, 20, "Escキーを押すとメニュー画面に進みます。", GetColor(255, 255, 255));
-	DrawString(0, 40, "Cキーを押すとクリア画面に進みます。。", GetColor(255, 255, 255));
+	DrawString(0, 0, "←→キー　移動", GetColor(255, 255, 255));
+	DrawString(0, 20, "SPACEキー　ジャンプ", GetColor(255, 255, 255));
 
 	if (GameManager::GetInstance()->player->isLive == false)
 	{

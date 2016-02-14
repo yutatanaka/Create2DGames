@@ -83,7 +83,6 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SceneTitle.cpp" />
     <ClCompile Include="Sound.cpp" />
-    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Field.h" />
@@ -98,7 +97,6 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="Sound.h" />
-    <ClInclude Include="Timer.h" />
     <ClInclude Include="Vec2f.h" />
     <ClInclude Include="Vec2i.h" />
   </ItemGroup>
