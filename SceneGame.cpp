@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "SceneGame.h"
 #include "GameManager.h"
+#include "Fps.h"
 #include "Player.h"
 
 // コンストラクタ

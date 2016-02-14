@@ -38,9 +38,10 @@ public:
 //////////////////////////////////////////
 
 	// •½‹Ï‚ğæ‚éƒTƒ“ƒvƒ‹”(’è”)
-	static const int N = 60;
+	static const int kAverage = 60;
 
 	// İ’è‚µ‚½FPS(’è”)
-	static const int FPS = 60;
+	static const int kFPS = 60;
 };
 	
+extern Fps fps;
