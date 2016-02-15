@@ -3,6 +3,7 @@
 #include "SceneGame.h"
 #include "GameManager.h"
 #include "Fps.h"
+#include "Sound.h"
 #include "Player.h"
 
 // コンストラクタ
@@ -29,6 +30,8 @@ void SceneGame::Update()
 {
 
 	GameManager::GetInstance()->Update();
+
+	PlaySoundMem(sound.gameMusicHandle, DX_PLAYTYPE_LOOP);
 
 	// Escキーが押されていたら
 	if (CheckHitKey(KEY_INPUT_ESCAPE) != 0)

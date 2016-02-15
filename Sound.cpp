@@ -4,7 +4,6 @@
 
 Sound sound;
 
-
 // コンストラクタ
 Sound::Sound() :
 dicitionSoundHandle(0),

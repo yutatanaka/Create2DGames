@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "GameManager.h"
 #include "Key.h"
+#include "Sound.h"
 #include "Field.h"
 #include "Enemy.h "
 #include "Player.h"
@@ -136,6 +137,7 @@ void Player::Input()
 	// Spaceキーが押されたら
 	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 1)
 	{
+		PlaySoundMem(sound.jumpSoundHandle, DX_PLAYTYPE_BACK);
 		// ジャンプする
  		isJump = true;
 		y_speed = -10;

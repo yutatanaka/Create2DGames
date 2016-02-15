@@ -43,7 +43,4 @@ void SceneTitle::Update()
 void SceneTitle::Draw()
 {
 	DrawGraph(position.x, position.y, titleBackGroundHandle, FALSE);
-
-	DrawString(0, 0, "タイトル画面です。", GetColor(255, 255, 255));
-	DrawString(0, 20, "Gキーを押すとゲーム画面に進みます。", GetColor(255, 255, 255));
 }
