@@ -1,6 +1,7 @@
 
 #include "DxLib.h"
 #include "SceneEnding.h"
+#include "Sound.h"
 
 // コンストラクタ
 SceneEnding::SceneEnding() :
@@ -25,8 +26,10 @@ void SceneEnding::Update()
 	// Gキーが押されていたら
 	if (CheckHitKey(KEY_INPUT_ESCAPE) != 0)
 	{
-		PlaySoundFile("res/sound/decition.wav", DX_PLAYTYPE_BACK);
-		PlaySoundFile("res/sound/titleBackGround.wav", DX_PLAYTYPE_LOOP);
+		StopSoundMem(sound.clearBackGroundHandle);
+
+		PlaySoundMem(sound.dicitionSoundHandle, DX_PLAYTYPE_BACK);
+		PlaySoundMem(sound.titleBackGroundHandle, DX_PLAYTYPE_LOOP);
 		// シーンをゲーム画面に変更
 		SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Title);
 	}

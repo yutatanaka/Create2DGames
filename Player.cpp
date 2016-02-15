@@ -143,7 +143,7 @@ void Player::Input()
 	// Spaceキーが押されたら
 	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 1)
 	{
-		PlaySoundFile("res/sound/jump.mp3", DX_PLAYTYPE_BACK);
+		PlaySoundMem(sound.jumpSoundHandle, DX_PLAYTYPE_BACK);
 		
 		// ジャンプする
  		isJump = true;

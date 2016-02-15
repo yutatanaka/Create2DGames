@@ -4,6 +4,7 @@
 #include "GameManager.h"
 #include "SceneManager.h"
 #include "fps.h"
+#include "Sound.h"
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -24,6 +25,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	SceneManager::GetInstance();
 
 	GameManager::GetInstance();
+
+	sound.Initialize();
 
 	SceneManager::GetInstance()->Initialize();
 

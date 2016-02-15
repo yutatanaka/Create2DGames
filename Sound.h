@@ -16,20 +16,17 @@ public:
 
 public:
 
+	// ゲーム画面で
+	int gameBackGroundHandle;
+
 	// 決定ボタンなどを押したときのSE
 	int dicitionSoundHandle;
 
-	// ゲーム画面で流れるBGM
-	int titleMusicHandle;
-
-	// ゲームオーバーで流れるBGM
-	int gameOverMusicHandle;
+	// タイトル画面で流れるBGM
+	int titleBackGroundHandle;
 
 	// クリア画面で流れるBGM
-	int clearMusicHandle;
-
-	// プレイヤーが待機モーションの時のSE
-	int dogSoundHandle;
+	int clearBackGroundHandle;
 
 	// プレイヤーがジャンプモーションの時のSE
 	int jumpSoundHandle;

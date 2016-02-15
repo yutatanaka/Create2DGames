@@ -6,11 +6,10 @@ Sound sound;
 
 // コンストラクタ
 Sound::Sound() :
+gameBackGroundHandle(0),
 dicitionSoundHandle(0),
-titleMusicHandle(0),
-gameOverMusicHandle(0),
-clearMusicHandle(0),
-dogSoundHandle(0),
+titleBackGroundHandle(0),
+clearBackGroundHandle(0),
 jumpSoundHandle(0)
 {
 }
@@ -24,11 +23,10 @@ Sound::~Sound()
 // 初期化処理メソッド
 void Sound::Initialize()
 {
+	gameBackGroundHandle = LoadSoundMem("res/sound/gameBackGround.mp3");
 	dicitionSoundHandle = LoadSoundMem("res/sound/dicition.wav");
-	titleMusicHandle = LoadSoundMem("res/sound/titleBackGround.wav");
-	gameOverMusicHandle = LoadSoundMem("res/sound/gameOver.wav");
-	clearMusicHandle = LoadSoundMem("res/sound/clear.wav");
-	dogSoundHandle = LoadSoundMem("res/sound/dog.mp3");
+	titleBackGroundHandle = LoadSoundMem("res/sound/titleBackGround.wav");
+	clearBackGroundHandle = LoadSoundMem("res/sound/clear.wav");
 	jumpSoundHandle = LoadSoundMem("res/sound/jump.mp3");
 
 }

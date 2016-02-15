@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "SceneTitle.h"
 #include "GameManager.h"
+#include "Sound.h"
 #include "Player.h"
 
 // コンストラクタ
@@ -20,7 +21,7 @@ SceneTitle::~SceneTitle()
 void SceneTitle::Initialize()
 {
 	titleBackGroundHandle = LoadGraph("res/backgroundimage/backGroundTitle.png");
-	PlaySoundFile("res/sound/titleBackGround.wav", DX_PLAYTYPE_LOOP);
+	PlaySoundMem(sound.titleBackGroundHandle, DX_PLAYTYPE_LOOP, TRUE);
 }
 
 // 更新メソッド
@@ -29,9 +30,10 @@ void SceneTitle::Update()
 	// Gキーが押されていたら
 	if (CheckHitKey(KEY_INPUT_G) != 0)
 	{
-		StopSoundFile();
-		PlaySoundFile("res/sound/decition.wav", DX_PLAYTYPE_BACK);
-		PlaySoundFile("res/sound/gameBackGround.mp3", DX_PLAYTYPE_LOOP);
+		StopSoundMem(sound.titleBackGroundHandle);
+
+		PlaySoundMem(sound.dicitionSoundHandle, DX_PLAYTYPE_BACK);
+		PlaySoundMem(sound.gameBackGroundHandle, DX_PLAYTYPE_LOOP, TRUE);
 		// 生きているかどうかのフラグをtrueにする
 		GameManager::GetInstance()->player->isLive = true;
 		// 初期座標に戻す
