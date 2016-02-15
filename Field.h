@@ -9,7 +9,7 @@
 #define MAP_WIDTH 25	// マップの幅
 #define MAP_HEIGHT 15	// マップの縦長さ
 
-#define fieldNumberElements 10
+#define fieldNumberElements 5
 
 class Field
 {

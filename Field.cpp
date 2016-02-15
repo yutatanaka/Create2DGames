@@ -28,19 +28,13 @@ void Field::Initialize()
 	fieldGraphicHandle[2] = LoadGraph("res/floor/mapChip3Grass.png");
 	fieldGraphicHandle[3] = LoadGraph("res/floor/mapChip4Grass.png");
 	fieldGraphicHandle[4] = LoadGraph("res/floor/mapChip5Soil.png");
-	fieldGraphicHandle[5] = LoadGraph("res/floor/mapChip6Soil.png");
-	fieldGraphicHandle[6] = LoadGraph("res/floor/mapChip7WallLeft.png");
-	fieldGraphicHandle[7] = LoadGraph("res/floor/mapChip8WallLeft.png");
-	fieldGraphicHandle[8] = LoadGraph("res/floor/mapChip9WallRight.png");
-	fieldGraphicHandle[9] = LoadGraph("res/floor/mapChip10WallRight.png");
-
 
 	// フィールドデータ2次元配列
 	int fieldData[MAP_HEIGHT][MAP_WIDTH] =
 	{
 		
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 3, 11 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 3, 5 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 3, 0, 1, 0, 0, 0 },
