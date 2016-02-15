@@ -41,9 +41,7 @@ void SceneEnding::Draw()
 	DrawString(k_X, k_Y -150, "田中　優太", kColor_White);
 
 	DrawString(k_X, k_Y -50, "デザイナー", kColor_White);
-	DrawString(k_X, k_Y, "阿部　慶照", kColor_White);
-	DrawString(k_X, k_Y + 50, "デザイナー", kColor_White);
-	DrawString(k_X, k_Y + 100, "高橋　夏生", kColor_White);
+	DrawString(k_X, k_Y, "阿部　慶照   高橋 夏生", kColor_White);
 
 	DrawString(Width -400, k_Y + 400, "Push　Escキー", kColor_White);
 
