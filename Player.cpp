@@ -25,6 +25,7 @@ y_speed(0),				 // y方向のスピード
 gravity(0.5f),			 // 重力
 isJump(false),			 // ジャンプしているかどうかのフラグ(初期設定：してない状態)
 isLive(true),			 // 生きているかどうかのフラグ(初期設定：生きてる状態)
+isGoal(false),			 // ゴール地点にいるかどうかのフラグ(初期設定：ゴールしてない状態)
 isRight(true)			 // 右を向いているかどうかのフラグ(初期設定：右を向いてる状態)
 {
 	moveGraphicHandle[MoveNumberElements] = { 0 };
@@ -73,7 +74,6 @@ void Player::Draw()
 		// 描画する
 		DrawGraph(position.x, position.y, waitGraphicHandle[waitResult], TRUE);
 	}
-	//DrawCircle(position.x, position.y,3,0x000000ff);
 }
 
 // 固定の床との当たっている時の処理メソッド
@@ -132,10 +132,12 @@ void Player::Input()
 	
 	Animation();
 
-	// Spaceキーが押されたら
+
 	char hoge[256];
 	sprintf_s(hoge,255,"%d\n",CheckLeft());
 	OutputDebugString(hoge);
+
+	// Spaceキーが押されたら
 	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 1)
 	{
 		// ジャンプする

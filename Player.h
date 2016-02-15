@@ -89,6 +89,9 @@ public:
 	// 生きてるかどうかのフラグ
 	bool isLive;
 
+	// ゴール地点にいるかどうかのフラグ
+	bool isGoal;
+
 	// 初期ｘ座標(定数)
 	const float kDefault_x = 65;
 

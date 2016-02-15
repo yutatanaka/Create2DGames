@@ -27,7 +27,7 @@ void Field::Initialize()
 	fieldGraphicHandle[1] = LoadGraph("res/floor/mapChip2Grass.png");
 	fieldGraphicHandle[2] = LoadGraph("res/floor/mapChip3Grass.png");
 	fieldGraphicHandle[3] = LoadGraph("res/floor/mapChip4Grass.png");
-	fieldGraphicHandle[4] = LoadGraph("res/floor/mapChip5Soil.png");
+	fieldGraphicHandle[4] = LoadGraph("res/object/dogHouse.png");
 
 	// フィールドデータ2次元配列
 	int fieldData[MAP_HEIGHT][MAP_WIDTH] =
@@ -63,7 +63,7 @@ void Field::Update()
 	{
 		for (x = 0; x < MAP_WIDTH; ++x)
 		{
-			if (mapData[y][x] == 1)
+			if (mapData[y][x] == 1 || mapData[y][x] == 5)
 			{
 				FieldCheckHit(*(GameManager::GetInstance()->player), x * MAP_SIZE, y * MAP_SIZE);
 			}
@@ -98,26 +98,6 @@ void Field::Draw()
 			else if (mapData[y][x] == 5)
 			{
 				DrawGraph(x * MAP_SIZE, y * MAP_SIZE, fieldGraphicHandle[4], TRUE);
-			}
-			else if (mapData[y][x] == 6)
-			{
-				DrawGraph(x * MAP_SIZE, y * MAP_SIZE, fieldGraphicHandle[5], TRUE);
-			}
-			else if (mapData[y][x] == 7)
-			{
-				DrawGraph(x * MAP_SIZE, y * MAP_SIZE, fieldGraphicHandle[6], TRUE);
-			}
-			else if (mapData[y][x] == 8)
-			{
-				DrawGraph(x * MAP_SIZE, y * MAP_SIZE, fieldGraphicHandle[7], TRUE);
-			}
-			else if (mapData[y][x] == 9)
-			{
-				DrawGraph(x * MAP_SIZE, y * MAP_SIZE, fieldGraphicHandle[8], TRUE);
-			}
-			else if (mapData[y][x] == 10)
-			{
-				DrawGraph(x * MAP_SIZE, y * MAP_SIZE, fieldGraphicHandle[9], TRUE);
 			}
 		}
 	}
