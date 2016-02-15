@@ -39,11 +39,11 @@ void GameManager::Update()
 
 	field->Update();
 
-	enemy->Update();
-	
 	player->Update();
 
-	Draw();
+	enemy->Update();
+	
+
 
 }
 
@@ -51,9 +51,11 @@ void GameManager::Draw()
 {
 
 	field->Draw();
+
+	player->Draw();
 	
 	enemy->Draw();
 
-	player->Draw();
+
 
 }

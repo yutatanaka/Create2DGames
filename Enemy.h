@@ -44,8 +44,11 @@ public:
 	// 距離
 	Vec2i distance;
 	
-	// 幅、高さ
-	int width, height;			
+	// ハチの幅、高さ
+	int beeWidth, beeHeight;			
+
+	// あみの幅、高さ
+	int netWidth, netHeight;
 
 private:
 
@@ -53,6 +56,6 @@ private:
 	int beeGraphicHandle;
 
 	// 虫取り網のグラフィックハンドル格納用変数
-	int butterflyNetGraphicHandle;
+	int netGraphicHandle;
 
 };

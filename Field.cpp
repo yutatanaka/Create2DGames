@@ -64,7 +64,6 @@ void Field::Initialize()
 // 更新メソッド
 void Field::Update()
 {
-	Draw();
 
 	for (y = 0; y < MAP_HEIGHT; ++y)
 	{

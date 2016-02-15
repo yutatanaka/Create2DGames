@@ -3,7 +3,7 @@
 #include "Key.h"
 #include "GameManager.h"
 #include "SceneManager.h"
-
+#include "fps.h"
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -29,12 +29,18 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 	GameManager::GetInstance()->Initialize();
 
-	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0 && key.UpdateKey() == 0)
+	while ( true )
 	{
+		if(key.UpdateKey() != 0)break;
+		if (ProcessMessage() != 0) break;
+		if (ClearDrawScreen() != 0) break;
+		
 		SceneManager::GetInstance()->Draw();
 
 		SceneManager::GetInstance()->Update();
-		
+
+		if (ScreenFlip() != 0)break;
+
 	}
 
 	// ‰æ–Ê‚ğ‰Šú‰»

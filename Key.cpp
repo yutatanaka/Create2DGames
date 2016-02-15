@@ -19,7 +19,7 @@ Key::~Key()
 // キーの入力状態を更新する
 int Key::UpdateKey()
 {
-	// 全てのキーの入力状態を得る
+	//// 全てのキーの入力状態を得る
 	GetHitKeyStateAll(tmpKey); 
 
 	for (int i = 0; i < 256; ++i)

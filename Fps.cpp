@@ -1,5 +1,6 @@
 
 #include "Fps.h"
+#include"gamemanager.h"
 
 Fps fps;
 
@@ -38,7 +39,7 @@ bool Fps::Update()
 // ï`âÊÉÅÉ\ÉbÉh
 void Fps::Draw()
 {
-	DrawFormatString(1600 / 2, 20, GetColor(0, 0, 0), "fps:%.1f", fps);
+	DrawFormatString(Window::Width / 2, 20, GetColor(255, 0, 0), "fps:%.1f", fps);
 
 }
 

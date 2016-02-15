@@ -32,7 +32,6 @@ void SceneGame::Update()
 
 	GameManager::GetInstance()->Update();
 
-	Draw();
 
 	fps.Draw();
 
@@ -57,13 +56,8 @@ void SceneGame::Update()
 // 描画メソッド
 void SceneGame::Draw()
 {
-	DrawGraph(position.x, position.y, gameBackGroundHandle, FALSE);
 
-	GameManager::GetInstance()->Draw();
-	
-	SetFontSize(50);
-	DrawString(0, 0, "←→キー　移動", GetColor(0, 0, 0));
-	DrawString(0, 70, "SPACEキー　ジャンプ", GetColor(0, 0, 0));
+	DrawGraph(position.x, position.y, gameBackGroundHandle, FALSE);
 
 	if (GameManager::GetInstance()->player->isLive == false)
 	{
@@ -71,4 +65,12 @@ void SceneGame::Draw()
 		DrawString(1000, Height / 2, "G a m e O v e r...", GetColor(0, 0, 0));
 		DrawString(1000, 530, "Push Escape", GetColor(0, 0, 0));
 	}
+
+	GameManager::GetInstance()->Draw();
+	
+	SetFontSize(50);
+	DrawString(0, 0, "←→キー　移動", GetColor(0, 0, 0));
+	DrawString(0, 70, "SPACEキー　ジャンプ", GetColor(0, 0, 0));
+
+
 }
