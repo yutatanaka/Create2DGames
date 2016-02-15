@@ -31,19 +31,22 @@ void SceneGame::Update()
 
 	GameManager::GetInstance()->Update();
 
-	PlaySoundMem(sound.gameMusicHandle, DX_PLAYTYPE_LOOP);
 
 	// Escキーが押されていたら
 	if (CheckHitKey(KEY_INPUT_ESCAPE) != 0)
 	{
+		PlaySoundFile("res/sound/decition.wav", DX_PLAYTYPE_BACK);
+		
 		// シーンをタイトルに変更
 		SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Title);
 	}
 
-	// Cキーが押されていたら
-	if (GameManager::GetInstance()->player->CheckRight() == 5 || GameManager::GetInstance()->player->CheckUnder() == 5)
+	// プレイヤーの右と下のマップチップが5だったら
+	if (CheckHitKey(KEY_INPUT_C) == 1)
+	//if (GameManager::GetInstance()->player->CheckRight() == 5 || GameManager::GetInstance()->player->CheckUnder() == 5)
 	{
 		// シーンをクリアに変更
+		PlaySoundFile("res/sound/clear.wav", DX_PLAYTYPE_LOOP);
 		SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Clear);
 	}
 

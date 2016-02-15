@@ -59,17 +59,23 @@ void Player::Update()
 void Player::Draw()
 {
 	// 生きていて、←キーもしくは→キーが押されていれば
-	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) != 0 || CheckHitKey(KEY_INPUT_RIGHT) !=0)
+	if (isLive == true ) 
 	{
-		// 描画する
-		DrawGraph(position.x, position.y, moveGraphicHandle[moveResult], TRUE);
+		if (CheckHitKey(KEY_INPUT_LEFT) != 0 || CheckHitKey(KEY_INPUT_RIGHT) != 0)
+		{
+			// 描画する
+			DrawGraph(position.x, position.y, moveGraphicHandle[moveResult], TRUE);
+		}
 	}
 
 	// 生きていて、←キーかつ→キーが押されていなければ
-	if (isLive == true && CheckHitKey(KEY_INPUT_LEFT) != 1 && CheckHitKey(KEY_INPUT_RIGHT) != 1)
+	if (isLive == true)	
 	{
-		// 描画する
-		DrawGraph(position.x, position.y, waitGraphicHandle[waitResult], TRUE);
+		if (CheckHitKey(KEY_INPUT_LEFT) != 1 && CheckHitKey(KEY_INPUT_RIGHT) != 1)
+		{
+			// 描画する
+			DrawGraph(position.x, position.y, waitGraphicHandle[waitResult], TRUE);
+		}
 	}
 }
 
@@ -137,7 +143,7 @@ void Player::Input()
 	// Spaceキーが押されたら
 	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 1)
 	{
-		PlaySoundMem(sound.jumpSoundHandle, DX_PLAYTYPE_BACK);
+		PlaySoundFile("res/sound/jump.mp3", DX_PLAYTYPE_BACK);
 		// ジャンプする
  		isJump = true;
 		y_speed = -10;

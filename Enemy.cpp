@@ -81,7 +81,7 @@ void Enemy::Bee1Move()
 void Enemy::Bee2Move()
 {
 	bee2_y += bee_2Move.y * speed; 
-	if (bee2_y < 250 || bee2_y > 530)
+	if (bee2_y < 250 || bee2_y > 560)
 	{
 		bee_2Move.y = -bee_2Move.y;
 	}

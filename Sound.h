@@ -20,7 +20,7 @@ public:
 	int dicitionSoundHandle;
 
 	// ゲーム画面で流れるBGM
-	int gameMusicHandle;
+	int titleMusicHandle;
 
 	// ゲームオーバーで流れるBGM
 	int gameOverMusicHandle;

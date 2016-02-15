@@ -20,7 +20,7 @@ SceneTitle::~SceneTitle()
 void SceneTitle::Initialize()
 {
 	titleBackGroundHandle = LoadGraph("res/backgroundimage/backGroundTitle.png");
-	                                
+	PlaySoundFile("res/sound/titleBackGround.wav", DX_PLAYTYPE_LOOP);
 }
 
 // 更新メソッド
@@ -29,6 +29,8 @@ void SceneTitle::Update()
 	// Gキーが押されていたら
 	if (CheckHitKey(KEY_INPUT_G) != 0)
 	{
+		StopSoundFile();
+		PlaySoundFile("res/sound/decition.wav", DX_PLAYTYPE_BACK);
 		// 生きているかどうかのフラグをtrueにする
 		GameManager::GetInstance()->player->isLive = true;
 		// 初期座標に戻す

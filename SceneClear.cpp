@@ -26,6 +26,8 @@ void SceneClear::Update()
 	// Gキーが押されていたら
 	if (CheckHitKey(KEY_INPUT_G) != 0)
 	{
+		StopSound();
+		PlaySoundFile("res/sound/decition.wav", DX_PLAYTYPE_BACK);
 		// シーンをゲーム画面に変更
 		SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Ending);
 	}
