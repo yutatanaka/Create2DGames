@@ -11,8 +11,8 @@ bee2_x(330),
 bee2_y(500),
 net1_x(1150),
 net1_y(832),
-net2_x(0),
-net2_y(0),
+net2_x(600),
+net2_y(320),
 bee_1Move(0, 4),
 bee_2Move(0, 4),
 net_1Move(4, 0),
@@ -102,9 +102,11 @@ void Enemy::Net1Move()
 void Enemy::Net2Move()
 {
 	net2_x += net_2Move.x;
-	if (net2_x  >64 || net2_x > 320)
+	if (net2_x  > 960 || net2_x < 512)
 	{
 		net_2Move.x = -net_2Move.x;
+		net2_x += net_2Move.x;
+
 	}
 }
 
