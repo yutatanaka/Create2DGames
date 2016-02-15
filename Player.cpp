@@ -13,7 +13,6 @@ charaWidth (60),		 // 幅
 charaHeight(60),		 // 高さ 
 moveGraphicHandle(),	 // moveグラフィックハンドル格納用配列
 waitGraphicHandle(),	 // waitグラフィックハンドル格納用配列
-jumpGraphicHandle(0),	 // jumpグラフィックハンドル格納用変数
 move_xCount (0),		 // move用,横方向のカウント数
 wait_xCount (0),		 // wait用,横方向のカウント数
 moveImageX (0),			 // move添字用変数	
@@ -41,8 +40,6 @@ void Player::Initialize()
 	// Wait画像読み込み
 	LoadDivGraph("res/player/playerWait.png", WaitNumberElements, 2, 2, charaWidth, charaHeight, waitGraphicHandle, TRUE);
 
-	// jump画像読み込み
-	LoadGraph("res/player/playerJump.png", TRUE);
 }
 
 // 更新処理

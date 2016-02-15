@@ -109,9 +109,6 @@ public:
 	// waitグラフィックハンドル格納用配列
 	int waitGraphicHandle[WaitNumberElements];
 
-	// jumpグラッフィックハンドル格納用変数
-	int jumpGraphicHandle;
-
 	// move用横方向のカウント数
 	int move_xCount;
 	
