@@ -4,7 +4,7 @@
 
 // コンストラクタ
 Enemy::Enemy() :
-speed(3),
+speed(2),
 bee1_x(1290),
 bee1_y(64),
 bee2_x(330),
@@ -43,7 +43,6 @@ void Enemy::Initialize()
 void Enemy::Update()
 {
 	Bee1Move();
-
 	Bee1CheckHit();
 
 	Bee2Move();
