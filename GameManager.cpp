@@ -1,7 +1,7 @@
 
 #include "GameManager.h"
 #include "Field.h"
-#include "MoveFloor.h"
+#include "Enemy.h"
 #include "Player.h"
 
 GameManager* GameManager::instance = nullptr;
@@ -11,7 +11,7 @@ GameManager::GameManager()
 {
 	player = new Player();
 	field = new Field();
-	moveFloor = new MoveFloor();
+	enemy = new Enemy();
 }
 
 // デストラクタ
@@ -19,7 +19,7 @@ GameManager::~GameManager()
 {
 	delete player;
 	delete field;
-	delete moveFloor;
+	delete enemy;
 }
 
 // 初期化処理
@@ -28,7 +28,7 @@ void GameManager::Initialize()
 
 	field->Initialize();
 
-	moveFloor->Initialize();
+	enemy->Initialize();
 
 	player->Initialize();
 
@@ -39,7 +39,7 @@ void GameManager::Update()
 
 	field->Update();
 
-	moveFloor->Update();
+	enemy->Update();
 	
 	player->Update();
 
@@ -52,7 +52,7 @@ void GameManager::Draw()
 
 	field->Draw();
 	
-	moveFloor->Draw();
+	enemy->Draw();
 
 	player->Draw();
 

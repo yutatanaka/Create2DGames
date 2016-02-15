@@ -8,7 +8,7 @@
 
 class Player;
 class Field;
-class MoveFloor;
+class Enemy;
 
 enum Window
 {
@@ -66,6 +66,6 @@ public:
 
 	Field *field;
 
-	MoveFloor *moveFloor;
+	Enemy *enemy;
 };
 

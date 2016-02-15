@@ -70,7 +70,7 @@ void Field::Update()
 	{
 		for (x = 0; x < MAP_WIDTH; ++x)
 		{
-			if (mapData[y][x] == 1 && mapData[y][x] == 1)
+			if (mapData[y][x] == 1)
 			{
 				FieldCheckHit(*(GameManager::GetInstance()->player), x * MAP_SIZE, y * MAP_SIZE);
 			}

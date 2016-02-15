@@ -7,15 +7,15 @@
 #include "Vec2i.h"
 #include "Player.h"
 
-class MoveFloor
+class Enemy
 {
 public:
 
 	// コンストラクタ
-	MoveFloor();
+	Enemy();
 
 	// デストラクタ
-	~MoveFloor();
+	~Enemy();
 
 	// 初期化処理
 	void Initialize();
@@ -30,13 +30,13 @@ public:
 	void Move();
 
 	// 当たり判定
-	void MoveFloorCheckHit();
+	void BeeCheckHit();
 
 
 public:
 
 	// 座標
-	int x, y;
+	int bee_x, bee_y;
 
 	// 移動係数
 	Vec2f move;				
@@ -49,7 +49,10 @@ public:
 
 private:
 
-	// 動く床のグラフィックハンドル格納用変数
-	int moveFloorGraphicHandle;
+	// 蜂のグラフィックハンドル格納用変数
+	int beeGraphicHandle;
+
+	// 虫取り網のグラフィックハンドル格納用変数
+	int butterflyNetGraphicHandle;
 
 };

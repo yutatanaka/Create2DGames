@@ -75,7 +75,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MoveFloor.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneClear.cpp" />
     <ClCompile Include="SceneGame.cpp" />
@@ -89,7 +89,7 @@
     <ClInclude Include="Fps.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Key.h" />
-    <ClInclude Include="MoveFloor.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SceneClear.h" />
     <ClInclude Include="SceneGame.h" />
