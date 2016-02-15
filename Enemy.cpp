@@ -8,7 +8,7 @@ speed(2),
 bee1_x(1290),
 bee1_y(64),
 bee2_x(330),
-bee2_y(512),
+bee2_y(500),
 net1_x(0),
 net1_y(0),
 net2_x(0),
@@ -42,6 +42,7 @@ void Enemy::Initialize()
 // 更新処理メソッド
 void Enemy::Update()
 {
+
 	Bee1Move();
 	Bee1CheckHit();
 
@@ -53,8 +54,6 @@ void Enemy::Update()
 
 	Net2Move();
 	Net2CheckHit();
-	
-	
 
 }
 
@@ -81,7 +80,7 @@ void Enemy::Bee1Move()
 void Enemy::Bee2Move()
 {
 	bee2_y += bee_2Move.y * speed; 
-	if (bee2_y < 300 || bee2_y > 600)
+	if (bee2_y < 250 || bee2_y > 530)
 	{
 		bee_2Move.y = -bee_2Move.y;
 	}
