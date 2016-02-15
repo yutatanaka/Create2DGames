@@ -42,8 +42,7 @@ void SceneGame::Update()
 	}
 
 	// プレイヤーの右と下のマップチップが5だったら
-	if (CheckHitKey(KEY_INPUT_C) == 1)
-	//if (GameManager::GetInstance()->player->CheckRight() == 5 || GameManager::GetInstance()->player->CheckUnder() == 5)
+	if (GameManager::GetInstance()->player->CheckRight() == 5 || GameManager::GetInstance()->player->CheckUnder() == 5)
 	{
 		// シーンをクリアに変更
 		StopSoundFile();
