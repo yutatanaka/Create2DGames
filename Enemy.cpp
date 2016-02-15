@@ -9,8 +9,8 @@ bee1_x(1290),
 bee1_y(64),
 bee2_x(330),
 bee2_y(500),
-net1_x(0),
-net1_y(0),
+net1_x(1150),
+net1_y(832),
 net2_x(0),
 net2_y(0),
 bee_1Move(0, 4),
@@ -64,6 +64,7 @@ void Enemy::Draw()
 	DrawGraph(bee2_x, bee2_y, beeGraphicHandle, TRUE);
 	DrawGraph(net1_x, net1_y, netGraphicHandle, TRUE);
 	DrawGraph(net2_x, net2_y, netGraphicHandle, TRUE);
+
 }
 
 // ハチの移動処理メソッド
@@ -90,9 +91,10 @@ void Enemy::Bee2Move()
 void Enemy::Net1Move()
 {
 	net1_x += net_1Move.x;
-	if (net1_x < 64 || net1_x > 320)
+	if (net1_x > 1408 || net1_x < 832)
 	{
 		net_1Move.x = -net_1Move.x;
+		net1_x += net_1Move.x;
 	}
 }
 
@@ -100,7 +102,7 @@ void Enemy::Net1Move()
 void Enemy::Net2Move()
 {
 	net2_x += net_2Move.x;
-	if (net2_x < 64 || net2_x > 320)
+	if (net2_x  >64 || net2_x > 320)
 	{
 		net_2Move.x = -net_2Move.x;
 	}

@@ -79,5 +79,4 @@ private:
 
 	// 虫取り網のグラフィックハンドル格納用変数
 	int netGraphicHandle;
-
 };
