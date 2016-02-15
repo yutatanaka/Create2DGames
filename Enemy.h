@@ -26,20 +26,39 @@ public:
 	// 描画処理
 	void Draw();
 
-	// 移動処理
-	void Move();
+	// ハチの移動処理
+	void Bee1Move();
+	void Bee2Move();
 
-	// 当たり判定
-	void BeeCheckHit();
+	// ネットの移動処理
+	void Net1Move();
+	void Net2Move();
 
+	// ハチとの当たり判定
+	void Bee1CheckHit();
+	void Bee2CheckHit();
+
+	// ネットとの当たり判定
+	void Net1CheckHit();
+	void Net2CheckHit();
 
 public:
 
-	// 座標
-	int bee_x, bee_y;
+	// ハチの座標
+	int bee1_x, bee1_y;
+	int bee2_x, bee2_y;
 
-	// 移動係数
-	Vec2f move;				
+	// ネットの座標
+	int net1_x, net1_y;
+	int net2_x, net2_y;
+
+	// ハチの移動係数
+	Vec2f bee_1Move;
+	Vec2f bee_2Move;
+
+	// ネットの移動係数
+	Vec2f net_1Move;
+	Vec2f net_2Move;
 
 	// 距離
 	Vec2i distance;

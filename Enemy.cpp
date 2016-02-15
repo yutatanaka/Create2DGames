@@ -4,9 +4,18 @@
 
 // コンストラクタ
 Enemy::Enemy() :
-bee_x(1290),
-bee_y(64),
-move(0, 4),
+bee1_x(1290),
+bee1_y(64),
+bee2_x(0),
+bee2_y(0),
+net1_x(0),
+net1_y(0),
+net2_x(0),
+net2_y(0),
+bee_1Move(0, 4),
+bee_2Move(0, 4),
+net_1Move(4, 0),
+net_2Move(4, 0),
 distance(0, 0),
 beeWidth(40),
 beeHeight(40),
@@ -31,47 +40,86 @@ void Enemy::Initialize()
 // 更新処理メソッド
 void Enemy::Update()
 {
+	Bee1Move();
 
-	BeeCheckHit();
+	Bee1CheckHit();
 
-	Move();
+	Bee2Move();
+	Bee2CheckHit();
+
+	Net1Move();
+	Net1CheckHit();
+
+	Net2Move();
+	Net2CheckHit();
+	
+	
 
 }
 
 // 描画処理メソッド
 void Enemy::Draw()
 {
-	DrawGraph(bee_x, bee_y, beeGraphicHandle, TRUE);
+	DrawGraph(bee1_x, bee1_y, beeGraphicHandle, TRUE);
 }
 
-// 移動処理メソッド
-void Enemy::Move()
+// ハチの移動処理メソッド
+void Enemy::Bee1Move()
 {
-	bee_y += move.y;
-	if (bee_y < 64 || bee_y > 320)
+	bee1_y += bee_1Move.y;
+	if (bee1_y < 64 || bee1_y > 320)
 	{
-		move.y = -move.y;
+		bee_1Move.y = -bee_1Move.y;
 	}
 }
 
+// ハチ移動処理メソッド
+void Enemy::Bee2Move()
+{
+	bee2_y += bee_2Move.y;
+	if (bee2_y < 64 || bee2_y > 320)
+	{
+		bee_2Move.y = -bee_2Move.y;
+	}
+}
+
+// ネットの移動処理メソッド
+void Enemy::Net1Move()
+{
+	net1_y += net_1Move.y;
+	if (net1_y < 64 || net1_y > 320)
+	{
+		net_1Move.y = -net_1Move.y;
+	}
+}
+
+// ネットの移動処理メソッド
+void Enemy::Net2Move()
+{
+	net2_y += net_2Move.y;
+	if (net2_y < 64 || net2_y > 320)
+	{
+		net_2Move.y = -net_2Move.y;
+	}
+}
 
 // プレイヤーと動く床との当たり判定を確認するメソッド
-void Enemy::BeeCheckHit()
+void Enemy::Bee1CheckHit()
 {
-	if (GameManager::GetInstance()->player->position.x + GameManager::GetInstance()->player->charaWidth > bee_x && // 右端と左端
-		GameManager::GetInstance()->player->position.x < bee_x + beeWidth &&			  // 左端と右端
-		GameManager::GetInstance()->player->position.y + GameManager::GetInstance()->player->charaHeight > bee_y &&// 下端と上端
-		GameManager::GetInstance()->player->position.y < bee_y + beeHeight)			  // 上端と下端
+	if (GameManager::GetInstance()->player->position.x + GameManager::GetInstance()->player->charaWidth > bee1_x && // 右端と左端
+		GameManager::GetInstance()->player->position.x < bee1_x + beeWidth &&			  // 左端と右端
+		GameManager::GetInstance()->player->position.y + GameManager::GetInstance()->player->charaHeight > bee1_y &&// 下端と上端
+		GameManager::GetInstance()->player->position.y < bee1_y + beeHeight)			  // 上端と下端
 	{
-		distance.x = GameManager::GetInstance()->player->position.x + GameManager::GetInstance()->player->charaWidth / 2 - (bee_x + beeWidth / 2);
-		distance.y = GameManager::GetInstance()->player->position.y + GameManager::GetInstance()->player->charaHeight / 2 - (bee_y + beeHeight / 2);
+		distance.x = GameManager::GetInstance()->player->position.x + GameManager::GetInstance()->player->charaWidth / 2 - (bee1_x + beeWidth / 2);
+		distance.y = GameManager::GetInstance()->player->position.y + GameManager::GetInstance()->player->charaHeight / 2 - (bee1_y + beeHeight / 2);
 
 		if (distance.x >= 0) distance.x *= -1;
 		if (distance.y >= 0) distance.y *= -1;
 
 		if (distance.x < distance.y)
 		{
-			if (GameManager::GetInstance()->player->position.x <bee_x)
+			if (GameManager::GetInstance()->player->position.x <bee1_x)
 			{
 				GameManager::GetInstance()->player->isLive = false;
 			}
@@ -82,7 +130,121 @@ void Enemy::BeeCheckHit()
 		}
 		else if (distance.x > distance.y)
 		{
-			if (GameManager::GetInstance()->player->position.y < bee_y)
+			if (GameManager::GetInstance()->player->position.y < bee1_y)
+			{
+				GameManager::GetInstance()->player->isLive = false;
+			}
+			else
+			{
+				GameManager::GetInstance()->player->isLive = false;
+			}
+		}
+	}
+}
+
+void Enemy::Bee2CheckHit()
+{
+	if (GameManager::GetInstance()->player->position.x + GameManager::GetInstance()->player->charaWidth > bee2_x && // 右端と左端
+		GameManager::GetInstance()->player->position.x < bee2_x + beeWidth &&			  // 左端と右端
+		GameManager::GetInstance()->player->position.y + GameManager::GetInstance()->player->charaHeight > bee2_y &&// 下端と上端
+		GameManager::GetInstance()->player->position.y < bee2_y + beeHeight)			  // 上端と下端
+	{
+		distance.x = GameManager::GetInstance()->player->position.x + GameManager::GetInstance()->player->charaWidth / 2 - (bee2_x + beeWidth / 2);
+		distance.y = GameManager::GetInstance()->player->position.y + GameManager::GetInstance()->player->charaHeight / 2 - (bee2_y + beeHeight / 2);
+
+		if (distance.x >= 0) distance.x *= -1;
+		if (distance.y >= 0) distance.y *= -1;
+
+		if (distance.x < distance.y)
+		{
+			if (GameManager::GetInstance()->player->position.x <bee2_x)
+			{
+				GameManager::GetInstance()->player->isLive = false;
+			}
+			else
+			{
+				GameManager::GetInstance()->player->isLive = false;
+			}
+		}
+		else if (distance.x > distance.y)
+		{
+			if (GameManager::GetInstance()->player->position.y < bee2_y)
+			{
+				GameManager::GetInstance()->player->isLive = false;
+			}
+			else
+			{
+				GameManager::GetInstance()->player->isLive = false;
+			}
+		}
+	}
+}
+
+void Enemy::Net1CheckHit()
+{
+	if (GameManager::GetInstance()->player->position.x + GameManager::GetInstance()->player->charaWidth > net1_x && // 右端と左端
+		GameManager::GetInstance()->player->position.x < net1_x + beeWidth &&			  // 左端と右端
+		GameManager::GetInstance()->player->position.y + GameManager::GetInstance()->player->charaHeight > net1_y &&// 下端と上端
+		GameManager::GetInstance()->player->position.y < net1_y + beeHeight)			  // 上端と下端
+	{
+		distance.x = GameManager::GetInstance()->player->position.x + GameManager::GetInstance()->player->charaWidth / 2 - (net1_x + beeWidth / 2);
+		distance.y = GameManager::GetInstance()->player->position.y + GameManager::GetInstance()->player->charaHeight / 2 - (net1_y + beeHeight / 2);
+
+		if (distance.x >= 0) distance.x *= -1;
+		if (distance.y >= 0) distance.y *= -1;
+
+		if (distance.x < distance.y)
+		{
+			if (GameManager::GetInstance()->player->position.x <net1_x)
+			{
+				GameManager::GetInstance()->player->isLive = false;
+			}
+			else
+			{
+				GameManager::GetInstance()->player->isLive = false;
+			}
+		}
+		else if (distance.x > distance.y)
+		{
+			if (GameManager::GetInstance()->player->position.y < net1_y)
+			{
+				GameManager::GetInstance()->player->isLive = false;
+			}
+			else
+			{
+				GameManager::GetInstance()->player->isLive = false;
+			}
+		}
+	}
+}
+
+void Enemy::Net2CheckHit()
+{
+	if (GameManager::GetInstance()->player->position.x + GameManager::GetInstance()->player->charaWidth > net2_x && // 右端と左端
+		GameManager::GetInstance()->player->position.x < net2_x + beeWidth &&			  // 左端と右端
+		GameManager::GetInstance()->player->position.y + GameManager::GetInstance()->player->charaHeight > net2_y &&// 下端と上端
+		GameManager::GetInstance()->player->position.y < net2_y + beeHeight)			  // 上端と下端
+	{
+		distance.x = GameManager::GetInstance()->player->position.x + GameManager::GetInstance()->player->charaWidth / 2 - (net2_x + beeWidth / 2);
+		distance.y = GameManager::GetInstance()->player->position.y + GameManager::GetInstance()->player->charaHeight / 2 - (net2_y + beeHeight / 2);
+
+		if (distance.x >= 0) distance.x *= -1;
+		if (distance.y >= 0) distance.y *= -1;
+
+		if (distance.x < distance.y)
+		{
+			if (GameManager::GetInstance()->player->position.x <net2_x)
+			{
+				GameManager::GetInstance()->player->isLive = false;
+			}
+			else
+			{
+				GameManager::GetInstance()->player->isLive = false;
+			}
+		}
+		else if (distance.x > distance.y)
+		{
+			if (GameManager::GetInstance()->player->position.y < net2_y)
 			{
 				GameManager::GetInstance()->player->isLive = false;
 			}
