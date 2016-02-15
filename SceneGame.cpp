@@ -46,6 +46,7 @@ void SceneGame::Update()
 	//if (GameManager::GetInstance()->player->CheckRight() == 5 || GameManager::GetInstance()->player->CheckUnder() == 5)
 	{
 		// シーンをクリアに変更
+		StopSoundFile();
 		PlaySoundFile("res/sound/clear.wav", DX_PLAYTYPE_LOOP);
 		SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Clear);
 	}
@@ -60,6 +61,7 @@ void SceneGame::Draw()
 
 	if (GameManager::GetInstance()->player->isLive == false)
 	{
+		StopSoundFile();
 		PlaySoundFile("res/sound/gameOver.wav", DX_PLAYTYPE_BACK);
 		SetFontSize(50);
 		DrawString(1000, Height / 2, "G a m e O v e r...", GetColor(0, 0, 0));

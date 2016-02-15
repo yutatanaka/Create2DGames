@@ -31,6 +31,7 @@ void SceneTitle::Update()
 	{
 		StopSoundFile();
 		PlaySoundFile("res/sound/decition.wav", DX_PLAYTYPE_BACK);
+		PlaySoundFile("res/sound/gameBackGround.mp3", DX_PLAYTYPE_LOOP);
 		// ¶‚«‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO‚ğtrue‚É‚·‚é
 		GameManager::GetInstance()->player->isLive = true;
 		// ‰ŠúÀ•W‚É–ß‚·

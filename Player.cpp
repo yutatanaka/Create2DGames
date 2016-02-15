@@ -144,6 +144,7 @@ void Player::Input()
 	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 1)
 	{
 		PlaySoundFile("res/sound/jump.mp3", DX_PLAYTYPE_BACK);
+		
 		// ƒWƒƒƒ“ƒv‚·‚é
  		isJump = true;
 		y_speed = -10;
