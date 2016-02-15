@@ -28,14 +28,7 @@ void SceneGame::Initialize()
 void SceneGame::Update()
 {
 
-	fps.Update();
-
 	GameManager::GetInstance()->Update();
-
-
-	fps.Draw();
-
-	fps.Wait();
 
 	// Escキーが押されていたら
 	if (CheckHitKey(KEY_INPUT_ESCAPE) != 0)
@@ -45,7 +38,7 @@ void SceneGame::Update()
 	}
 
 	// Cキーが押されていたら
-	if (CheckHitKey(KEY_INPUT_C) != 0)
+	if (GameManager::GetInstance()->player->CheckRight() == 5 || GameManager::GetInstance()->player->CheckUnder() == 5)
 	{
 		// シーンをクリアに変更
 		SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Clear);

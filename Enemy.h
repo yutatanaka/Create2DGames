@@ -44,6 +44,9 @@ public:
 
 public:
 
+	// 速度
+	int speed;
+
 	// ハチの座標
 	int bee1_x, bee1_y;
 	int bee2_x, bee2_y;

@@ -4,10 +4,11 @@
 
 // コンストラクタ
 Enemy::Enemy() :
+speed(3),
 bee1_x(1290),
 bee1_y(64),
-bee2_x(0),
-bee2_y(0),
+bee2_x(330),
+bee2_y(512),
 net1_x(0),
 net1_y(0),
 net2_x(0),
@@ -35,6 +36,7 @@ Enemy::~Enemy()
 void Enemy::Initialize()
 {
 	beeGraphicHandle = LoadGraph("res/enemy/bee.png");
+	netGraphicHandle = LoadGraph("res/enemy/net.png");
 }
 
 // 更新処理メソッド
@@ -61,6 +63,9 @@ void Enemy::Update()
 void Enemy::Draw()
 {
 	DrawGraph(bee1_x, bee1_y, beeGraphicHandle, TRUE);
+	DrawGraph(bee2_x, bee2_y, beeGraphicHandle, TRUE);
+	DrawGraph(net1_x, net1_y, netGraphicHandle, TRUE);
+	DrawGraph(net2_x, net2_y, netGraphicHandle, TRUE);
 }
 
 // ハチの移動処理メソッド
@@ -76,8 +81,8 @@ void Enemy::Bee1Move()
 // ハチ移動処理メソッド
 void Enemy::Bee2Move()
 {
-	bee2_y += bee_2Move.y;
-	if (bee2_y < 64 || bee2_y > 320)
+	bee2_y += bee_2Move.y * speed; 
+	if (bee2_y < 300 || bee2_y > 600)
 	{
 		bee_2Move.y = -bee_2Move.y;
 	}
@@ -86,20 +91,20 @@ void Enemy::Bee2Move()
 // ネットの移動処理メソッド
 void Enemy::Net1Move()
 {
-	net1_y += net_1Move.y;
-	if (net1_y < 64 || net1_y > 320)
+	net1_x += net_1Move.x;
+	if (net1_x < 64 || net1_x > 320)
 	{
-		net_1Move.y = -net_1Move.y;
+		net_1Move.x = -net_1Move.x;
 	}
 }
 
 // ネットの移動処理メソッド
 void Enemy::Net2Move()
 {
-	net2_y += net_2Move.y;
-	if (net2_y < 64 || net2_y > 320)
+	net2_x += net_2Move.x;
+	if (net2_x < 64 || net2_x > 320)
 	{
-		net_2Move.y = -net_2Move.y;
+		net_2Move.x = -net_2Move.x;
 	}
 }
 
