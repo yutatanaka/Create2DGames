@@ -37,6 +37,7 @@ void SceneGame::Update()
 	{
 		PlaySoundMem(sound.dicitionSoundHandle, DX_PLAYTYPE_BACK);
 		
+		PlaySoundMem(sound.titleBackGroundHandle, TRUE);
 		// シーンをタイトルに変更
 		SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Title);
 	}
@@ -45,7 +46,7 @@ void SceneGame::Update()
 	if (GameManager::GetInstance()->player->CheckRight() == 5 || GameManager::GetInstance()->player->CheckUnder() == 5)
 	{
 		// シーンをクリアに変更
-		StopSoundFile();
+		StopSoundMem(sound.gameBackGroundHandle);
 		PlaySoundMem(sound.clearBackGroundHandle, DX_PLAYTYPE_LOOP, TRUE);
 		SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Clear);
 	}
@@ -61,7 +62,7 @@ void SceneGame::Draw()
 	if (GameManager::GetInstance()->player->isLive == false)
 	{
 		StopSoundMem(sound.gameBackGroundHandle);
-		StopSoundMem(sound.titleBackGroundHandle);
+
 		SetFontSize(50);
 		DrawString(1000, Height / 2, "G a m e O v e r...", GetColor(0, 0, 0));
 		DrawString(1000, 530, "Push Escape", GetColor(0, 0, 0));
