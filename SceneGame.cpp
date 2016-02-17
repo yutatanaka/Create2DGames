@@ -33,7 +33,7 @@ void SceneGame::Update()
 
 
 	// EscƒL[‚ª‰Ÿ‚³‚ê‚Ä‚¢‚½‚ç
-	if (CheckHitKey(KEY_INPUT_ESCAPE) != 0)
+	if (CheckHitKey(KEY_INPUT_ESCAPE) == 1)
 	{
 		PlaySoundMem(sound.dicitionSoundHandle, DX_PLAYTYPE_BACK);
 		

@@ -25,7 +25,7 @@ void SceneClear::Initialize()
 void SceneClear::Update()
 {
 	// GƒL[‚ª‰Ÿ‚³‚ê‚Ä‚¢‚½‚ç
-	if (CheckHitKey(KEY_INPUT_G) != 0)
+	if (CheckHitKey(KEY_INPUT_G) == 1)
 	{
 		StopSoundMem(sound.gameBackGroundHandle);
 		PlaySoundMem(sound.dicitionSoundHandle, DX_PLAYTYPE_BACK);
