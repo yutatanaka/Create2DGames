@@ -65,7 +65,7 @@ void SceneGame::Draw()
 
 		SetFontSize(50);
 		DrawString(1000, Height / 2, "G a m e O v e r...", GetColor(0, 0, 0));
-		DrawString(1000, 530, "Push Escape", GetColor(0, 0, 0));
+		DrawString(1000, 530, "Push ESCAPEƒL[", GetColor(0, 0, 0));
 	}
 
 	GameManager::GetInstance()->Draw();
