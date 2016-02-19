@@ -140,20 +140,24 @@ void Player::Input()
 	sprintf_s(hoge,255,"%d\n",CheckLeft());
 	OutputDebugString(hoge);
 
-	// Spaceキーが押されたら
-	if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 1)
+	// 生きていれば
+	if (isLive == true)
 	{
-		PlaySoundMem(sound.jumpSoundHandle, DX_PLAYTYPE_BACK);
-		
-		// ジャンプする
- 		isJump = true;
-		y_speed = -10;
-
-		// プレイヤーの下のマップデータを調べる
-		if (CheckUnder() != 1)
+		// Spaceキーが押されたら
+		if (key.keys[KEY_INPUT_SPACE] == 1 && CheckUnder() == 1)
 		{
-			// ジャンプしない
-			isJump = false;
+			PlaySoundMem(sound.jumpSoundHandle, DX_PLAYTYPE_BACK);
+
+			// ジャンプする
+			isJump = true;
+			y_speed = -10;
+
+			// プレイヤーの下のマップデータを調べる
+			if (CheckUnder() != 1)
+			{
+				// ジャンプしない
+				isJump = false;
+			}
 		}
 	}
 }
