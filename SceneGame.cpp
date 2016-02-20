@@ -31,26 +31,30 @@ void SceneGame::Update()
 
 	GameManager::GetInstance()->Update();
 
-
-	// Escキーが押されていたら
-	if (CheckHitKey(KEY_INPUT_ESCAPE) == 1)
+	if (GameManager::GetInstance()->player->isLive == false)
 	{
-		PlaySoundMem(sound.dicitionSoundHandle, DX_PLAYTYPE_BACK);
-		
-		PlaySoundMem(sound.titleBackGroundHandle, TRUE);
-		// シーンをタイトルに変更
-		SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Title);
-	}
+		// Escキーが押されていたら
+		if (CheckHitKey(KEY_INPUT_ESCAPE) == 1)
+		{
+			PlaySoundMem(sound.dicitionSoundHandle, DX_PLAYTYPE_BACK);
 
-	// プレイヤーの右と下のマップチップが5だったら
-	if (GameManager::GetInstance()->player->CheckRight() == 5 || GameManager::GetInstance()->player->CheckUnder() == 5)
+			PlaySoundMem(sound.titleBackGroundHandle, TRUE);
+			// シーンをタイトルに変更
+			SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Title);
+		}
+	}
+	else
 	{
-		// シーンをクリアに変更
-		StopSoundMem(sound.gameBackGroundHandle);
-		PlaySoundMem(sound.clearBackGroundHandle, DX_PLAYTYPE_LOOP, TRUE);
-		SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Clear);
-	}
 
+		// プレイヤーの右と下のマップチップが5だったら
+		if (GameManager::GetInstance()->player->CheckRight() == 5 || GameManager::GetInstance()->player->CheckUnder() == 5)
+		{
+			// シーンをクリアに変更
+			StopSoundMem(sound.gameBackGroundHandle);
+			PlaySoundMem(sound.clearBackGroundHandle, DX_PLAYTYPE_LOOP, TRUE);
+			SceneManager::GetInstance()->SceneManager_ChangeScene(eScene_Clear);
+		}
+	}
 }
 
 // 描画メソッド
