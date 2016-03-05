@@ -40,13 +40,13 @@ void SceneEnding::Draw()
 {
 	DrawGraph(k_X-500, k_Y-300 , gameOverPomeHandle, TRUE);
 
-	DrawString(k_X, k_Y-300 , "ハウスへGO～　開発チーム", kColor_White);
+	DrawString(k_X, k_Y-300 , "ハウスへGO～", kColor_White);
 
 	DrawString(k_X, k_Y -200, "プランナー兼プログラマー", kColor_White);
 	DrawString(k_X, k_Y -150, "田中　優太", kColor_White);
 
-	DrawString(k_X, k_Y -50, "デザイナー", kColor_White);
-	DrawString(k_X, k_Y, "阿部　慶照   高橋 夏生", kColor_White);
+//	DrawString(k_X, k_Y -50, "デザイナー", kColor_White);
+//	DrawString(k_X, k_Y, "阿部　慶照   高橋 夏生", kColor_White);
 
 	DrawString(Width -400, k_Y + 400, "Push　Escキー", kColor_White);
 

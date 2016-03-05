@@ -80,7 +80,7 @@ void Enemy::Bee1Move()
 // ハチ移動処理メソッド
 void Enemy::Bee2Move()
 {
-	bee2_y += bee_2Move.y * speed; 
+	bee2_y += bee_2Move.y; 
 	if (bee2_y < 250 || bee2_y > 560)
 	{
 		bee_2Move.y = -bee_2Move.y;
