@@ -56,8 +56,6 @@ private:
 	// ˆÚ“®ŒW”
 	float move;
 
-
-
 	// d—Í
 	float gravity;
 
